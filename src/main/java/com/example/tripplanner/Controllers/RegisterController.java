@@ -3,21 +3,23 @@ package com.example.tripplanner.Controllers;
 
 import com.example.tripplanner.Models.User;
 import com.example.tripplanner.Repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 
 public class RegisterController {
 
     UserRepository usersDao;
+    private PasswordEncoder passwordEncoder;
 
-    public RegisterController(UserRepository usersDao) {
+    public RegisterController(UserRepository usersDao, PasswordEncoder passwordEncoder) {
         this.usersDao = usersDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
@@ -28,13 +30,13 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String createPost(@ModelAttribute User user) {
-
+        String hash = passwordEncoder.encode(user.getPassword());
         User userToAdd = new User(
                 user.getEmail(),
                 user.getUsername(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getPassword(),
+                hash,
                 user.getLatitude(),
                 user.getLongitude()
         );
