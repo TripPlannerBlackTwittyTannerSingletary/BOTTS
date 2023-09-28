@@ -31,16 +31,8 @@ public class RegisterController {
     @PostMapping("/register")
     public String createPost(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
-        User userToAdd = new User(
-                user.getEmail(),
-                user.getUsername(),
-                user.getFirstName(),
-                user.getLastName(),
-                hash,
-                user.getLatitude(),
-                user.getLongitude()
-        );
-        usersDao.save(userToAdd);
+        user.setPassword(hash);
+        usersDao.save(user);
 //        emailSvc.prepareAndSend(post, "You have created an Ad", "Here is information regarding your ad");
         return "redirect:/profile";
     }

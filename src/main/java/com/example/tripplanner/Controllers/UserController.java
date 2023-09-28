@@ -26,14 +26,4 @@ public class UserController {
         this.userDao = userDao;
     }
 
-
-    @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder().encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
-        return "redirect:/login";
-    }
-
-
 }
