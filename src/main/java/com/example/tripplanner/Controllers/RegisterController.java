@@ -42,4 +42,5 @@ public class RegisterController {
 //        emailSvc.prepareAndSend(post, "You have created an Ad", "Here is information regarding your ad");
         return "redirect:/profile";
     }
+
 }
