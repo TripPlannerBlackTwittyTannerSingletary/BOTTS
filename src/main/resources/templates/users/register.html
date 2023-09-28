@@ -8,13 +8,16 @@
 <h1>Create an account</h1>
 <form th:action="@{/register}" method="POST" th:object="${user}">
   <label for="firstname">First Name</label>
-  <input id="firstname" th:field="*{firstname}" />
+  <input id="firstname" th:field="*{firstName}" />
 
   <label for="lastname">Last Name</label>
-  <input id="lastname" th:field="*{lastname}" />
+  <input id="lastname" th:field="*{lastName}" />
 
-  <label for="location">Email</label>
-  <input id="location" th:field="*{location}" />
+  <label for="latitude">Location</label>
+  <input id="latitude" th:field="*{latitude}" />
+
+  <label for="longitude">Location</label>
+  <input id="longitude" th:field="*{latitude}" />
 
   <label for="username">Username</label>
   <input id="username" th:field="*{username}" />
