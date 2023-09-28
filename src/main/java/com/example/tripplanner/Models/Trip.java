@@ -4,6 +4,7 @@ package com.example.tripplanner.Models;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Trips")
@@ -32,8 +33,31 @@ public class Trip {
     @JoinColumn(name ="user_id")
     private User user;
 
-
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "trip")
+    private List<Activity> activities;
     // Constructors
+
+
+    public Trip(String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user, List<Activity> activities) {
+        this.name = name;
+        this.depatureDate = depatureDate;
+        this.returnDate = returnDate;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.user = user;
+        this.activities = activities;
+    }
+
+    public Trip(long id, String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user, List<Activity> activities) {
+        this.id = id;
+        this.name = name;
+        this.depatureDate = depatureDate;
+        this.returnDate = returnDate;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.user = user;
+        this.activities = activities;
+    }
 
     public Trip(long id, String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user) {
         this.id = id;
@@ -115,5 +139,13 @@ public class Trip {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
     }
 }

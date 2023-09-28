@@ -35,6 +35,10 @@ public class Activity {
     @Column
     private String amadeusApiId;
 
+    @ManyToOne
+    @JoinColumn(name ="trip_id")
+    private Trip trip;
+
     // Constructor
 
     public Activity(long id, String name, String description, double rating, String bookingLink, String address, double latitude, double longitude, String amadeusApiId) {
