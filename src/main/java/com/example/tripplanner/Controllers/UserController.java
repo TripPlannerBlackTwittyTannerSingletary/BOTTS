@@ -21,9 +21,11 @@ public class UserController {
     };
 
 
+
     public UserController(UserRepository userDao) {
         this.userDao = userDao;
     }
+
 
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user){
@@ -32,5 +34,6 @@ public class UserController {
         userDao.save(user);
         return "redirect:/login";
     }
+
 
 }
