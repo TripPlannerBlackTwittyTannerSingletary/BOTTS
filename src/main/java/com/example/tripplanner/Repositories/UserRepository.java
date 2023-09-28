@@ -1,4 +1,8 @@
 package com.example.tripplanner.Repositories;
 
-public interface UserRepository {
+import com.example.tripplanner.Models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
 }
