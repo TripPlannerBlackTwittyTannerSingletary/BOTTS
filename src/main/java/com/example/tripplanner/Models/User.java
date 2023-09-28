@@ -77,6 +77,16 @@ public class User {
         this.trips = trips;
     }
 
+    public User(String email, String username, String firstName, String lastName, String password, double latitude, double longitude) {
+        this.email = email;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public long getId() {
         return id;
     }
@@ -137,7 +147,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail() {
         this.email = email;
     }
 
