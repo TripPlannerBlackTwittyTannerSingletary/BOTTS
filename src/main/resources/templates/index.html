@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/CSS/index.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/index.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-<your-sha512-hash>" crossorigin="anonymous" />
 </head>
 <body>
 <!--<h1>Main</h1>-->
 <div class="hero">
     <video autoplay loop muted playsinline class="back-video">
-        <source src="../img/pexels-why-steve-5700416%20(1080p).mp4" type="video/mp4">
+        <source th:src="@{/IMG/pexels-why-steve-5700416%20(1080p).mp4}" type="video/mp4">
     </video>
+<!--    <img th:src="@{/IMG/download.jpeg}" height="183" width="275"/>-->
     <nav>
-        <img src="../img/GoTravelWhite%20(1).png">
+        <img th:src="@{/IMG/GoWhite.png}">
+<!--        <img th:src="@{/img/GoTravelWhite%20(1).png}">-->
         <ul>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
