@@ -10,14 +10,14 @@ public class TripController {
     public TripController(TripRepository tripDao) {
         this.tripDao = tripDao;
     }
-    @GetMapping("/trip")
-    public String showTrips() {
-        return "user/profile";
-    }
-
-    @PostMapping()
-    public String addTrip() {
-        return "user/profile";
-    }
+//    @GetMapping("/trip")
+//    public String showTrips() {
+//        return "user/profile";
+//    }
+//
+//    @PostMapping()
+//    public String addTrip() {
+//        return "user/profile";
+//    }
 
 }
