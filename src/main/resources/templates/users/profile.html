@@ -76,19 +76,26 @@
     </div>
 </nav>
 
-
-<label for="exampleDataList">
-</label>
-<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Search An Activity">
-<img id="activity-icon" th:src="@{/IMG/GoWhite.png}">
-<datalist id="datalistOptions">
-    <option value="San Francisco">
-    <option value="New York">
-    <option value="Seattle">
-    <option value="Los Angeles">
-    <option value="Chicago">
-</datalist>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="input-group input-group-sm">
+                <label for="exampleDataList">
+                </label>
+                <input class="form-control" type="search" name="query" list="datalistOptions" id="exampleDataList"
+                       placeholder="Search An Activity">
+                <img id="activity-icon" th:src="@{/IMG/GoBlack.png}">
+                <datalist id="datalistOptions">
+                    <option value="San Francisco">
+                    <option value="New York">
+                    <option value="Seattle">
+                    <option value="Los Angeles">
+                    <option value="Chicago">
+                </datalist>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="text-center">
     <h1>My Profile</h1>
