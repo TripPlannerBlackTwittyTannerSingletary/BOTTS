@@ -1,0 +1,24 @@
+.activity-icon {
+    position: absolute;
+
+}
+
+.navbar-brand {
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+
+}
+
+.row {
+    justify-content: center;
+}
+
+.col {
+    margin-left: 20rem;
+}

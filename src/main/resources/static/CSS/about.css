@@ -1,4 +1,30 @@
+body {
+    background-color: lightgray;
+}
+
 .card{
     width: 20rem;
-    margin: 4px;
+    margin: 6px;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
+
+svg{
+    width: 16px;
+    height: 16px;
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+li{
+    list-style: none;
+}
+
+.codeup{
+    width: 16px;
+    height: 16px;
+}
+
