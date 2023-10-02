@@ -19,6 +19,17 @@ h2 {
     justify-content: center;
 }
 
-.col {
+.profile-column-one {
+    columns: auto;
     margin-left: 20rem;
+
+}
+
+.profile-column-two {
+    columns: auto;
+    margin-left: 20rem;
+}
+
+.row-one {
+    margin-left: 14rem;
 }
