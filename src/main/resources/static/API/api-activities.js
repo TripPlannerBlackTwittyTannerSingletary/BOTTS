@@ -116,22 +116,6 @@ document.querySelector('#search-city').addEventListener('click', () => {
 
 
 
-// async function fetchData() {
-//     try {
-//         const response = await fetch('');
-//         if (!response.ok) {
-//             throw new Error('API is not working');
-//         }
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//         throw error;
-//     }
-// }
-
-
-
 
 
 
