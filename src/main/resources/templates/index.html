@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml">-->
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/CSS/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-<your-sha512-hash>" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/CSS/index.css}">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-<your-sha512-hash>" crossorigin="anonymous" />-->
 </head>
 <body>
 <!--<h1>Main</h1>-->
 <div class="hero">
     <video autoplay loop muted playsinline class="back-video">
-        <source src="../img/pexels-why-steve-5700416%20(1080p).mp4" type="video/mp4">
+        <source th:src="@{/IMG/pexels-why-steve-5700416 (1080p).mp4}" type="video/mp4">
     </video>
     <nav>
-        <img src="../img/GoTravelWhite%20(1).png">
+        <img th:src="@{/IMG/GoTravelWhite.png}">
         <ul>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
@@ -21,12 +21,14 @@
         </ul>
     </nav>
     <div class="content">
-        <h1>Bali</h1>
-        <div class="search-container">
+        <h1 id="text1">Experience</h1>
+        <h1 id="text2" style="display:none;">Travel</h1>
+        <h1 id="text3" style="display:none;">Explore</h1>
+<!--        <div class="search-container">-->
             <input id="searchBox" type="search" class="form-control form-control-dark text-bg-light px-5"
                    placeholder="Search..." aria-label="Search">
             <button id="search-city" type="button" class="btn btn-dark col-2 my-4 py-1">search city</button>
-        </div>
+<!--        </div>-->
 
     </div>
 
@@ -37,4 +39,28 @@
 
 
 </body>
+<script>
+    // Get the elements by their IDs
+    const text1 = document.getElementById('text1');
+    const text2 = document.getElementById('text2');
+    const text3 = document.getElementById('text3');
+
+    // Function to toggle visibility of headings
+    function toggleHeadings() {
+        if (text1.style.display === 'block') {
+            text1.style.display = 'none';
+            text2.style.display = 'block';
+        } else if (text2.style.display === 'block') {
+            text2.style.display = 'none';
+            text3.style.display = 'block';
+        } else {
+            text3.style.display = 'none';
+            text1.style.display = 'block';
+        }
+    }
+
+    // Call toggleHeadings every 3 seconds (3000 milliseconds)
+    setInterval(toggleHeadings, 3000);
+</script>
+
 </html>

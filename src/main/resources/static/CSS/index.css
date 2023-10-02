@@ -91,3 +91,21 @@ nav ul li a {
     font-size: 18px;
 }
 
+#searchBox {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px; /* Add some space between the search box and button */
+}
+
+/* CSS styles for search button */
+#search-city {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
