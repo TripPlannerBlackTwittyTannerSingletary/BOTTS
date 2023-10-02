@@ -41,9 +41,9 @@ public class SecurityConfiguration {
                         .requestMatchers("/profile" ).authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("/",  "/login", "/register").permitAll()
+                        .requestMatchers("/",  "/login", "/register", "/api-test").permitAll()
                         // allow loading of static resources
-                        .requestMatchers("/CSS/**", "/js/**", "/IMG/**").permitAll()
+                        .requestMatchers("/CSS/**", "/js/**", "/IMG/**", "API/**").permitAll()
                 )
                 /* Login configuration */
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/profile"))

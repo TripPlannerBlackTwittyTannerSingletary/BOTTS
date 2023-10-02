@@ -1,48 +1,13 @@
-async function fetchData() {
-    try {
-        const response = await fetch('');
-        if (!response.ok) {
-            throw new Error('API is not working');
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
-}
-
-function renderData(data) {
-    const apiDataContainer = document.getElementById('api-data');
-    apiDataContainer.innerHTML = JSON.stringify(data, null, 2);
-}
-
-async function main() {
-    try {
-        const data = await fetchData();
-        renderData(data);
-    } catch (error) {
-        console.log('Error data is not rendering', error);
-        throw error;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', main);
-
-
-
-
-
-
-
-
 // tims code
 
 function geocode(search, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
+    let startTime = new Date().getTime();
     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
         .then(function(res) {
+            let endTime = new Date().getTime();
+            console.log(endTime - startTime);
             return res.json();
             // to get all the data from the request, comment out the following three lines...
         }).then(function(data) {
@@ -62,6 +27,7 @@ function reverseGeocode(coordinates, token) {
             return data.features[0].place_name;
         });
 }
+
 
 
 
@@ -126,9 +92,43 @@ function goToInput() {
 
 document.querySelector('#search-city').addEventListener('click', () => {
     goToInput();
+
+
+// Beau's code
+    function renderData(data) {
+        const apiDataContainer = document.getElementById('api-data');
+        apiDataContainer.innerHTML = JSON.stringify(data, null, 2);
+    }
+
+    async function main() {
+        try {
+            const data = await goToInput;
+            renderData(data);
+        } catch (error) {
+            console.log('Error data is not rendering', error);
+            throw error;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', main);
 })
 
 
+
+
+// async function fetchData() {
+//     try {
+//         const response = await fetch('');
+//         if (!response.ok) {
+//             throw new Error('API is not working');
+//         }
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//         throw error;
+//     }
+// }
 
 
 
