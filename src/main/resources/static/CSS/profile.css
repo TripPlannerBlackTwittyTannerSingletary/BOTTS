@@ -14,3 +14,11 @@ h1 {
 h2 {
 
 }
+
+.row {
+    justify-content: center;
+}
+
+.col {
+    margin-left: 20rem;
+}
