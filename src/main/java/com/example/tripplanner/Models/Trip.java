@@ -1,6 +1,7 @@
 package com.example.tripplanner.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -29,11 +30,17 @@ public class Trip {
     @Column
     private double longitude;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name ="user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "trip")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="trip_activities",
+            joinColumns={@JoinColumn(name="trip_id")},
+            inverseJoinColumns={@JoinColumn(name="activity_id")}
+    )
     private List<Activity> activities;
     // Constructors
 
