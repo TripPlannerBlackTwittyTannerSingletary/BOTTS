@@ -1,9 +1,12 @@
 package com.example.tripplanner.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "activitys")
+@Table(name = "activities")
 public class Activity {
 
     @Id
@@ -35,9 +38,9 @@ public class Activity {
     @Column
     private String amadeusApiId;
 
-    @ManyToOne
-    @JoinColumn(name ="trip_id")
-    private Trip trip;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "activities")
+    private List<Trip> trips;
 
     // Constructor
 
