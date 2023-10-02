@@ -19,13 +19,13 @@ public class ActivityController {
         this.tripDao = tripDao;
     }
 
-    @GetMapping("/activity")
-    public String showActivityForm() {
-        return "trips/activity";
-    }
-
-    @PostMapping()
-    public String addActivity() {
-        return "user/profile";
-    }
+//    @GetMapping("/activity")
+//    public String showActivityForm() {
+//        return "trips/activity";
+//    }
+//
+//    @PostMapping()
+//    public String addActivity() {
+//        return "user/profile";
+//    }
 }
