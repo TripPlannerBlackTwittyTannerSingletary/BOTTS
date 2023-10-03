@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -35,15 +36,15 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+        http.authorizeRequests((requests) -> requests
                         /* Pages that require authentication
                          * only authenticated users can create and edit ads */
-                        .requestMatchers("/profile" ).authenticated()
+                        .requestMatchers("/profile", "/logout").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("/",  "/login", "/register", "/api-test").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/api-test", "/logout").permitAll()
                         // allow loading of static resources
-                        .requestMatchers("/CSS/**", "/js/**", "/IMG/**", "API/**").permitAll()
+                        .requestMatchers("/CSS/**", "/js/**", "/IMG/**", "/API/**").permitAll()
                 )
                 /* Login configuration */
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/profile"))
@@ -52,5 +53,4 @@ public class SecurityConfiguration {
                 .httpBasic(withDefaults());
         return http.build();
     }
-
 }
