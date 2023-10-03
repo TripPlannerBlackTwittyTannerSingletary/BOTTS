@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>My Profile</title>
     <link rel="stylesheet" href="../../static/CSS/profile.css">
@@ -105,8 +106,8 @@
 </div>
 <div class="container">
     <div class="row mx-auto">
-        <div class="col-md-6">
-            <h2>Welcome, </h2>
+        <div class="col-md-6" sec:authorize="isAuthenticated()">
+            <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
             <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
             <p>
                 Username: <br>

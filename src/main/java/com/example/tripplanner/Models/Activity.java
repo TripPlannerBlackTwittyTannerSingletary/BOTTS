@@ -42,6 +42,9 @@ public class Activity {
     @ManyToMany(mappedBy = "activities")
     private List<Trip> trips;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "activities")
+    private List<Search> searches;
     // Constructor
 
     public Activity(long id, String name, String description, double rating, String bookingLink, String address, double latitude, double longitude, String amadeusApiId) {
