@@ -17,7 +17,12 @@
         <ul>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="#">Trips</a></li>
+<!--            <li><a href="#">Trips</a></li>-->
+            <li>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
     <div class="content">
