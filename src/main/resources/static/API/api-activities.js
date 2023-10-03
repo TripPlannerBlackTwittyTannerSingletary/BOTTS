@@ -33,12 +33,37 @@ function reverseGeocode(coordinates, token) {
 
 let citySearch = document.querySelector('#searchBox')
 
+const createCard = (activity) => {
+    const card = document.createElement('div');
+    card.className = 'card';
 
-function goToInput() {
+    const cardTitle = document.createElement('h2');
+    cardTitle.innerText = activity.name;
+    card.appendChild(cardTitle);
+
+    const cardDescription = document.createElement('p');
+    cardDescription.innerText = activity.description;
+    card.appendChild(cardDescription);
+
+    return card;
+}
+
+const renderCards = (activityData) => {
+    const cardContainer = document.getElementById('card-container');
+    cardContainer.innerHTML = '';
+
+    activityData.forEach(activity => {
+        const card = createCard(activity);
+        cardContainer.appendChild(card);
+    });
+}
+
+async function goToInput() {
     let searchedCity = citySearch.value;
 
-    // Assuming geocode() returns a promise resolving to an array with latitude and longitude
-    geocode(searchedCity, MAPBOX_TOKEN).then((data) => {
+    try {
+        // Assuming geocode() returns a promise resolving to an array with latitude and longitude
+        const data = await geocode(searchedCity, MAPBOX_TOKEN);
         let lat = data[1];
         let long = data[0];
 
@@ -51,72 +76,48 @@ function goToInput() {
         formData.append("client_id", clientId);
         formData.append("client_secret", clientSecret);
 
-        fetch(apiUrlToken, {
+        const responseToken = await fetch(apiUrlToken, {
             method: 'POST',
             body: formData,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-        })
-            .then(response => response.json())
-            .then(tokenData => {
-                const accessToken = tokenData.access_token;
+        });
 
-                const apiUrl = `https://test.api.amadeus.com/v1/shopping/activities?latitude=${lat}&longitude=${long}&radius=21`;
+        const tokenData = await responseToken.json();
+        const accessToken = tokenData.access_token;
 
-                const headers = {
-                    Authorization: `Bearer ${accessToken}`,
-                };
+        const apiUrl = `https://test.api.amadeus.com/v1/shopping/activities?latitude=${lat}&longitude=${long}&radius=21`;
 
-                fetch(apiUrl, { headers })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then((activityData) => {
-                        // Handle and process the activity data here
-                        console.log(activityData);
-                    })
-                    .catch((error) => {
-                        // Handle errors here
-                        console.error('Error:', error);
-                    });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    });
+        const headers = {
+            Authorization: `Bearer ${accessToken}`,
+        };
+
+        const responseActivities = await fetch(apiUrl, { headers });
+
+        if (!responseActivities.ok) {
+            throw new Error(`HTTP error! Status: ${responseActivities.status}`);
+        }
+
+        const activityData = await responseActivities.json();
+
+        console.log(activityData);
+
+        return activityData;
+    } catch (error) {
+        // Handle errors here
+        console.error('Error:', error);
+        throw error;
+    }
 }
 
-document.querySelector('#search-city').addEventListener('click', () => {
-    goToInput();
-
-
-// Beau's code
-    function renderData(data) {
-        const apiDataContainer = document.getElementById('api-data');
-        apiDataContainer.innerHTML = JSON.stringify(data, null, 2);
+document.querySelector('#search-city').addEventListener('click', async () => {
+    try {
+        const activityData = await goToInput();
+        renderCards(activityData.data);
+    } catch (error) {
+        console.error('Error rendering cards:', error);
     }
-
-    async function main() {
-        try {
-            const data = await goToInput;
-            renderData(data);
-        } catch (error) {
-            console.log('Error data is not rendering', error);
-            throw error;
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', main);
-})
-
-
-
-
-
-
+});
 
 
