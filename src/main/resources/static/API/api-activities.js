@@ -5,7 +5,6 @@ function geocode(search, token) {
     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
         .then(function(res) {
             let endTime = new Date().getTime();
-            console.log(endTime - startTime);
             return res.json();
 // to get all the data from the request, comment out the following three lines...
         }).then(function(data) {
