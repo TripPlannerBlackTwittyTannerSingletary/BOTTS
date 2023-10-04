@@ -1,4 +1,4 @@
-
+const activities = [];
 const addActivity = (trip, activity) => {
     trips.activities.push(activity);
 }

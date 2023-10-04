@@ -6,3 +6,6 @@ const createTrips = (destination, startDate, endDate) => {
     const trip =  new Trip(destination, startDate, endDate);
     trips.push(trip);
 }
+
+createTrips();
+
