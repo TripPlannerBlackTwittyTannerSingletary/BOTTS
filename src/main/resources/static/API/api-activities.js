@@ -1,13 +1,15 @@
+(async () => {
+const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 function geocode(search, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
     let startTime = new Date().getTime();
     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
+        .then(function (res) {
             let endTime = new Date().getTime();
             return res.json();
 // to get all the data from the request, comment out the following three lines...
-        }).then(function(data) {
+        }).then(function (data) {
             return data.features[0].center;
         });
 }
@@ -16,16 +18,14 @@ function reverseGeocode(coordinates, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
+        .then(function (res) {
             return res.json();
         })
         // to get all the data from the request, comment out the following three lines...
-        .then(function(data) {
+        .then(function (data) {
             return data.features[0].place_name;
         });
 }
-
-
 
 
 let citySearch = document.querySelector('#searchBox')
@@ -142,7 +142,7 @@ async function goToInput() {
             Authorization: `Bearer ${accessToken}`,
         };
 
-        const responseActivities = await fetch(apiUrl, { headers });
+        const responseActivities = await fetch(apiUrl, {headers});
 
         if (!responseActivities.ok) {
             throw new Error(`HTTP error! Status: ${responseActivities.status}`);
@@ -170,34 +170,48 @@ document.querySelector('#search-city').addEventListener('click', async () => {
 
 });
 
-function packageSearchObject(activities, search){
+function packageSearchObject(activities, search) {
     let activityList = [];
     activities.forEach((activity) => {
         let newActivity = {
             name: activity.name,
             description: activity.description,
-            rating: activity.rating,
+            rating: 1.00,
             bookingLink: activity.self,
             address: activity.geoCode,
             latitude: activity.geoCode.latitude,
             longitude: activity.geoCode.longitude,
             amadeusApiId: activity.id
         }
-    activityList.push(newActivity)
-    });
+        activityList.push(newActivity)
+    })
     console.log(activityList)
-    // this.name = name;
-    // this.description = description;
-    // this.rating = rating;
-    // this.bookingLink = bookingLink;
-    // this.address = address;
-    // this.latitude = latitude;
-    // this.longitude = longitude;
-    // this.amadeusApiId = amadeusApiId;
-
     let searchObject = {
         search: search,
         activities: activityList
     }
+    let baseUrl = '/api/test';
+    // let endPoint = '/geocoding/v5/mapbox.places/';
+    fetch(baseUrl, {
+
+        // Adding method type
+        method: "POST",
+
+        headers: {
+            'Content-type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        // Adding body or contents to send
+        body: searchObject
+
+    });
+
 }
+})();
+
+                // Adding headers to the request
+
+
+
+
 
