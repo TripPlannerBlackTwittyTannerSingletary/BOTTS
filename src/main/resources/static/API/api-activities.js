@@ -167,8 +167,46 @@ async function goToInput() {
 document.querySelector('#search-city').addEventListener('click', async () => {
     try {
         const activityData = await goToInput();
+        packageSearchObject(activityData.data, citySearch)
         renderCards(activityData.data);
     } catch (error) {
         console.error('Error rendering cards:', error);
     }
+
 });
+
+function packageSearchObject(activities, search){
+    let activityList = [];
+    activities.forEach((activity) => {
+        let newActivity = {
+            name: activity.name,
+            description: activity.description,
+            rating: activity.rating,
+            bookingLink: activity.self,
+            address: activity.geoCode,
+            latitude: activity.geoCode.latitude,
+            longitude: activity.geoCode.longitude,
+            amadeusApiId: activity.id
+        }
+    activityList.push(newActivity)
+    });
+    console.log(activityList)
+    // this.name = name;
+    // this.description = description;
+    // this.rating = rating;
+    // this.bookingLink = bookingLink;
+    // this.address = address;
+    // this.latitude = latitude;
+    // this.longitude = longitude;
+    // this.amadeusApiId = amadeusApiId;
+
+    let searchObject = {
+        search: search,
+        activities: activityList
+    }
+
+
+
+
+}
+
