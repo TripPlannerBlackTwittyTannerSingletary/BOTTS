@@ -12,7 +12,6 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<!--<h1>Main</h1>-->
 <div class="hero">
     <video autoplay loop muted playsinline class="back-video">
         <source th:src="@{/IMG/pexels-why-steve-5700416 (1080p).mp4}" type="video/mp4">
@@ -22,7 +21,6 @@
         <ul>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
-            <!--            <li><a href="#">Trips</a></li>-->
             <li>
                 <form th:action="@{/logout}" method="post">
                     <button type="submit">Logout</button>
@@ -34,49 +32,55 @@
         <h1 id="text1">Experience</h1>
         <h1 id="text2" style="display:none;">Travel</h1>
         <h1 id="text3" style="display:none;">Explore</h1>
-        <!--        <div class="search-container">-->
-        <!--            <input id="searchBox" type="search" class="form-control form-control-dark text-bg-light px-5"-->
-        <!--                   placeholder="Search..." aria-label="Search">-->
-        <!--            <button id="search-city" type="button" class="btn btn-dark col-2 my-4 py-1">search city</button>-->
-        <!--        </div>-->
+        <!--                <div class="search-container">-->
+        <!--                    <input id="searchBox" type="search" class="form-control form-control-dark text-bg-light px-5"-->
+        <!--                           placeholder="Search..." aria-label="Search">-->
+        <!--                    <button id="search-city" type="button" class="btn btn-dark col-2 my-4 py-1">search city</button>-->
+        <!--                </div>-->
     </div>
 </div>
 
 <!--Activities List Section-->
 <section class="py-6 bg-gray-100">
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-5">
+        <div class="container pb-2 pt-5 d-flex justify-content-center">
+            <!--        <div class="row mb-5">-->
+            <div>
                 <img class="headline-img" src="/IMG/GoTravelLogo.png">
                 <h2>Favorite Activities</h2>
             </div>
-            <div class="col-md-6 d-lg-fle align-items-center justify-content-end">
-                <a class="text-muted text-sm" href="/">
-                    Create Your Trips
-                </a>
+
+        </div>
+        <!--End Activities List Section-->
+
+        <!--Row of Activities Pictures-->
+        <div class="container">
+            <div class="row pt-5">
+
+                <div class="col-4 mb-3">
+                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+
+                <div class="col-4 mb-3">
+                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+
+                <div class="col-4 mb-3">
+                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                </div>
+
             </div>
         </div>
-    </div>
-    <!--End Activities List Section-->
 
-    <!--Row of Activities Pictures-->
-    <div class="container">
-        <div class="row">
-
-                <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
-                </div>
-
-                <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
-                </div>
-
-                <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
-                </div>
-
+        <!--    Link to Create Trips-->
+        <div class="container pb-5 pt-4 d-flex justify-content-center">
+            <a class="text-muted text-sm" href="/api-test">
+                Create Your Trips
+            </a>
         </div>
     </div>
+    <!--    </div>-->
+
 </section>
 <!--End Row of Activities Pictures-->
 
@@ -141,14 +145,14 @@
 
     <!-- Team and Email -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-white" href="/templates/About.html">Meet The Team</a>
+        <a class="text-white" href="/templates/About.html">Meet The Team</a><br>
         <a class="text-white" href="/">info@gotravel.fyi</a>
     </div>
     <!-- Team and Email -->
 </footer>
 <!-- End of footer -->
 
-
+<script src="https://kit.fontawesome.com/e9132f2c3c.js" crossorigin="anonymous"></script>
 <script th:src="@{/js/index.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
