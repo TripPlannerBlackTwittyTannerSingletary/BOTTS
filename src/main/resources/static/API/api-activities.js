@@ -1,5 +1,3 @@
-// tims code
-
 function geocode(search, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
@@ -7,7 +5,6 @@ function geocode(search, token) {
     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
         .then(function(res) {
             let endTime = new Date().getTime();
-            console.log(endTime - startTime);
             return res.json();
 // to get all the data from the request, comment out the following three lines...
         }).then(function(data) {
@@ -54,13 +51,13 @@ const createCard = (activity) => {
 // Create card title
     const cardTitle = document.createElement('h5');
     cardTitle.className = 'card-title';
-    cardTitle.innerText = activity.name; // Set the card title dynamically
+    cardTitle.innerHTML = activity.name; // Set the card title dynamically
     cardBody.appendChild(cardTitle);
 
 // Create card text
     const cardText = document.createElement('p');
     cardText.className = 'card-text';
-    cardText.innerText = activity.description; // Set the card description dynamically
+    cardText.innerHTML = activity.description; // Set the card description dynamically
     cardBody.appendChild(cardText);
 
 // Create list group
@@ -86,12 +83,12 @@ const createCard = (activity) => {
     const cardLink1 = document.createElement('a');
     cardLink1.href = activity.price.amount; // Set link URL dynamically
     cardLink1.className = 'card-link';
-    cardLink1.innerText = 'Add to trip'; // Set link text dynamically
+    cardLink1.innerHTML = 'Add to trip'; // Set link text dynamically
 
     const cardLink2 = document.createElement('a');
     cardLink2.href = activity.bookingLink; // Set link URL dynamically
     cardLink2.className = 'card-link';
-    cardLink2.innerText = 'Book Now!'; // Set link text dynamically
+    cardLink2.innerHTML = 'Book Now!'; // Set link text dynamically
 
     cardBodyLinks.appendChild(cardLink1);
     cardBodyLinks.appendChild(cardLink2);
@@ -115,7 +112,6 @@ async function goToInput() {
     let searchedCity = citySearch.value;
 
     try {
-// Assuming geocode() returns a promise resolving to an array with latitude and longitude
         const data = await geocode(searchedCity, MAPBOX_TOKEN);
         let lat = data[1];
         let long = data[0];
@@ -158,7 +154,6 @@ async function goToInput() {
 
         return activityData;
     } catch (error) {
-// Handle errors here
         console.error('Error:', error);
         throw error;
     }
@@ -204,9 +199,5 @@ function packageSearchObject(activities, search){
         search: search,
         activities: activityList
     }
-
-
-
-
 }
 
