@@ -128,52 +128,11 @@ nav ul li a {
 }
 
 p {
-    font-size: 24px;
+    font-size: 30px;
     line-height: 1.5;
+    text-align: center;
+}
+
+.info-section {
     background-color: #088395;
-}
-
-button.btn-primary {
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.bg-dark {
-    background-color: #071952;
-    --coach-bg-opacity: 1;
-}
-
-.text-body {
-    --coach-bg-opacity: 1;
-    color: #088395;
-}
-
-.pb-3{
-    padding-bottom: 1rem;
-}
-
-.pt-11 {
-    padding-top: 5rem;
-}
-
-.container {
-    max-width: 1320px;
-}
-
-.row {
-    --coach-gutter-x: 2rem;
-    --coach-gutter-y: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: calc(var(--coach-gutter-x)*-.5);
-    margin-right: calc(var(--coach-gutter-x)*-.5);
-    margin-top: calc(var(--coach-gutter-y)*-1);
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem;
-}
-
-section {
-    margin: 1rem;
 }
