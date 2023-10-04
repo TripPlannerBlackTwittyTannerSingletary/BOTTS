@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 nav {
@@ -174,18 +174,17 @@ button.btn-primary {
     margin-bottom: 1.5rem;
 }
 
-h3 {
-    font-size: small;
-}
 
 section {
     margin: 1rem;
 }
 
-footer {
-    background-color:#26272b;
-    padding:45px 0 20px;
-    font-size:15px;
-    line-height:24px;
-    color:#737373;
-}
+/*footer {*/
+/*    background-color:#071952;*/
+/*    padding:45px 0 20px;*/
+/*    font-size: 18px;*/
+/*    line-height:24px;*/
+/*    color:#737373;*/
+/*    font-family: 'Nunito Sans', sans-serif;*/
+/*    text-transform: uppercase;*/
+/*}*/
