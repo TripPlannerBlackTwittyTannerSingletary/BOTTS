@@ -14,3 +14,4 @@ const searchActivityByLocation = (activities, searchLocation) => {
         return activity.location.toLowerCase().includes(searchLocation.toLowerCase());
     })
 }
+
