@@ -7,7 +7,7 @@ function geocode(search, token) {
             let endTime = new Date().getTime();
             console.log(endTime - startTime);
             return res.json();
-            // to get all the data from the request, comment out the following three lines...
+// to get all the data from the request, comment out the following three lines...
         }).then(function(data) {
             return data.features[0].center;
         });
@@ -31,20 +31,73 @@ function reverseGeocode(coordinates, token) {
 
 let citySearch = document.querySelector('#searchBox')
 
+
 const createCard = (activity) => {
-    const card = document.createElement('div');
-    card.className = 'card';
+// Create the card element
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'card';
+    cardDiv.style.width = '18rem';
 
-    const cardTitle = document.createElement('h2');
-    cardTitle.innerHTML = activity.name;
-    card.appendChild(cardTitle);
+// Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
+    const img = document.createElement('img');
+    img.src = activity.pictures[0]; // Set the image URL dynamically
+    img.className = 'card-img-top';
+    img.alt = 'Card Image';
+    cardDiv.appendChild(img);
 
-    const cardDescription = document.createElement('p');
-    cardDescription.innerHTML = activity.description;
-    card.appendChild(cardDescription);
+// Create the card body
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
 
-    return card;
-}
+// Create card title
+    const cardTitle = document.createElement('h5');
+    cardTitle.className = 'card-title';
+    cardTitle.innerText = activity.name; // Set the card title dynamically
+    cardBody.appendChild(cardTitle);
+
+// Create card text
+    const cardText = document.createElement('p');
+    cardText.className = 'card-text';
+    cardText.innerText = activity.description; // Set the card description dynamically
+    cardBody.appendChild(cardText);
+
+// Create list group
+    const listGroup = document.createElement('ul');
+    listGroup.className = 'list-group list-group-flush';
+
+// Loop through activity items and create list items
+// activity.items.forEach(item => {
+//     const listItem = document.createElement('li');
+//     listItem.className = 'list-group-item';
+//     listItem.innerText = item; // Set list item content dynamically
+//     listGroup.appendChild(listItem);
+// });
+
+    cardDiv.appendChild(cardBody);
+    cardDiv.appendChild(listGroup);
+
+// Create additional card body for links
+    const cardBodyLinks = document.createElement('div');
+    cardBodyLinks.className = 'card-body';
+
+// Create card links
+    const cardLink1 = document.createElement('a');
+    cardLink1.href = activity.price.amount; // Set link URL dynamically
+    cardLink1.className = 'card-link';
+    cardLink1.innerText = 'Add to trip'; // Set link text dynamically
+
+    const cardLink2 = document.createElement('a');
+    cardLink2.href = activity.bookingLink; // Set link URL dynamically
+    cardLink2.className = 'card-link';
+    cardLink2.innerText = 'Book Now!'; // Set link text dynamically
+
+    cardBodyLinks.appendChild(cardLink1);
+    cardBodyLinks.appendChild(cardLink2);
+
+    cardDiv.appendChild(cardBodyLinks);
+
+    return cardDiv;
+};
 
 const renderCards = (activityData) => {
     const cardContainer = document.getElementById('card-container');
@@ -110,12 +163,48 @@ async function goToInput() {
 document.querySelector('#search-city').addEventListener('click', async () => {
     try {
         const activityData = await goToInput();
+        packageSearchObject(activityData.data, citySearch)
         renderCards(activityData.data);
     } catch (error) {
         console.error('Error rendering cards:', error);
     }
+
 });
 
+function packageSearchObject(activities, search){
+    let activityList = [];
+    activities.forEach((activity) => {
+        let newActivity = {
+            name: activity.name,
+            description: activity.description,
+            rating: activity.rating,
+            bookingLink: activity.self,
+            address: activity.geoCode,
+            latitude: activity.geoCode.latitude,
+            longitude: activity.geoCode.longitude,
+            amadeusApiId: activity.id
+        }
+    activityList.push(newActivity)
+    });
+    console.log(activityList)
+    // this.name = name;
+    // this.description = description;
+    // this.rating = rating;
+    // this.bookingLink = bookingLink;
+    // this.address = address;
+    // this.latitude = latitude;
+    // this.longitude = longitude;
+    // this.amadeusApiId = amadeusApiId;
+
+    let searchObject = {
+        search: search,
+        activities: activityList
+    }
+
+
+
+
+}
 
 const searchActivityByPriceAndType = (activities, minPrice, maxPrice, activityType) => {
     return activities.filter(activity => {
