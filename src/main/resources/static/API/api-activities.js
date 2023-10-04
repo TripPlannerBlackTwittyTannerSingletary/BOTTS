@@ -1,5 +1,3 @@
-// tims code
-
 function geocode(search, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
@@ -38,11 +36,11 @@ const createCard = (activity) => {
     card.className = 'card';
 
     const cardTitle = document.createElement('h2');
-    cardTitle.innerText = activity.name;
+    cardTitle.innerHTML = activity.name;
     card.appendChild(cardTitle);
 
     const cardDescription = document.createElement('p');
-    cardDescription.innerText = activity.description;
+    cardDescription.innerHTML = activity.description;
     card.appendChild(cardDescription);
 
     return card;
@@ -62,7 +60,6 @@ async function goToInput() {
     let searchedCity = citySearch.value;
 
     try {
-        // Assuming geocode() returns a promise resolving to an array with latitude and longitude
         const data = await geocode(searchedCity, MAPBOX_TOKEN);
         let lat = data[1];
         let long = data[0];
@@ -105,7 +102,6 @@ async function goToInput() {
 
         return activityData;
     } catch (error) {
-        // Handle errors here
         console.error('Error:', error);
         throw error;
     }
@@ -121,3 +117,11 @@ document.querySelector('#search-city').addEventListener('click', async () => {
 });
 
 
+const searchActivityByPriceAndType = (activities, minPrice, maxPrice, activityType) => {
+    return activities.filter(activity => {
+        const priceInRange = activity.price >= minPrice && activity.price <= maxPrice;
+        const typeMatches = activityType.toLowerCase() === activity.type.toLowerCase();
+
+        return priceInRange && typeMatches;
+    })
+}
