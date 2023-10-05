@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Edit Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/CSS/edit-profile.css}" href="edit-profile.css">
+    <title>User Profile</title>
 </head>
 <body>
-<h1>Edit Your Profile</h1>
-<form th:object="${user}" th:action="@{/update_profile}" method="post">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" th:field="*{email}" required><br><br>
+<div class="profile">
+    <h1>User Profile</h1>
+    <p>Email: <span th:id="email">user@example.com</span></p>
+    <p>Location: <span th:id="location">New York</span></p>
+    <button id="editButton" th:onclick="openEditModal()">Edit Profile</button>
+</div>
 
-    <label for="location">Location:</label>
-    <input type="text" id="location" name="location" th:field="*{location}" required><br><br>
+<div id="editOverlay"></div>
 
-    <input type="submit" value="Save Changes">
-</form>
+<div class="modal" id="editModal">
+    <div class="modal-content">
+        <span class="close" id="closeModal" th:onclick="closeEditModal()">&times;</span>
+        <h2>Edit Your Profile</h2>
+        <form id="editForm" th:action="@{/saveProfile}" method="post">
+            <label for="newEmail">New Email:</label>
+            <input type="email" id="newEmail" name="newEmail" th:field="*{newEmail}"><br><br>
+            <label for="newLocation">New Location:</label>
+            <input type="text" id="newLocation" name="newLocation" th:field="*{newLocation}"><br><br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/edit-profile-modal.js}"></script>
 </body>
 </html>
+
