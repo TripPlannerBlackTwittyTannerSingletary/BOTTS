@@ -17,7 +17,7 @@ public class Activity {
     @Column
     private String name;
 
-    @Column(length = 220)
+    @Column(columnDefinition = "text(10000)")
     private String description;
 
     @Column
