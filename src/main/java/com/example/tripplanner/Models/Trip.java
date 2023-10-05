@@ -29,7 +29,7 @@ public class Trip {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="user_id", referencedColumnName = "id")
     private User user;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
@@ -127,6 +127,11 @@ public class Trip {
     }
 
     public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Trip(String name, String location) {
+        this.name = name;
         this.location = location;
     }
 

@@ -128,6 +128,22 @@
 
                 <button type="button" class="btn btn-primary btn-md">Edit</button>
             </div>
+
+            <div id="overlay"></div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalBtn">&times;</span>
+                    <h2>Create a Trip</h2>
+                    <form id="tripForm" method="post" action="/createTrip">
+                        <p>Name your trip!</p>
+                        <input class="nameModal" type="text" id="name" name="name" required>
+                        <p>Where ya headed to?</p>
+                        <input class="nameModal" type="text" id="location" name="location" required>
+                        <br>
+                        <input class="hidden" th:value="${user.getId()}" id="user">
+                        <button class="createButton" type="submit">Create Trip</button>
+                    </form>
+
         <!--Right Side-->
             <div class="col-md-6 the-card pt-3">
                 <h3>My Trips</h3>
@@ -135,6 +151,7 @@
                     <p>You currently have no trips! :( <br>
                         Click the button below to add a trip!</p>
                     <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
+
                 </div>
                 <div id="overlay"></div>
                 <div id="myModal" class="modal">
