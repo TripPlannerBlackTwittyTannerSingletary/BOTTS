@@ -29,6 +29,9 @@
     }
 
     function reverseGeocode2(coordinates, token) {
+        console.log("inside reverseGeocode2");
+        console.log(`Coordinates:`);
+        console.log(coordinates);
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl + endPoint + coordinates.longitude + "," + coordinates.latitude + '.json' + "?" + 'access_token=' + token)
@@ -186,20 +189,36 @@
 
     async function packageSearchObject(activities, search) {
         let activityList = [];
-        await activities.forEach((activity) => {
-            let address = reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
-            let newActivity = {
-                name: activity.name,
-                description: activity.description,
-                rating: 1.00,
-                bookingLink: activity.bookingLink,
-                address: address,
-                latitude: activity.geoCode.latitude,
-                longitude: activity.geoCode.longitude,
-                amadeusApiId: activity.id
-            }
-            activityList.push(newActivity)
-        })
+        for(const activity of activities) {
+                let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+                console.log(address);
+                let newActivity = {
+                    name: activity.name,
+                    description: activity.description,
+                    rating: 1.00,
+                    bookingLink: activity.bookingLink,
+                    address: address,
+                    latitude: activity.geoCode.latitude,
+                    longitude: activity.geoCode.longitude,
+                    amadeusApiId: activity.id
+                }
+                activityList.push(newActivity)
+        }
+        // activities.forEach(async (activity) => {
+        //     let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+        //     console.log(address);
+        //     let newActivity = {
+        //         name: activity.name,
+        //         description: activity.description,
+        //         rating: 1.00,
+        //         bookingLink: activity.bookingLink,
+        //         address: address,
+        //         latitude: activity.geoCode.latitude,
+        //         longitude: activity.geoCode.longitude,
+        //         amadeusApiId: activity.id
+        //     }
+        //     activityList.push(newActivity)
+        // })
         console.log(search)
         console.log(activityList)
         let searchObject = {
