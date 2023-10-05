@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>GoTravel</title>
-    <link rel="stylesheet" th:href="@{/CSS/index.css}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;1,6..12,200;1,6..12,300&display=swap"
           rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/CSS/index.css}">
 </head>
 <body>
 <div class="hero">
@@ -22,9 +23,7 @@
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
             <li>
-                <form th:action="@{/logout}" method="post">
-                    <button type="submit">Logout</button>
-                </form>
+                <a href="/logout">Logout</a>
             </li>
         </ul>
     </nav>
@@ -32,11 +31,9 @@
         <h1 id="text1">Experience</h1>
         <h1 id="text2" style="display:none;">Travel</h1>
         <h1 id="text3" style="display:none;">Explore</h1>
-        <!--                <div class="search-container">-->
-        <!--                    <input id="searchBox" type="search" class="form-control form-control-dark text-bg-light px-5"-->
-        <!--                           placeholder="Search..." aria-label="Search">-->
-        <!--                    <button id="search-city" type="button" class="btn btn-dark col-2 my-4 py-1">search city</button>-->
-        <!--                </div>-->
+        <div class="container pb-5 pt-4 d-flex justify-content-center">
+            <a class="btn btn-primary" href="/api-test">Search For Activities</a>
+        </div>
     </div>
 </div>
 
@@ -46,27 +43,26 @@
         <div class="container pb-2 pt-5 d-flex justify-content-center">
             <!--        <div class="row mb-5">-->
             <div>
-                <img class="headline-img" src="/IMG/GoTravelLogo.png">
-                <h2>Favorite Activities</h2>
+                <!--                <img class="headline-img" src="/IMG/GoTravelLogo.png">-->
+                <h2>Activities</h2>
             </div>
-
         </div>
         <!--End Activities List Section-->
 
         <!--Row of Activities Pictures-->
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <div class="row pt-5">
 
                 <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                    <img th:src="@{/IMG/jungle.jpg}" class="card-img-top img-fluid" alt="...">
                 </div>
 
                 <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                    <img th:src="@{/IMG/skydiving.jpg}" class="card-img-top img-fluid" alt="...">
                 </div>
 
                 <div class="col-4 mb-3">
-                    <img src="/IMG/GettyImages-1311033137.jpg" class="card-img-top img-fluid" alt="...">
+                    <img th:src="@{/IMG/snowmobiling.jpg}" class="card-img-top img-fluid" alt="...">
                 </div>
 
             </div>
