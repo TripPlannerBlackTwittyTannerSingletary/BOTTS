@@ -1,6 +1,6 @@
 const activities = [];
 const addActivity = (trip, activity) => {
-    trips.activities.push(activity);
+    trip.activities.push(activity);
 }
 
 const addActivityToTrip = (tripIndex, activity) => {
