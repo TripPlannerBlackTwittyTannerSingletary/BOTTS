@@ -49,8 +49,6 @@ public class ApiTestController {
 	}
 	@PostMapping("/api/test")
 	public Search saveSearch(@RequestBody Search searchObject){
-		System.out.println(searchObject);
-
 		return searchDao.save(searchObject);
 	}
 }
