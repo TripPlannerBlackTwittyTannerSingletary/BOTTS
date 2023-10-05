@@ -42,3 +42,14 @@
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
