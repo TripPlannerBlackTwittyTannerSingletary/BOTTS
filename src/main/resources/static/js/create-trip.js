@@ -1,12 +1,6 @@
-const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
-// Empty array so the trips can be stored once they are created
-const trips = [];
 
-// The create funtion buddy
-const createTrips = (destination, startDate, endDate) => {
-    const trip =  new Trip(destination, startDate, endDate);
-    trips.push(trip);
-}
+const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+
 
 // Get the modal and buttons
 const modal = document.getElementById('myModal');
@@ -14,12 +8,6 @@ const overlay = document.getElementById('overlay');
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const tripForm = document.getElementById('tripForm');
-
-// const tripData = {
-//     name: name,
-//     location: location
-// };
-
 
 
 // Open the modal when the button is clicked
@@ -42,24 +30,15 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Handle form submission (you can replace this with your server-side code)
-// tripForm.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     const name = document.getElementById('name').value;
-//
-//
-//
-//     // Perform your form validation and submission logic here
-//
-//     // Close the modal
-//     modal.style.display = 'none';
-// });
 
 async function submitForm() {
     const name = document.getElementById('name').value;
+    const location = document.getElementById('location').value;
+    const userid = document.getElementById('user').value;
     const tripData = {
         name: name,
-        location: location
+        location: location,
+        User: userid
         // Add any additional form fields here
     };
 
@@ -90,7 +69,6 @@ function closeModal() {
     modal.style.display = 'none';
     overlay.style.display = 'none';
 }
-
 
 // Add an event listener to the form submission
 
