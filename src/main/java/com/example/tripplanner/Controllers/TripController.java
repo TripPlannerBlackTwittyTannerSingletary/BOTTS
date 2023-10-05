@@ -41,3 +41,4 @@ public class TripController {
 //    public String addTrip() {
 //        return "user/profile";
 //    }
+
