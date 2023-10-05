@@ -17,6 +17,10 @@ public class TripController {
 
     private TripRepository tripRepository;
 
+    public TripController(TripRepository tripRepository) {
+        this.tripRepository = tripRepository;
+    }
+
     @PostMapping("/createTrip")
     public ResponseEntity<String> createTrip(@RequestBody Trip trip) {
         try {

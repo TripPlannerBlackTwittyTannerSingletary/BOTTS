@@ -1,3 +1,4 @@
+const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 // Empty array so the trips can be stored once they are created
 const trips = [];
 
@@ -14,9 +15,10 @@ const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const tripForm = document.getElementById('tripForm');
 
-const tripData = {
-    name: name
-};
+// const tripData = {
+//     name: name,
+//     location: location
+// };
 
 
 
@@ -41,21 +43,23 @@ window.addEventListener('click', (event) => {
 });
 
 // Handle form submission (you can replace this with your server-side code)
-tripForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-
-
-    // Perform your form validation and submission logic here
-
-    // Close the modal
-    modal.style.display = 'none';
-});
+// tripForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     const name = document.getElementById('name').value;
+//
+//
+//
+//     // Perform your form validation and submission logic here
+//
+//     // Close the modal
+//     modal.style.display = 'none';
+// });
 
 async function submitForm() {
     const name = document.getElementById('name').value;
     const tripData = {
-        name: name
+        name: name,
+        location: location
         // Add any additional form fields here
     };
 
@@ -64,6 +68,7 @@ async function submitForm() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
             },
             body: JSON.stringify(tripData),
         });
@@ -93,3 +98,8 @@ tripForm.addEventListener('submit', (event) => {
     event.preventDefault();
     submitForm();
 });
+
+
+
+////////////////// lat and long info to back-end ///////////////////
+
