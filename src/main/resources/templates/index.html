@@ -104,53 +104,8 @@
 <!--End Text and Button-->
 
 <!--Footer-->
-<footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-            <!-- Facebook -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-facebook-f"></i
-            ></a>
-
-            <!-- Twitter -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-twitter"></i
-            ></a>
-
-            <!-- Google -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-google"></i
-            ></a>
-
-            <!-- Instagram -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-instagram"></i
-            ></a>
-
-            <!-- Linkedin -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-linkedin-in"></i
-            ></a>
-
-            <!-- Github -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-github"></i
-            ></a>
-        </section>
-        <!-- Section: Social media -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Team and Email -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-white" href="/About">Meet The Team</a><br>
-        <a class="text-white" href="/">info@gotravel.fyi</a>
-    </div>
-    <!-- Team and Email -->
-</footer>
-<!-- End of footer -->
+<footer th:replace="partials/footer :: footer"></footer>
+<!--End Footer-->
 
 <script src="https://kit.fontawesome.com/e9132f2c3c.js" crossorigin="anonymous"></script>
 <script th:src="@{/js/index.js}"></script>
