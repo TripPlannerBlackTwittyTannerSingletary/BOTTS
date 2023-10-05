@@ -1,54 +1,44 @@
-.activity-icon {
+.modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+}
+.nameModal{
+    width: 100%;
+    margin-bottom: 8px;
+}
+.createButton {
+    width: 100%;
+    color: #088395;
+
+}
+#myModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 70%;
+    z-index: 2;
+}
+
+.close {
     position: absolute;
-
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.navbar-brand {
-    position: relative;
-}
-
-h1 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 48px;
-    color: #fff;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-h2 {
-
-}
-
-.row {
-    justify-content: center;
-}
-
-.col-md-6 {
-    margin-left: 30em;
-    margin-right: -20em;
-}
-
-body {
-    font-family: Montserrat, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: #35A29F;
-}
-
-.input-group {
-    margin-top: 50px;
-    position: relative;
-}
-
-#exampleDataList {
-    background-color: transparent;
-    color: #fff;
-    border-color: #35A29F;
-}
-
-#activity-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
