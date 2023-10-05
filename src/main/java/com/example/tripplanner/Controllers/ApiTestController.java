@@ -6,6 +6,8 @@ import com.example.tripplanner.Models.User;
 import com.example.tripplanner.Repositories.ActivityRepository;
 import com.example.tripplanner.Repositories.SearchRepository;
 import com.example.tripplanner.Repositories.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +50,12 @@ public class ApiTestController {
 		return searchDao.findAll();
 	}
 	@PostMapping("/api/test")
-	public Search saveSearch(@RequestBody Search searchObject){
-		return searchDao.save(searchObject);
+	@ResponseBody
+	public Search saveSearch(@RequestBody Search searchObject) throws JsonProcessingException {
+//		System.out.println("Inside saveSearch");
+//		ObjectMapper mapper = new ObjectMapper();
+//		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchObject));
+		searchDao.save(searchObject);
+		return searchObject;
 	}
 }

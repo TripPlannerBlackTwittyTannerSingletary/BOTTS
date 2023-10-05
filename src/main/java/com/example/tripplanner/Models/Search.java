@@ -13,7 +13,7 @@ public class Search {
     @Column(columnDefinition = "int unsigned")
     private long id;
 
-    @Column
+    @Column(unique = true)
     private String search;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
