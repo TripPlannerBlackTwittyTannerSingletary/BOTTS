@@ -13,18 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
-//@Controller
-//@RequestMapping("/post")
-//public class TripController {
-//    private UserRepository userDao;
-//    private TripRepository tripDao;
-//
-//    public TripController(TripRepository tripDao, UserRepository userDao) {
-//        this.tripDao = tripDao;
-//        this.userDao = userDao;
-//    }
-//
-//}
+
 @Controller
 @RequestMapping("/trip")
 public class TripController {
@@ -49,8 +38,6 @@ public class TripController {
         String username = principal.getName();
         User user = userDao.findByUsername(username);
         // Set the user as the owner of the trip
-//        double hardcodedLatitude = 1;
-//        double hardcodedLongitude = 2;
         trip.setUser(user);
         Trip tripToPost = new Trip(
                 trip.getName(),
