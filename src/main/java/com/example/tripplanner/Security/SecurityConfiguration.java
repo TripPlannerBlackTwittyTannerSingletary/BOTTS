@@ -42,7 +42,9 @@ public class SecurityConfiguration {
                         .requestMatchers("/profile", "/logout").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("/", "/login", "/register", "/api-test", "/logout", "/api/users", "api/test").permitAll()
+
+                        .requestMatchers("/", "/login", "/register", "/api-test", "/logout", "/api/users", "/trips/createTrip").permitAll()
+
                         // allow loading of static resources
                         .requestMatchers("/CSS/**", "/js/**", "/IMG/**", "/API/**").permitAll()
                 )
