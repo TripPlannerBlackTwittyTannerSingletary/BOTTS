@@ -25,10 +25,7 @@ public class Trip {
     private Date returnDate;
 
     @Column
-    private double latitude;
-
-    @Column
-    private double longitude;
+    private String location;
 
     @JsonIgnore
     @ManyToOne
@@ -45,43 +42,39 @@ public class Trip {
     // Constructors
 
 
-    public Trip(String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user, List<Activity> activities) {
+    public Trip(String name, Date depatureDate, Date returnDate, String location, User user, List<Activity> activities) {
         this.name = name;
         this.depatureDate = depatureDate;
         this.returnDate = returnDate;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.user = user;
         this.activities = activities;
     }
 
-    public Trip(long id, String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user, List<Activity> activities) {
+    public Trip(long id, String name, Date depatureDate, Date returnDate, String location, User user, List<Activity> activities) {
         this.id = id;
         this.name = name;
         this.depatureDate = depatureDate;
         this.returnDate = returnDate;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.user = user;
         this.activities = activities;
     }
 
-    public Trip(long id, String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user) {
+    public Trip(long id, String name, Date depatureDate, Date returnDate, String location, User user) {
         this.id = id;
         this.name = name;
         this.depatureDate = depatureDate;
         this.returnDate = returnDate;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.user = user;
     }
 
-    public Trip(String name, Date depatureDate, Date returnDate, double latitude, double longitude, User user) {
+    public Trip(String name, Date depatureDate, Date returnDate, String location, User user) {
         this.name = name;
         this.depatureDate = depatureDate;
         this.returnDate = returnDate;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.user = user;
     }
 
@@ -129,20 +122,12 @@ public class Trip {
         this.returnDate = returnDate;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public User getUser() {
