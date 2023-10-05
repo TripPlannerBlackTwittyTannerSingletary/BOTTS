@@ -33,7 +33,7 @@ public class RegisterController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
-//        emailSvc.prepareAndSend(post, "You have created an Ad", "Here is information regarding your ad");
+
         return "redirect:/profile";
     }
 

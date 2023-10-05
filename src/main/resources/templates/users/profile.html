@@ -110,15 +110,13 @@
         <div class="col-md-6" sec:authorize="isAuthenticated()">
             <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
             <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
-            <div>
-                Username:
-            <p th:text="${user.username}"></p>
-                Email:
-            <p th:text="${user.email}"></p>
-                Location:
-            <p th:text="${user.longitude}"></p>
-                <p th:text="${user.latitude}"></p>
-            </div>
+
+            <p>
+                Username: <span th:text="${user.username}"></span><br>
+                Email: <span th:text="${user.email}"></span><br>
+                Location: <span th:text="${user.location}"></span><br>
+            </p>
+
             <button type="button" class="btn btn-primary btn-md">Edit</button>
         </div>
         <div class="col-md-6">

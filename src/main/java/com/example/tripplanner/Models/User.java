@@ -23,9 +23,7 @@ public class User {
     @Column
     private String password;
     @Column
-    private double latitude;
-    @Column
-    private double longitude;
+    private String location;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Trip> trips;
@@ -54,37 +52,34 @@ public class User {
         this.trips = trips;
     }
 
-    public User(long id, String email, String username, String firstName, String lastName, String password, double latitude, double longitude, List<Trip> trips) {
+    public User(long id, String email, String username, String firstName, String lastName, String password, String location, List<Trip> trips) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.trips = trips;
     }
 
-    public User(String email, String username, String firstName, String lastName, String password, double latitude, double longitude, List<Trip> trips) {
+    public User(String email, String username, String firstName, String lastName, String password, String location, List<Trip> trips) {
         this.email = email;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.trips = trips;
     }
 
-    public User(String email, String username, String firstName, String lastName, String password, double latitude, double longitude) {
+    public User(String email, String username, String firstName, String lastName, String password, String location) {
         this.email = email;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
     }
 
     public long getId() {
@@ -119,20 +114,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<Trip> getTrips() {
