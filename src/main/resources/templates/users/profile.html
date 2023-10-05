@@ -114,63 +114,64 @@
 <!--End My Profile Page Title-->
 
 <!--User Information Section-->
-    <div class="row mx-auto pb-5 gap-3">
-        <!--Left Side-->
-            <div class="col-md-6 the-card pt-3" sec:authorize="isAuthenticated()">
-                <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
-                <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
+<div class="row mx-auto pb-5 gap-3">
+    <!--Left Side-->
+    <div class="col-md-6 the-card pt-3" sec:authorize="isAuthenticated()">
+        <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
+        <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
 
-                <p>
-                    Username: <span th:text="${user.username}"></span><br>
-                    Email: <span th:text="${user.email}"></span><br>
-                    Location: <span th:text="${user.location}"></span><br>
-                </p>
+        <p>
+            Username: <span th:text="${user.username}"></span><br>
+            Email: <span th:text="${user.email}"></span><br>
+            Location: <span th:text="${user.location}"></span><br>
+        </p>
 
-                <button type="button" class="btn btn-primary btn-md">Edit</button>
-            </div>
+        <button type="button" class="btn btn-primary btn-md">Edit</button>
+    </div>
 
-            <div id="overlay"></div>
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalBtn">&times;</span>
-                    <h2>Create a Trip</h2>
-                    <form id="tripForm" method="post" action="/createTrip">
-                        <p>Name your trip!</p>
-                        <input class="nameModal" type="text" id="name" name="name" required>
-                        <p>Where ya headed to?</p>
-                        <input class="nameModal" type="text" id="location" name="location" required>
-                        <br>
-                        <input class="hidden" th:value="${user.getId()}" id="user">
-                        <button class="createButton" type="submit">Create Trip</button>
-                    </form>
-
-        <!--Right Side-->
-            <div class="col-md-6 the-card pt-3">
-                <h3>My Trips</h3>
-                <div class="trip" th:if="${user.getTrips()!= null}">
-                    <p>You currently have no trips! :( <br>
-                        Click the button below to add a trip!</p>
-                    <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
-
-                </div>
-                <div id="overlay"></div>
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModalBtn">&times;</span>
-                        <h2>Create a Trip</h2>
-                        <form id="tripForm" method="post" action="/createTrip">
-                            <p>Name your trip!</p>
-                            <input class="nameModal" type="text" id="name" name="name" required>
-                            <p>Where ya headed to?</p>
-                            <input class="nameModal" type="text" id="location" name="location" required>
-                            <br>
-                            <button class="createButton" type="submit">Create Trip</button>
-                        </form>
-                    </div>
-                </div>
-                <h4>Recommended Activities</h4>
-            </div>
+    <div id="overlay"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Create a Trip</h2>
+            <form id="tripForm" method="post" action="/createTrip">
+                <p>Name your trip!</p>
+                <input class="nameModal" type="text" id="name" name="name" required>
+                <p>Where ya headed to?</p>
+                <input class="nameModal" type="text" id="location" name="location" required>
+                <br>
+                <input class="hidden" th:value="${user.getId()}" id="user">
+                <button class="createButton" type="submit">Create Trip</button>
+            </form>
         </div>
+    </div>
+    <!--Right Side-->
+    <div class="col-md-6 the-card pt-3">
+        <h3>My Trips</h3>
+        <div class="trip" th:if="${user.getTrips()!= null}">
+            <p>You currently have no trips! :( <br>
+                Click the button below to add a trip!</p>
+            <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
+        </div>
+    </div>
+    <!--                <div id="overlay"></div>-->
+    <!--                <div id="myModal" class="modal">-->
+    <!--                    <div class="modal-content">-->
+    <!--                        <span class="close" id="closeModalBtn">&times;</span>-->
+    <!--                        <h2>Create a Trip</h2>-->
+    <!--                        <form id="tripForm" method="post" action="/createTrip">-->
+    <!--                            <p>Name your trip!</p>-->
+    <!--                            <input class="nameModal" type="text" id="name" name="name" required>-->
+    <!--                            <p>Where ya headed to?</p>-->
+    <!--                            <input class="nameModal" type="text" id="location" name="location" required>-->
+    <!--                            <br>-->
+    <!--                            <button class="createButton" type="submit">Create Trip</button>-->
+    <!--                        </form>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <h4>Recommended Activities</h4>
+</div>
+</div>
 <!--End User Information Section-->
 
 <!--Footer-->
