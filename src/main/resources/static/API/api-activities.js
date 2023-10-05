@@ -26,8 +26,6 @@ function reverseGeocode(coordinates, token) {
 }
 
 
-
-
 let citySearch = document.querySelector('#searchBox')
 
 
@@ -55,22 +53,31 @@ const createCard = (activity) => {
     cardBody.appendChild(cardTitle);
 
 // Create card text
-    const cardText = document.createElement('p');
-    cardText.className = 'card-text';
-    cardText.innerHTML = activity.description; // Set the card description dynamically
-    cardBody.appendChild(cardText);
+//     const cardText = document.createElement('p');
+//     cardText.className = 'card-text';
+//     cardText.innerHTML = activity.description; // Set the card description dynamically
+//     cardBody.appendChild(cardText);
+
+    const learnMoreButton = document.createElement('button');
+    learnMoreButton.className = 'btn btn-primary';
+    learnMoreButton.innerHTML = 'Learn More';
+    cardBody.appendChild(learnMoreButton);
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'myModal';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+
+    document.body.appendChild(modal);
+    modal.appendChild(modalContent);
+
+
 
 // Create list group
     const listGroup = document.createElement('ul');
     listGroup.className = 'list-group list-group-flush';
-
-// Loop through activity items and create list items
-// activity.items.forEach(item => {
-//     const listItem = document.createElement('li');
-//     listItem.className = 'list-group-item';
-//     listItem.innerText = item; // Set list item content dynamically
-//     listGroup.appendChild(listItem);
-// });
 
     cardDiv.appendChild(cardBody);
     cardDiv.appendChild(listGroup);
@@ -98,6 +105,8 @@ const createCard = (activity) => {
     return cardDiv;
 };
 
+
+
 const renderCards = (activityData) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
@@ -107,6 +116,46 @@ const renderCards = (activityData) => {
         cardContainer.appendChild(card);
     });
 }
+
+function showModal(description) {
+    // Create modal container
+    const modalContainer = document.createElement('div');
+    modalContainer.className = 'modal-container';
+
+    // Create modal backdrop
+    const modalBackdrop = document.createElement('div');
+    modalBackdrop.className = 'modal-backdrop';
+    modalBackdrop.addEventListener('click', closeModal);
+    modalContainer.appendChild(modalBackdrop);
+
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+    modalContainer.appendChild(modalContent);
+
+    // Create close button
+    const closeButton = document.createElement('button');
+    closeButton.className = 'modal-close';
+    closeButton.innerHTML = '&times;';
+    closeButton.addEventListener('click', closeModal);
+    modalContent.appendChild(closeButton);
+
+    // Create modal body
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    modalBody.innerHTML = description;
+    modalContent.appendChild(modalBody);
+
+    // Append modal container to body
+    document.body.appendChild(modalContainer);
+
+    // Function to close the modal
+    function closeModal() {
+        modalContainer.remove();
+    }
+}
+
+
 
 async function goToInput() {
     let searchedCity = citySearch.value;
