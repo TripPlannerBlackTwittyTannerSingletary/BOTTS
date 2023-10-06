@@ -39,7 +39,7 @@ public class SecurityConfiguration {
         http.authorizeRequests((requests) -> requests
                         /* Pages that require authentication
                          * only authenticated users can create and edit ads */
-                        .requestMatchers("/profile", "/logout").authenticated()
+                        .requestMatchers("/profile", "/logout","/save-profile").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
 

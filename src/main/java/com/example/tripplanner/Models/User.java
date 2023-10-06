@@ -30,6 +30,13 @@ public class User {
 
     public User() {
     }
+
+    public User(long id, String email, String location) {
+        this.id = id;
+        this.email = email;
+        this.location = location;
+    }
+
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         email = copy.email;
