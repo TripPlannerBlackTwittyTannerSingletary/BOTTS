@@ -18,11 +18,6 @@
 <!--Navbar-->
     <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar" th:replace="partials/navbar :: nav"></nav>
     <div class="container-fluid">
-        <div py-3>
-            <a class="navbar-brand" href="/">
-                <img id="something" th:src="@{/IMG/GoTravelWhite.png}" height="75px">
-            </a>
-        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark"
                 aria-label="Toggle navigation">
@@ -86,24 +81,24 @@
 <!--End Navbar-->
 
 <!--Search An Activity Bar-->
-<div class="container pb-4 pt-5 d-flex justify-content-end">
-    <div class="col-md-4 offset-md-4">
-        <div class="input-group input-group-sm">
-            <label for="exampleDataList">
-            </label>
-            <input class="form-control" type="search" name="query" list="datalistOptions" id="exampleDataList"
-                   placeholder="Search An Activity">
-            <img id="activity-icon" th:src="@{/IMG/GoBlack.png}">
-            <datalist id="datalistOptions">
-                <option value="San Francisco">
-                <option value="New York">
-                <option value="Seattle">
-                <option value="Los Angeles">
-                <option value="Chicago">
-            </datalist>
-        </div>
-    </div>
-</div>
+<!--<div class="container pb-4 pt-5 d-flex justify-content-end">-->
+<!--    <div class="col-md-4 offset-md-4">-->
+<!--        <div class="input-group input-group-sm">-->
+<!--            <label for="exampleDataList">-->
+<!--            </label>-->
+<!--            <input class="form-control" type="search" name="query" list="datalistOptions" id="exampleDataList"-->
+<!--                   placeholder="Search An Activity">-->
+<!--            <img id="activity-icon" th:src="@{/IMG/GoBlack.png}">-->
+<!--            <datalist id="datalistOptions">-->
+<!--                <option value="San Francisco">-->
+<!--                <option value="New York">-->
+<!--                <option value="Seattle">-->
+<!--                <option value="Los Angeles">-->
+<!--                <option value="Chicago">-->
+<!--            </datalist>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--End Search An Activity Bar-->
 
 <!--My Profile Page Title-->
@@ -171,13 +166,22 @@
     <!--Right Side-->
     <div class="col-md-6 the-card pt-3">
         <h3>My Trips</h3>
-        <div class="trip" th:if="${user.getTrips()!= null}">
+        <div class="trip" th:if="${#lists.size(user.getTrips()) == 0}">
             <p>You currently have no trips! :( <br>
                 Click the button below to add a trip!</p>
-            <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
-            <h4>Recommended Activities</h4>
         </div>
+        <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
+            <div class="card" th:each="trip: ${user.getTrips()}">
+                <h1 th:text="${trip.getName()}"></h1>
+                <h2 th:text="${trip.getLocation()}"></h2>
+                <button class="btn btn-sm activity-button">See more!</button>
+            </div>
+        </div>
+        <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
+        <h4>Recommended Activities</h4>
     </div>
+
+
 
 </div>
 </div>
