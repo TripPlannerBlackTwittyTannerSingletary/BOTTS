@@ -14,10 +14,15 @@
 <body>
 <nav th:replace="partials/navbar :: nav"></nav>
 
+<!--Create Account Form-->
 <div class="container pb-5 pt-5">
 
     <form th:action="@{/register}" method="POST" th:object="${user}">
         <fieldset>
+
+            <!--Page Header-->
+            <legend>Create Your Account</legend>
+
             <legend>Create Your Account</legend>
             <div class="form-group row">
                 <label for="firstname" class="form-label mt-4">First Name</label>
@@ -25,37 +30,60 @@
                        th:field="*{firstName}"/>
             </div>
 
-            <div class="form-group row">
-                <label for="lastname" class="form-label mt-4">Last Name</label>
-                <input id="lastname" class="form-control" placeholder="Enter Last Name" th:field="*{lastName}"/>
-            </div>
 
-            <div class="form-group row">
-                <label for="longitude" class="form-label mt-4">Location</label>
-                <input id="longitude" class="form-control" placeholder="Enter Location" th:field="*{location}"/>
-            </div>
+            <div class="container-whole">
+                <!--Form Field Left Side-->
+                <div class="container-left">
+                    <div class="form-group ">
+                        <label for="firstname" class="form-label mt-4">First Name</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name"
+                               th:field="*{firstName}"/>
+                    </div>
 
-            <div class="form-group row">
-                <label for="username" class="form-label mt-4">Username</label>
-                <input id="username" class="form-control" placeholder="Enter Username" th:field="*{username}"/>
-            </div>
 
-            <div class="form-group row">
-                <label for="email" class="form-label mt-4">Email Address</label>
-                <input id="email" class="form-control" placeholder="Enter Email Address" th:field="*{email}"/>
-                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
+                    <div class="form-group ">
+                        <label for="lastname" class="form-label mt-4">Last Name</label>
+                        <input id="lastname" class="form-control" placeholder="Enter Last Name" th:field="*{lastName}"/>
+                    </div>
 
-            <div class="form-group pb-5 row">
-                <label for="password" class="form-label mt-4">Password</label>
-                <input id="password" class="form-control" type="password" placeholder="Enter Password"
-                       th:field="*{password}"/>
-            </div>
 
-            <input value="Register!" class="btn btn-outline-secondary" type="submit"/>
+                    <div class="form-group ">
+                        <label for="location" class="form-label mt-4">Location</label>
+                        <input id="location" class="form-control" placeholder="Enter Your Location"
+                               th:field="*{location}"/>
+                    </div>
+                </div>
+                <!--End Form Field Left Side-->
+
+                <!--Form Field Right Side-->
+                <div class="container-right">
+                    <div class="form-group ">
+                        <label for="username" class="form-label mt-4">Username</label>
+                        <input id="username" class="form-control" placeholder="Enter Username" th:field="*{username}"/>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="email" class="form-label mt-4">Email Address</label>
+                        <input id="email" class="form-control" placeholder="Enter Email Address" th:field="*{email}"/>
+                        <small class="form-text text-muted email-text">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <div class="form-group pb-5 ">
+                        <label for="password" class="form-label mt-4">Password</label>
+                        <input id="password" class="form-control" type="password" placeholder="Enter Password"
+                               th:field="*{password}"/>
+                    </div>
+                </div>
+                <!--End Form Field Right Side-->
+            </div>
+            <!--Register Button-->
+            <div class="center-container">
+                <input value="Register!" class="btn btn-outline-secondary" type="submit"/>
+            </div>
         </fieldset>
     </form>
 </div>
+<!--End Create Account Form-->
 
 <!--Footer-->
 <footer th:replace="partials/footer :: footer"></footer>
