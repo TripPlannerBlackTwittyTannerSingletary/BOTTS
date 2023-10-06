@@ -5,3 +5,11 @@ body {
 .form-label {
     text-transform: uppercase;
 }
+
+legend {
+    /*font-weight: bold;*/
+    font-size: 50px;
+    color: #1f6b7b;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
