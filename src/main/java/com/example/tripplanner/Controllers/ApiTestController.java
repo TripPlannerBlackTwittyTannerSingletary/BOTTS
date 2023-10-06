@@ -7,7 +7,6 @@ import com.example.tripplanner.Repositories.ActivityRepository;
 import com.example.tripplanner.Repositories.SearchRepository;
 import com.example.tripplanner.Repositories.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +28,7 @@ public class ApiTestController {
 
 	@GetMapping("/api-test")
 	public String showApiTest() {
-		return "users/api-test";
+		return "users/activities";
 	}
 
 	@GetMapping("/api/users")

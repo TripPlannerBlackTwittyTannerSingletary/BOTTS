@@ -67,12 +67,6 @@
         cardTitle.innerHTML = activity.name; // Set the card title dynamically
         cardBody.appendChild(cardTitle);
 
-// Create card text
-        const cardText = document.createElement('p');
-        cardText.className = 'card-text';
-        cardText.innerHTML = activity.description; // Set the card description dynamically
-        cardBody.appendChild(cardText);
-
 // Create list group
         const listGroup = document.createElement('ul');
         listGroup.className = 'list-group list-group-flush';
@@ -95,6 +89,21 @@
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
         cardLink2.className = 'card-link';
         cardLink2.innerHTML = 'Book Now!'; // Set link text dynamically
+
+        const modalButton = document.createElement('button');
+        modalButton.type = 'button';
+        modalButton.className = 'btn btn-primary';
+        modalButton.innerText = 'View Description';
+
+        // Add event listener to display activity description in the modal
+        modalButton.addEventListener('click', () => {
+            const modalDescription = document.getElementById('activityDescription');
+            modalDescription.innerText = activity.description;
+            $('#activityModal').modal('show'); // Use Bootstrap modal function to show the modal
+        });
+
+        // Add the button to the card body
+        cardBody.appendChild(modalButton);
 
         cardBodyLinks.appendChild(cardLink1);
         cardBodyLinks.appendChild(cardLink2);
