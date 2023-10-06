@@ -17,3 +17,7 @@ body {
 footer {
     margin-top: auto;
 }
+
+.login-button {
+    background-color: #1f6b7b;
+}

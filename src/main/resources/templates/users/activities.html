@@ -9,36 +9,79 @@
 <body>
 <nav th:replace="partials/navbar :: nav"></nav>
 
-
-<div id="api-data">
-  <input type="text" id="searchBox" placeholder="Enter a city">
-  <button id="search-city">Search</button>
-  <div id="card-container" class="container-hero d-flex flex-wrap justify-content-between">
+<div class="px-5 mt-3">
+  <div class="d-flex align-items-center p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary mt-2 px-5" style="height: 500px; background-color:#1f6b7b" >
+    <div class="col-lg-6 px-0">
+      <h1 class="display-4 fst-italic">GoTravel the world!</h1>
+      <p class="lead my-3">Here you'll find any activity to fit you and your families need!</p>
+      <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+    </div>
   </div>
-  <div id="pagination" class="pagination-container"></div>
-</div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-body-secondary">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <image th:src="@{/IMG/download.jpeg}" width="200px" height="220px" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-body-secondary">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <image th:src="@{/IMG/download (1).jpeg}" width="200px" height="220px" />
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- Modal Structure -->
-<div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header border-bottom-0">
-        <h1 class="modal-title fs-5">Activity Description</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body py-0">
-        <p id="activityDescription"></p>
-      </div>
-      <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+
+  <div id="api-data">
+    <input type="text" id="searchBox" placeholder="Enter a city">
+    <button id="search-city">Search</button>
+    <div id="card-container" class="container-hero d-flex flex-wrap justify-content-between">
+    </div>
+    <div id="pagination" class="pagination-container"></div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-bottom-0">
+          <h1 class="modal-title fs-5">Activity Description</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p id="activityDescription"></p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+          <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!--Footer-->
-<footer th:include="partials/footer :: footer"></footer>
-<!--End Footer-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/API/api-activities.js}"></script>
