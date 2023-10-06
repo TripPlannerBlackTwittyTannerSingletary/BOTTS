@@ -56,6 +56,7 @@ async function submitForm() {
             const responseData = await response.text();
             console.log(responseData); // Display success message
             closeModal(); // Close the modal after successful submission
+            location.reload();
         } else {
             console.error('Error:', response.status);
         }
@@ -75,7 +76,12 @@ function closeModal() {
 tripForm.addEventListener('submit', (event) => {
     event.preventDefault();
     submitForm();
+    location.reload();
 });
+
+tripForm.addEventListener('submit', () => {
+    location.reload();
+})
 
 
 
