@@ -5,3 +5,103 @@ body {
 .form-label {
     text-transform: uppercase;
 }
+
+legend {
+    font-size: 40px;
+    color: #1f6b7b;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+.container-left,
+.container-right {
+    flex: 1;
+    padding: 1rem;
+}
+
+.container-whole {
+    display: flex;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
+
+#firstname {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#lastname {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#location {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#username {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#email {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#password {
+    background-color: #1f6b7b;
+    color: #cccccc;
+
+}
+
+#firstname::placeholder {
+    color: #cccccc;
+
+}
+
+#lastname::placeholder {
+    color: #cccccc;
+
+}
+
+#location::placeholder {
+    color: #cccccc;
+
+}
+
+#username::placeholder {
+    color: #cccccc;
+
+}
+
+#email::placeholder {
+    color: #cccccc;
+
+}
+
+#password::placeholder {
+    color: #cccccc;
+
+}
+
+.center-container {
+    text-align: center;
+}
+
+
