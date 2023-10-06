@@ -16,7 +16,7 @@
 <body>
 
 <!--Navbar-->
-<nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar" th:replace="partials/navbar :: nav"></nav>
     <div class="container-fluid">
         <div py-3>
             <a class="navbar-brand" href="/">
@@ -130,19 +130,19 @@
 
 
         <!--User Edit profile modal start-->
-        <button id="editProfileBtn" type="button" class="btn btn-primary btn-md" th:onclick="openEditModal()">Edit</button>
+        <button id="editProfileBtn" type="button" class="btn btn-primary btn-md">Edit</button>
 
         <div id="editOverlay" class="editOverlay"></div>
 
         <div class="editModal" id="editModal">
             <div class="modal-content-edit">
-                <span class="closeEdit" id="closeModalEdit" th:onclick="closeEditModal()">&times;</span>
+                <span class="closeEdit" id="closeModalEdit">&times;</span>
                 <h2>Edit Your Profile</h2>
-                <form id="editForm" th:action="@{/saveProfile}" method="post">
+                <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
                     <label for="newEmail">New Email:</label>
-                    <input type="email" id="newEmail" name="newEmail" th:field="${newEmail}"><br><br>
+                    <input type="email" id="newEmail" name="newEmail" th:field="*{email}"><br><br>
                     <label for="newLocation">New Location:</label>
-                    <input type="text" id="newLocation" name="newLocation" th:field="${newLocation}"><br><br>
+                    <input type="text" id="newLocation" name="newLocation" th:field="*{location}"><br><br>
                     <input type="submit" value="Save">
                 </form>
             </div>

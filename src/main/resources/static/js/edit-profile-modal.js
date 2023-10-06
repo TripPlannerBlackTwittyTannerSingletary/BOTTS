@@ -1,35 +1,28 @@
 const editModal = document.getElementById("editModal");
 const editButton = document.getElementById("editProfileBtn");
-const closeModal = document.getElementById("closeModalEdit");
+const closeEditModal = document.getElementById("closeModalEdit");
 const editForm = document.getElementById("editForm");
-const overlay = document.getElementById("editOverlay");
-
-const openEditModal = () => {
-    overlay.style.display = "block";
-    editModal.style.display = "block";
-}
-
-const closeEditModal = () => {
-    overlay.style.display = "none";
-    editModal.style.display = "none";
-}
+const editOverlay = document.getElementById("editOverlay");
 
 editButton.addEventListener("click", () => {
-    openEditModal();
+    editOverlay.style.display = "block";
+    editModal.style.display = "block";
 });
 
-closeModal.addEventListener("click", () => {
-    closeEditModal();
+closeEditModal.addEventListener("click", () => {
+    editOverlay.style.display = "none";
+    editModal.style.display = "none";
 });
 
 editForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const newEmail = document.getElementById("newEmail").value;
-    const newLocation = document.getElementById("newLocation").value;
+    const newEmail = document.getElementById("email").value;
+    const newLocation = document.getElementById("location").value;
 
     document.getElementById("email").textContent = newEmail;
     document.getElementById("location").textContent = newLocation;
 
-    closeEditModal();
+    editModal.style.display = "none";
+    editOverlay.style.display = "none";
 });

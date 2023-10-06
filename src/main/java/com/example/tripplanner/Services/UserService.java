@@ -5,7 +5,9 @@ import com.example.tripplanner.Models.User;
 import com.example.tripplanner.Repositories.TripRepository;
 import com.example.tripplanner.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 
     private UserRepository userRepository;
