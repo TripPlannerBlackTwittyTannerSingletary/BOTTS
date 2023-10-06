@@ -1,6 +1,6 @@
 // Get the modal and buttons
 const editModal = document.getElementById("editModal");
-const editButton = document.getElementById("editButton");
+const editButton = document.getElementById("editProfileBtn");
 const closeModal = document.getElementById("closeModal");
 const editForm = document.getElementById("editForm");
 
