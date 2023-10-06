@@ -29,16 +29,12 @@
     }
 
     function reverseGeocode2(coordinates, token) {
-        console.log("inside reverseGeocode2");
-        console.log(`Coordinates:`);
-        console.log(coordinates);
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl + endPoint + coordinates.longitude + "," + coordinates.latitude + '.json' + "?" + 'access_token=' + token)
             .then(function (res) {
                 return res.json();
             })
-            // to get all the data from the request, comment out the following three lines...
             .then(function (data) {
                 return data.features[0].place_name;
             });
@@ -51,7 +47,7 @@
     const createCard = (activity) => {
 // Create the card element
         const cardDiv = document.createElement('div');
-        cardDiv.className = 'card';
+        cardDiv.className = 'card mb-5';
         cardDiv.style.width = '18rem';
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
@@ -81,13 +77,6 @@
         const listGroup = document.createElement('ul');
         listGroup.className = 'list-group list-group-flush';
 
-// Loop through activity items and create list items
-// activity.items.forEach(item => {
-//     const listItem = document.createElement('li');
-//     listItem.className = 'list-group-item';
-//     listItem.innerText = item; // Set list item content dynamically
-//     listGroup.appendChild(listItem);
-// });
 
         cardDiv.appendChild(cardBody);
         cardDiv.appendChild(listGroup);
@@ -124,6 +113,12 @@
             cardContainer.appendChild(card);
         });
     }
+
+
+    let items = goToInput();
+    let itemsPerPage = 24;
+    let paginationContainer = document.getElementById('card-container');
+
 
     async function goToInput() {
         let searchedCity = citySearch.value;
@@ -179,8 +174,13 @@
     document.querySelector('#search-city').addEventListener('click', async () => {
         try {
             const activityData = await goToInput();
+            console.log('paginate() call')
+            console.log(activityData)
+
             packageSearchObject(activityData.data, citySearch.value)
-            renderCards(activityData.data);
+// renderCards(activityData.data);
+            paginate(activityData.data, itemsPerPage, paginationContainer);
+            console.log('paginate() call')
         } catch (error) {
             console.error('Error rendering cards:', error);
         }
@@ -190,35 +190,35 @@
     async function packageSearchObject(activities, search) {
         let activityList = [];
         for(const activity of activities) {
-                let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
-                console.log(address);
-                let newActivity = {
-                    name: activity.name,
-                    description: activity.description,
-                    rating: 1.00,
-                    bookingLink: activity.bookingLink,
-                    address: address,
-                    latitude: activity.geoCode.latitude,
-                    longitude: activity.geoCode.longitude,
-                    amadeusApiId: activity.id
-                }
-                activityList.push(newActivity)
+            let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+// console.log(address);
+            let newActivity = {
+                name: activity.name,
+                description: activity.description,
+                rating: 1.00,
+                bookingLink: activity.bookingLink,
+                address: address,
+                latitude: activity.geoCode.latitude,
+                longitude: activity.geoCode.longitude,
+                amadeusApiId: activity.id
+            }
+            activityList.push(newActivity)
         }
-        // activities.forEach(async (activity) => {
-        //     let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
-        //     console.log(address);
-        //     let newActivity = {
-        //         name: activity.name,
-        //         description: activity.description,
-        //         rating: 1.00,
-        //         bookingLink: activity.bookingLink,
-        //         address: address,
-        //         latitude: activity.geoCode.latitude,
-        //         longitude: activity.geoCode.longitude,
-        //         amadeusApiId: activity.id
-        //     }
-        //     activityList.push(newActivity)
-        // })
+// activities.forEach(async (activity) => {
+//     let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+//     console.log(address);
+//     let newActivity = {
+//         name: activity.name,
+//         description: activity.description,
+//         rating: 1.00,
+//         bookingLink: activity.bookingLink,
+//         address: address,
+//         latitude: activity.geoCode.latitude,
+//         longitude: activity.geoCode.longitude,
+//         amadeusApiId: activity.id
+//     }
+//     activityList.push(newActivity)
+// })
         console.log(search)
         console.log(activityList)
         let searchObject = {
@@ -226,27 +226,73 @@
             activities: activityList
         }
         let baseUrl = '/api/test';
-        // let endPoint = '/geocoding/v5/mapbox.places/';
+// let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl, {
 
-            // Adding method type
+// Adding method type
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 'X-CSRF-TOKEN': csrfToken
             },
-            // Adding body or contents to send
+// Adding body or contents to send
 
             body: JSON.stringify(searchObject)
 
         });
 
     }
+
+
+
+    function paginate(items, itemsPerPage, paginationContainer) {
+        let currentPage = 1;
+        const totalPages = Math.ceil(items.length / itemsPerPage);
+
+        function showItems(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageItems = items.slice(startIndex, endIndex);
+            const cardContainer = document.getElementById('card-container');
+            cardContainer.innerHTML = '';
+
+            pageItems.forEach(activity => {
+                const card = createCard(activity);
+                cardContainer.appendChild(card);
+            });
+        }
+
+        function setupPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = "";
+
+            for (let i = 1; i <= totalPages; i++) {
+                const link = document.createElement("a");
+                link.href = "#";
+                link.innerText = i;
+
+                if (i === currentPage) {
+                    link.classList.add("active");
+                }
+
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    currentPage = i;
+                    showItems(currentPage);
+
+                    const currentActive = pagination.querySelector(".active");
+                    currentActive.classList.remove("active");
+                    link.classList.add("active");
+                });
+
+                pagination.appendChild(link);
+            }
+        }
+
+        showItems(currentPage);
+        setupPagination();
+    }
+
+
+
 })();
-
-// Adding headers to the request
-
-
-
-
-
