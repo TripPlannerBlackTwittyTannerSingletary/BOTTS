@@ -132,11 +132,11 @@
         <!--User Edit profile modal start-->
         <button id="editProfileBtn" type="button" class="btn btn-primary btn-md" th:onclick="openEditModal()">Edit</button>
 
-        <div id="editOverlay"></div>
+        <div id="editOverlay" class="editOverlay"></div>
 
-        <div class="modal" id="editModal">
-            <div class="modal-content">
-                <span class="close" id="closeModal" th:onclick="closeEditModal()">&times;</span>
+        <div class="editModal" id="editModal">
+            <div class="modal-content-edit">
+                <span class="closeEdit" id="closeModalEdit" th:onclick="closeEditModal()">&times;</span>
                 <h2>Edit Your Profile</h2>
                 <form id="editForm" th:action="@{/saveProfile}" method="post">
                     <label for="newEmail">New Email:</label>

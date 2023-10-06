@@ -1,30 +1,35 @@
-// Get the modal and buttons
 const editModal = document.getElementById("editModal");
 const editButton = document.getElementById("editProfileBtn");
-const closeModal = document.getElementById("closeModal");
+const closeModal = document.getElementById("closeModalEdit");
 const editForm = document.getElementById("editForm");
+const overlay = document.getElementById("editOverlay");
 
-// Show the modal when the Edit button is clicked
-editButton.addEventListener("click", () => {
+const openEditModal = () => {
+    overlay.style.display = "block";
     editModal.style.display = "block";
-});
+}
 
-// Close the modal when the close button is clicked
-closeModal.addEventListener("click", () => {
+const closeEditModal = () => {
+    overlay.style.display = "none";
     editModal.style.display = "none";
+}
+
+editButton.addEventListener("click", () => {
+    openEditModal();
 });
 
-// Submit the form to save changes
+closeModal.addEventListener("click", () => {
+    closeEditModal();
+});
+
 editForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const newEmail = document.getElementById("newEmail").value;
     const newLocation = document.getElementById("newLocation").value;
 
-    // Update the profile information
     document.getElementById("email").textContent = newEmail;
     document.getElementById("location").textContent = newLocation;
 
-    // Close the modal
-    editModal.style.display = "none";
+    closeEditModal();
 });
