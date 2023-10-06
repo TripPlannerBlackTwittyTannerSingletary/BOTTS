@@ -7,6 +7,7 @@ import com.example.tripplanner.Repositories.UserRepository;
 import com.example.tripplanner.Services.UserService;
 import jakarta.persistence.Column;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,7 @@ public class UserController {
     };
 
 
-//    public UserController(UserRepository userDao, UserService userService) {
-//        this.userDao = userDao;
-//        this.userService = userService;
-//    }
+
 //
 //    @PostMapping("user/{userId}/trips")
 //    public ResponseEntity<User> addTripToUser(@PathVariable Long userId, @RequestBody Trip trip) {
@@ -38,5 +36,20 @@ public class UserController {
 //            return ResponseEntity.notFound().build();
 //        }
 //    }
+
+
+    public UserController(UserRepository userDao, UserService userService) {
+        this.userDao = userDao;
+        this.userService = userService;
+    }
+
+    @PostMapping("/saveProfile")
+    public String userProfile (
+            @RequestParam("newEmail") String email,
+            @RequestParam("newLocation") String location
+    ) {
+        User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        return "user/profile";
+    }
 
 }

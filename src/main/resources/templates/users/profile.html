@@ -11,11 +11,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/CSS/profile.css}">
+    <link rel="stylesheet" th:href="@{/CSS/edit-profile.css}">
 </head>
 <body>
 
 <!--Navbar-->
-<nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar" th:replace="partials/navbar :: nav"></nav>
     <div class="container-fluid">
         <div py-3>
             <a class="navbar-brand" href="/">
@@ -126,7 +127,28 @@
             Location: <span th:text="${user.location}"></span><br>
         </p>
 
-        <button type="button" class="btn btn-primary btn-md">Edit</button>
+
+
+        <!--User Edit profile modal start-->
+        <button id="editProfileBtn" type="button" class="btn btn-primary btn-md">Edit</button>
+
+        <div id="editOverlay" class="editOverlay"></div>
+
+        <div class="editModal" id="editModal">
+            <div class="modal-content-edit">
+                <span class="closeEdit" id="closeModalEdit">&times;</span>
+                <h2>Edit Your Profile</h2>
+                <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
+                    <label for="newEmail">New Email:</label>
+                    <input type="email" id="newEmail" name="newEmail" th:field="*{email}"><br><br>
+                    <label for="newLocation">New Location:</label>
+                    <input type="text" id="newLocation" name="newLocation" th:field="*{location}"><br><br>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+
+        <!--User Edit profile modal end-->
     </div>
 
     <div id="overlay"></div>
@@ -152,24 +174,10 @@
             <p>You currently have no trips! :( <br>
                 Click the button below to add a trip!</p>
             <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
+            <h4>Recommended Activities</h4>
         </div>
     </div>
-    <!--                <div id="overlay"></div>-->
-    <!--                <div id="myModal" class="modal">-->
-    <!--                    <div class="modal-content">-->
-    <!--                        <span class="close" id="closeModalBtn">&times;</span>-->
-    <!--                        <h2>Create a Trip</h2>-->
-    <!--                        <form id="tripForm" method="post" action="/createTrip">-->
-    <!--                            <p>Name your trip!</p>-->
-    <!--                            <input class="nameModal" type="text" id="name" name="name" required>-->
-    <!--                            <p>Where ya headed to?</p>-->
-    <!--                            <input class="nameModal" type="text" id="location" name="location" required>-->
-    <!--                            <br>-->
-    <!--                            <button class="createButton" type="submit">Create Trip</button>-->
-    <!--                        </form>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <h4>Recommended Activities</h4>
+
 </div>
 </div>
 <!--End User Information Section-->
@@ -183,5 +191,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script th:src="@{/js/create-trip.js}"></script>
+<script th:src="@{/js/edit-profile-modal.js}"></script>
 </body>
 </html>
