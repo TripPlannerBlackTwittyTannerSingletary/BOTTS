@@ -43,12 +43,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/saveProfile")
+    @PostMapping("/save-profile")
+    @ResponseBody
     public String userProfile (
-            @RequestParam("newEmail") String email,
-            @RequestParam("newLocation") String location
+//            @RequestParam("newEmail") String email,
+//            @RequestParam("newLocation") String location
+            @RequestBody User user
     ) {
         User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        loggedInUser.setEmail(user.getEmail());
+        loggedInUser.setLocation(user.getLocation());
+        System.out.println(loggedInUser.getEmail());
+        System.out.println(loggedInUser.getLocation());
+        userDao.save(loggedInUser);
+
         return "user/profile";
     }
 

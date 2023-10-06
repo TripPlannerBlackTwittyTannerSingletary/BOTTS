@@ -24,7 +24,6 @@ public class ProfileController {
     @GetMapping("")
     public String indexPage(Model model) {
         User loggedInUser = usersDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(loggedInUser.getFirstName());
         model.addAttribute("user", loggedInUser);
         return "users/profile";
     }
