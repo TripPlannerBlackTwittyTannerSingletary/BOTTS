@@ -19,8 +19,17 @@
 
     <form th:action="@{/register}" method="POST" th:object="${user}">
         <fieldset>
+
             <!--Page Header-->
             <legend>Create Your Account</legend>
+
+            <legend>Create Your Account</legend>
+            <div class="form-group row">
+                <label for="firstname" class="form-label mt-4">First Name</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter First Name"
+                       th:field="*{firstName}"/>
+            </div>
+
 
             <div class="container-whole">
                 <!--Form Field Left Side-->
@@ -31,10 +40,12 @@
                                th:field="*{firstName}"/>
                     </div>
 
+
                     <div class="form-group ">
                         <label for="lastname" class="form-label mt-4">Last Name</label>
                         <input id="lastname" class="form-control" placeholder="Enter Last Name" th:field="*{lastName}"/>
                     </div>
+
 
                     <div class="form-group ">
                         <label for="location" class="form-label mt-4">Location</label>
