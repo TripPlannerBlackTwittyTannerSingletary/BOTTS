@@ -21,6 +21,11 @@ legend {
 
 .container-whole {
     display: flex;
+    font-size: 1.5rem;
+}
+
+.email-text {
+    font-size: 14px;
 }
 
 body {
