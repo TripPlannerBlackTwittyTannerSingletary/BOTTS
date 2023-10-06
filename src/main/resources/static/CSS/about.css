@@ -1,6 +1,8 @@
 body {
-    background-color: lightgray;
     font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .card{
@@ -9,6 +11,11 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+/*.card-holder {*/
+/*    overflow: auto;*/
+/*    flex: 0 0 auto;*/
+/*}*/
 
 svg{
     width: 19px;
@@ -29,3 +36,13 @@ li{
     height: 19px;
 }
 
+header {
+    font-size: 40px;
+    color: #1f6b7b;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+footer {
+    margin-top: auto;
+}
