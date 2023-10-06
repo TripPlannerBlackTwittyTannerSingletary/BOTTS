@@ -47,7 +47,7 @@
     const createCard = (activity) => {
 // Create the card element
         const cardDiv = document.createElement('div');
-        cardDiv.className = 'card mb-5';
+        cardDiv.className = 'card mb-5 col-4';
         cardDiv.style.width = '18rem';
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
@@ -125,7 +125,7 @@
 
 
     let items = goToInput();
-    let itemsPerPage = 24;
+    let itemsPerPage = 25;
     let paginationContainer = document.getElementById('card-container');
 
 
