@@ -58,10 +58,23 @@ footer {
 }
 
 .the-card {
-    width: 650px;
-    height: 450px;
+    width: 40rem;
+    height: 40rem;
     background: rgb(236, 236, 236);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     padding-left: 3rem;
     padding-right: 3rem;
+}
+.trip{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    max-width: 15rem;
+    max-height: 15rem;
+    margin: 4px;
+}
+
+.activity-button{
+    background-color: #1f6b7b;
 }
