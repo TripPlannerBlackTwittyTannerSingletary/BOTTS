@@ -4,6 +4,7 @@ const editButton = document.getElementById("editProfileBtn");
 const closeEditModal = document.getElementById("closeModalEdit");
 const editForm = document.getElementById("editForm");
 
+
 editButton.addEventListener("click", () => {
     editOverlay.style.display = "block";
     editModal.style.display = "block";
@@ -60,6 +61,7 @@ async function submitEdit() {
             const responseData = await response.text();
             console.log(responseData); // Display success message
             closeModal(); // Close the modal after successful submission
+            location.reload();
         } else {
             console.error('Error:', response.status);
         }
@@ -77,6 +79,11 @@ function closeModal() {
 // Add an event listener to the form submission
 
 editForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    submitEdit();
+    event.preventDefault()
+    submitEdit()
+    location.reload()
 });
+
+// editForm.addEventListener('submit', (event) => {
+//     location.reload();
+// });
