@@ -152,13 +152,14 @@
             <div class="card" th:each="trip: ${user.getTrips()}">
                 <h1 th:text="${trip.getName()}"></h1>
                 <h2 th:text="${trip.getLocation()}"></h2>
+                <div class="buttons">
                 <button class="btn btn-sm activity-button">See more!</button>
+                <button class="btn btn-secondary btn-sm" id="deleteTrip">Delete Trip</button>
+                </div>
             </div>
         </div>
         <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
     </div>
-
-
 
 </div>
 </div>

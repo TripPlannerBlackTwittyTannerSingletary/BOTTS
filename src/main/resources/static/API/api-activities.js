@@ -277,6 +277,7 @@
 
             for (let i = 1; i <= totalPages; i++) {
                 const link = document.createElement("a");
+                link.className = 'px-2'
                 link.href = "#";
                 link.innerText = i;
 
