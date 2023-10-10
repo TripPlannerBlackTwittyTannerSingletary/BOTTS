@@ -78,3 +78,11 @@ footer {
 .activity-button{
     background-color: #1f6b7b;
 }
+
+h1 {
+    font-size: 40px;
+    color: #1f6b7b;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    font-weight: 100;
+}
