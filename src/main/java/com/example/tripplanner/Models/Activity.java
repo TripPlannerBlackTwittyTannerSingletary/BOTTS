@@ -36,6 +36,9 @@ public class Activity {
     private double longitude;
 
     @Column
+    private String imageUrl;
+
+    @Column
     private String amadeusApiId;
 
     @JsonIgnore
@@ -46,6 +49,36 @@ public class Activity {
     @ManyToMany(mappedBy = "activities")
     private List<Search> searches;
     // Constructor
+
+
+    public Activity(String name, String description, double rating, String bookingLink, String address, double latitude, double longitude, String imageUrl, String amadeusApiId, List<Trip> trips, List<Search> searches) {
+        this.name = name;
+        this.description = description;
+        this.rating = rating;
+        this.bookingLink = bookingLink;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.imageUrl = imageUrl;
+        this.amadeusApiId = amadeusApiId;
+        this.trips = trips;
+        this.searches = searches;
+    }
+
+    public Activity(long id, String name, String description, double rating, String bookingLink, String address, double latitude, double longitude, String imageUrl, String amadeusApiId, List<Trip> trips, List<Search> searches) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.rating = rating;
+        this.bookingLink = bookingLink;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.imageUrl = imageUrl;
+        this.amadeusApiId = amadeusApiId;
+        this.trips = trips;
+        this.searches = searches;
+    }
 
     public Activity(long id, String name, String description, double rating, String bookingLink, String address, double latitude, double longitude, String amadeusApiId) {
         this.id = id;
@@ -146,5 +179,13 @@ public class Activity {
 
     public void setAmadeusApiId(String amadeusApiId) {
         this.amadeusApiId = amadeusApiId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

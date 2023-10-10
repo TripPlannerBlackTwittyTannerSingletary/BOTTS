@@ -52,7 +52,7 @@
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
-        img.src = activity.pictures[0]; // Set the image URL dynamically
+        img.src = activity.imageUrl; // Set the image URL dynamically
         img.className = 'card-img-top';
         img.alt = 'Card Image';
         cardDiv.appendChild(img);
@@ -80,10 +80,10 @@
         cardBodyLinks.className = 'card-body';
 
 // Create card links
-        const cardLink1 = document.createElement('a');
-        cardLink1.href = activity.price.amount; // Set link URL dynamically
-        cardLink1.className = 'card-link';
-        cardLink1.innerHTML = 'Add to trip'; // Set link text dynamically
+//         const cardLink1 = document.createElement('a');
+//         cardLink1.href = activity.price.amount; // Set link URL dynamically
+//         cardLink1.className = 'card-link';
+//         cardLink1.innerHTML = 'Add to trip'; // Set link text dynamically
 
         const cardLink2 = document.createElement('a');
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
@@ -105,7 +105,7 @@
         // Add the button to the card body
         cardBody.appendChild(modalButton);
 
-        cardBodyLinks.appendChild(cardLink1);
+        // cardBodyLinks.appendChild(cardLink1);
         cardBodyLinks.appendChild(cardLink2);
 
         cardDiv.appendChild(cardBodyLinks);
@@ -116,7 +116,7 @@
     const renderCards = (activityData) => {
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerHTML = '';
-
+        console.log(activityData);
         activityData.forEach(activity => {
             const card = createCard(activity);
             cardContainer.appendChild(card);
@@ -173,7 +173,7 @@
 
             console.log(activityData);
 
-            return activityData;
+            return activityData.data;
         } catch (error) {
             console.error('Error:', error);
             throw error;
@@ -182,13 +182,34 @@
 
     document.querySelector('#search-city').addEventListener('click', async () => {
         try {
-            const activityData = await goToInput();
-            console.log('paginate() call')
-            console.log(activityData)
+            // fetch to '/api/search'
+            let baseUrl = '/api/search';
+// let endPoint = '/geocoding/v5/mapbox.places/';
+            let results = await fetch(baseUrl, {
 
-            packageSearchObject(activityData.data, citySearch.value)
-// renderCards(activityData.data);
-            paginate(activityData.data, itemsPerPage, paginationContainer);
+// Adding method type
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify({search: citySearch.value})
+            });
+            console.log(results);
+            let activityData = await results.json();
+            console.log(activityData.length);
+            if(activityData.length === 0) {
+                // let activityData = <our_api_call>
+                // if activityData is null, run this code
+                activityData = await goToInput();
+                console.log(activityData);
+                console.log('paginate() call')
+                console.log(activityData)
+                activityData = await packageSearchObject(activityData, citySearch.value)
+            }
+            // either way, we do this stuff
+            // renderCards(activityData);
+            paginate(activityData, itemsPerPage, paginationContainer);
             console.log('paginate() call')
         } catch (error) {
             console.error('Error rendering cards:', error);
@@ -198,7 +219,7 @@
 
     async function packageSearchObject(activities, search) {
         let activityList = [];
-        for(const activity of activities) {
+        for (const activity of activities) {
             let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
 // console.log(address);
             let newActivity = {
@@ -209,8 +230,10 @@
                 address: address,
                 latitude: activity.geoCode.latitude,
                 longitude: activity.geoCode.longitude,
+                imageUrl: activity.pictures[0],
                 amadeusApiId: activity.id
             }
+
             activityList.push(newActivity)
         }
 // activities.forEach(async (activity) => {
@@ -236,7 +259,7 @@
         }
         let baseUrl = '/api/test';
 // let endPoint = '/geocoding/v5/mapbox.places/';
-        return fetch(baseUrl, {
+        await fetch(baseUrl, {
 
 // Adding method type
             method: "POST",
@@ -250,8 +273,9 @@
 
         });
 
-    }
+        return activityList;
 
+    }
 
 
     function paginate(items, itemsPerPage, paginationContainer) {
@@ -302,7 +326,6 @@
         showItems(currentPage);
         setupPagination();
     }
-
 
 
 })();
