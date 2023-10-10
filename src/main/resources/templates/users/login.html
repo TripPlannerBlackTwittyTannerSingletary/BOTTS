@@ -14,11 +14,14 @@
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
 
+<div class="container pt-5">
+    <h1>Please Login</h1>
+</div>
 
 <div class="form_control pb-5">
     <form th:align="center" th:action="@{/login}" method="post">
         <!--        <img th:src="@{/IMG/GoTravelLogo.png}">-->
-        <h1>Please sign in</h1>
+
         <div class="form-floating">
             <input type="username" class="form-control" id="username" placeholder="username" name="username">
             <label for="username">Username</label>
@@ -34,7 +37,7 @@
             <label for="password">Password</label>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn w-100 py-2 login-button" type="submit">Sign in</button>
+            <button class="btn w-100 py-2 login-button" type="submit">Login</button>
         </div>
     </form>
 </div>
