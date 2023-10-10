@@ -13,73 +13,7 @@
 </head>
 <body>
 <!--NavBar-->
-<nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid">
-        <div py-3>
-            <a class="navbar-brand" href="/">
-                <img id="something" th:src="@{/IMG/GoTravelWhite.png}" height="75px">
-            </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark"
-             aria-labelledby="offcanvasNavbarDarkLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menu</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Travel
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/profile">Flights</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/login">Hotels</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/register">Activities</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/login">Login</a></li>
-                            <li><a class="dropdown-item" href="/register">Register</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex mt-3" role="search" action="/projects" method="get">
-                    <input class="form-control me-2" type="search" name="query" placeholder="Search projects..."
-                           aria-label="Search">
-                    <button type="submit" class="btn-53 d-flex justify-content-center">
-                        <div class="original">Search</div>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
+<nav th:include="partials/navbar :: nav"></nav>
 <!--End NavBar-->
 
 <!--Meet the Team Header-->
