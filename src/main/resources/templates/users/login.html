@@ -23,7 +23,7 @@
         <!--        <img th:src="@{/IMG/GoTravelLogo.png}">-->
 
         <div class="form-floating">
-            <input type="username" class="form-control" id="username" placeholder="username" name="username">
+            <input type="username" class="form-control" id="username" placeholder="username" name="username" style="margin: 6px 0">
             <label for="username">Username</label>
         </div>
         <div th:if="${param.error}">
@@ -33,11 +33,24 @@
             You have been logged out.
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" style="margin: 6px 0">
             <label for="password">Password</label>
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn w-100 py-2 login-button" type="submit">Login</button>
+        <div class="d-grid gap-2 col-6 mx-auto w-100">
+            <!--UI Button for create trip start-->
+            <button class="btn-53 py-2" type="submit">
+                <div class="original">Login</div>
+                <div class="letters d-flex justify-content-center">
+
+                    <span>L</span>
+                    <span>o</span>
+                    <span>g</span>
+                    <span>i</span>
+                    <span>n</span>
+                </div>
+            </button>
+            <!--UI Button for create trip info end-->
+<!--            <button class=" py-2 login-button" type="submit">Login</button>-->
         </div>
     </form>
 </div>
