@@ -387,3 +387,8 @@ h2 {
     height: 50px;
     margin: 0 auto;
 }
+
+nav ul li a {
+    color: #ffffff;
+    font-size: 30px;
+}

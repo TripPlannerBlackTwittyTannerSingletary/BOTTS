@@ -220,3 +220,15 @@
 .btn-53:hover span:nth-child(21) {
     transition-delay: 2.0s;
 }
+
+.hero-banner {
+    position: absolute;
+    width: 100%;
+    opacity: 55%;
+
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+
+}
