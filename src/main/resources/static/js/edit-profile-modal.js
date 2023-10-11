@@ -43,7 +43,6 @@ async function submitEdit() {
         // User: userid,
         email: email,
         location: location
-        // Add any additional form fields here
     };
     console.log(userEdit);
     console.log(csrfToken);
@@ -59,8 +58,8 @@ async function submitEdit() {
 
         if (response.ok) {
             const responseData = await response.text();
-            console.log(responseData); // Display success message
-            closeModal(); // Close the modal after successful submission
+            console.log(responseData);
+            closeModal();
             location.reload();
         } else {
             console.error('Error:', response.status);
@@ -76,7 +75,6 @@ function closeModal() {
     overlay.style.display = 'none';
 }
 
-// Add an event listener to the form submission
 
 editForm.addEventListener('submit', (event) => {
     event.preventDefault()
