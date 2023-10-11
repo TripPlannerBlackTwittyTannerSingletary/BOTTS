@@ -7,7 +7,9 @@ import com.example.tripplanner.Repositories.ActivityRepository;
 import com.example.tripplanner.Repositories.SearchRepository;
 import com.example.tripplanner.Repositories.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,9 @@ public class ApiTestController {
 	}
 
 	@GetMapping("/api-test")
-	public String showApiTest() {
+	public String showApiTest(Model model) {
+		User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("user", loggedInUser);
 		return "users/activities";
 	}
 
