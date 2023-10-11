@@ -85,5 +85,46 @@ tripForm.addEventListener('submit', () => {
 
 
 
-////////////////// lat and long info to back-end ///////////////////
+////// Delete the trip //////
 
+const deleteTrip = document.querySelectorAll(".deleteTrip");
+
+
+async function deleteForm() {
+    const name = document.getElementById('name').value;
+    const location = document.getElementById('location').value;
+    const userid = document.getElementById('user').value;
+    const tripData = {
+        name: name,
+        location: location,
+        User: userid
+        // Add any additional form fields here
+    };
+
+    try {
+        const response = await fetch('/api/trips/deleteTrip', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(tripData),
+        });
+        console.log("in delete function");
+        if (response.ok) {
+            const responseData = await response.text();
+            console.log(responseData); // Display success message
+            // location.reload();
+        } else {
+            console.error('Error:', response.status);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+deleteTrip.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log("Delete clicked");
+    deleteForm();
+})

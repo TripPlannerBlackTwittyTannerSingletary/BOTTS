@@ -7,11 +7,11 @@ import com.example.tripplanner.Repositories.ActivityRepository;
 import com.example.tripplanner.Repositories.SearchRepository;
 import com.example.tripplanner.Repositories.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,7 +29,9 @@ public class ApiTestController {
 	}
 
 	@GetMapping("/api-test")
-	public String showApiTest() {
+	public String showApiTest(Model model) {
+		User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("user", loggedInUser);
 		return "users/activities";
 	}
 
@@ -45,25 +47,17 @@ public class ApiTestController {
 		return activityDao.findAll();
 	}
 
-	@PostMapping("/api/search")
+	@GetMapping("/api/search")
 	@ResponseBody
-	public List<Activity> getAllSearches(@RequestBody Search searchObject) {
-		System.out.println("inside getAllSearches");
-		if(searchDao.existsBySearch(searchObject.getSearch())) {
-			Search serverResult =searchDao.findBySearch(searchObject.getSearch());
-			return serverResult.getActivities();
-
-		}
-		else {
-			return new ArrayList<>();
-		}
+	public List<Search> getAllSearches() {
+		return searchDao.findAll();
 	}
 	@PostMapping("/api/test")
 	@ResponseBody
 	public Search saveSearch(@RequestBody Search searchObject) throws JsonProcessingException {
 //		System.out.println("Inside saveSearch");
-		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchObject));
+//		ObjectMapper mapper = new ObjectMapper();
+//		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchObject));
 		searchDao.save(searchObject);
 		return searchObject;
 	}
