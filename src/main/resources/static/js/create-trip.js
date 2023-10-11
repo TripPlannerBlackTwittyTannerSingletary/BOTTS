@@ -52,9 +52,10 @@ async function submitForm() {
             body: JSON.stringify(tripData),
         });
 
-        if (response.ok) {
+        if (response.status == 200) {
             const responseData = await response.text();
             console.log(responseData); // Display success message
+            location.reload();
             closeModal(); // Close the modal after successful submission
             location.reload();
         } else {
@@ -84,47 +85,42 @@ tripForm.addEventListener('submit', () => {
 })
 
 
-
 ////// Delete the trip //////
 
-const deleteTrip = document.querySelectorAll(".deleteTrip");
+const deleteTripButtons = document.querySelectorAll(".deleteTrip");
 
+deleteTripButtons.forEach(deleteTripButton => {
+    deleteTripButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const tripId = e.target.getAttribute('data-trip-id');
 
-async function deleteForm() {
-    const name = document.getElementById('name').value;
-    const location = document.getElementById('location').value;
-    const userid = document.getElementById('user').value;
-    const tripData = {
-        name: name,
-        location: location,
-        User: userid
-        // Add any additional form fields here
-    };
+        // Ensure you have the URL of your backend API
+        const apiUrl = '/api/trips/deleteTrip' + tripId; // Replace with your actual API URL
 
-    try {
-        const response = await fetch('/api/trips/deleteTrip', {
+        // Send a DELETE request to the backend API
+        fetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': csrfToken
-            },
-            body: JSON.stringify(tripData),
-        });
-        console.log("in delete function");
-        if (response.ok) {
-            const responseData = await response.text();
-            console.log(responseData); // Display success message
-            // location.reload();
-        } else {
-            console.error('Error:', response.status);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+                // You may need to include authorization headers here if required
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    // Trip successfully deleted
+                    console.log(`Trip with ID ${tripId} has been deleted.`);
+                    location.reload();
+                    // You can perform further actions if needed.
+                } else {
+                    console.error(`Failed to delete trip with ID ${tripId}.`);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+});
 
-deleteTrip.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log("Delete clicked");
-    deleteForm();
-})
+
+
