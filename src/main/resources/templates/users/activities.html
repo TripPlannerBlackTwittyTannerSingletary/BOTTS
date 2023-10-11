@@ -157,13 +157,75 @@
                     </th:if>
                     <th:if sec:authorize="!isAuthenticated()">
                         <h2>Login or register to start planning!</h2>
-                        <a href="/login" class="btn btn-primary">Login</a>
-                        <a href="/register" class="btn btn-success">Register</a>
+                        <div class="d-flex gap-2">
+                            <a href="/login" style="flex: 1 0 0;">
+
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Login</div>
+                                <div class="letters d-flex justify-content-center">
+
+                                    <span>L</span>
+                                    <span>o</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>n</span>
+                                </div>
+                            </button>
+                            </a>
+                            <a href="/register" style="flex: 1 0 0;">
+
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Register</div>
+                                <div class="letters d-flex justify-content-center">
+
+                                    <span>R</span>
+                                    <span>e</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>s</span>
+                                    <span>t</span>
+                                    <span>e</span>
+                                    <span>r</span>
+                                </div>
+                            </button>
+                            </a>
+                        </div>
                     </th:if>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal-footer d-flex justify-content-center gap-2">
+                    <!--UI Button for register start-->
+                    <button class="btn-53 container-fluid py-2" type="button">
+                        <div class="original">Save changes</div>
+                        <div class="letters d-flex justify-content-center">
+
+                            <span>S</span>
+                            <span>a</span>
+                            <span>v</span>
+                            <span>e</span>
+                            <span>&nbsp;</span>
+                            <span>C</span>
+                            <span>h</span>
+                            <span>a</span>
+                            <span>n</span>
+                            <span>g</span>
+                            <span>e</span>
+                            <span>s</span>
+                        </div>
+                    </button>
+                    <!--UI Button for register end-->
+                    <!--UI Button for close start-->
+                    <button class="btn-53 container-fluid py-2" type="button" data-dismiss="modal">
+                        <div class="original">Close</div>
+                        <div class="letters d-flex justify-content-center">
+
+                            <span>C</span>
+                            <span>l</span>
+                            <span>o</span>
+                            <span>s</span>
+                            <span>e</span>
+                        </div>
+                    </button>
+                    <!--UI Button for close end-->
                 </div>
             </div>
         </div>
