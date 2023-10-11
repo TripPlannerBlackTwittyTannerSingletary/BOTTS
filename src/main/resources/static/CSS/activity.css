@@ -85,3 +85,16 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.hero-banner {
+    position: absolute;
+    width: 100%;
+    opacity: 55%;
+
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+
+}
+
