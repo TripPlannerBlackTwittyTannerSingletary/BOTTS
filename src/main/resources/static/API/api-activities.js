@@ -77,28 +77,81 @@
 
 // Create additional card body for links
         const cardBodyLinks = document.createElement('div');
-        cardBodyLinks.className = 'card-body';
+        cardBodyLinks.className = 'card-body d-flex justify-content-center';
 
 // Create card links
         const cardLink1 = document.createElement('a');
         cardLink1.href = activity.price.amount; // Set link URL dynamically
-        cardLink1.className = 'card-link';
-        cardLink1.innerHTML = 'Add to trip'; // Set link text dynamically
+        cardLink1.className = 'btn-53 py-2 container-fluid card-link';
+        cardLink1.innerHTML = `
+                     <div class="original">Add To Trip</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>A</span>
+                        <span>d</span>
+                        <span>d</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>o</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>p</span>
+                    </div>
+        `; // Set link text dynamically
 
         const cardLink2 = document.createElement('a');
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
-        cardLink2.className = 'card-link';
-        cardLink2.innerHTML = 'Book Now!'; // Set link text dynamically
+        cardLink2.className = 'btn-53 py-2 container-fluid card-link';
+        cardLink2.innerHTML = `
+                    <div class="original">Book Now!</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>B</span>
+                        <span>o</span>
+                        <span>o</span>
+                        <span>k</span>
+                        <span>&nbsp;</span>
+                        <span>N</span>
+                        <span>o</span>
+                        <span>w</span>
+                        <span>!</span>
+                    </div>
+        `; // Set link text dynamically
 
         const modalButton = document.createElement('button');
         modalButton.type = 'button';
-        modalButton.className = 'btn btn-primary';
-        modalButton.innerText = 'View Description';
+        modalButton.className = 'btn-53 container-fluid py-2';
+        // modalButton.innerText = 'View Description';
+        modalButton.innerHTML = `
+                    <div class="original">View Description</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>V</span>
+                        <span>I</span>
+                        <span>E</span>
+                        <span>W</span>
+                        <span>&nbsp;</span>
+                        <span>D</span>
+                        <span>e</span>
+                        <span>s</span>
+                        <span>c</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>p</span>
+                        <span>t</span>
+                        <span>i</span>
+                        <span>o</span>
+                        <span>n</span>
+                    </div>
+        `;
+
 
         // Add event listener to display activity description in the modal
         modalButton.addEventListener('click', () => {
             const modalDescription = document.getElementById('activityDescription');
-            modalDescription.innerText = activity.description;
+            modalDescription.innerHTML = activity.description;
             $('#activityModal').modal('show'); // Use Bootstrap modal function to show the modal
         });
 
