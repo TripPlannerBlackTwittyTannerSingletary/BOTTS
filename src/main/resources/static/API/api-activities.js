@@ -369,7 +369,8 @@
     }
 
     async function populateTripDropdown() {
-        const response = await fetch('/api/trips'); // Replace this URL with the actual endpoint to fetch user's trips
+        const response = await fetch('/api/trips/trips'); // Replace this URL with the actual endpoint to fetch user's trips
+        console.log(response)
         const trips = await response.json();
         const tripSelect = document.getElementById('tripSelect');
 
@@ -378,6 +379,31 @@
             option.value = trip.id;
             option.text = trip.name;
             tripSelect.appendChild(option);
+        });
+    }
+
+    $('#tripModal').on('show.bs.modal', async function (event) {
+        await populateTripDropdown();
+    });
+
+    async function saveActivityToTrip(tripId, activityId) {
+        const parsedTripId = parseInt(tripId);
+        const parsedActivityId = parseInt(activityId);
+        console.log(typeof parsedActivityId)
+        console.log(typeof parsedTripId)
+        const url = `/api/activities/addactivity?tripId=${parsedTripId}&activityId=${parsedActivityId}`;
+        // const data = {
+        //     tripId: parsedTripId,
+        //     activityId: parsedActivityId
+        // };
+
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            // body: JSON.stringify(data)
         });
     }
 

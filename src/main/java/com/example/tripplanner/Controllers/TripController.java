@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/trips")
 public class TripController {
@@ -49,5 +51,19 @@ public class TripController {
     }
 
 
+    @GetMapping("/trips")
+    public ResponseEntity<List<Trip>> getUserTrips(@CurrentSecurityContext(expression = "authentication?.name") String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // User not found
+        }
+
+        List<Trip> userTrips = tripRepository.findByUser(user);
+        if (userTrips.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(userTrips); // No trips found for the user
+        } else {
+            return ResponseEntity.ok(userTrips); // Return user's trips
+        }
+    }
 
 }
