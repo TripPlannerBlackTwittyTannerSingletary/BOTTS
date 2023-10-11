@@ -106,6 +106,19 @@
             $('#tripModal').modal('show'); // Use Bootstrap modal function to show the modal
         });
 
+        const saveActivityButton = document.getElementById('save-activity');
+        saveActivityButton.addEventListener('click', () => {
+            const selectedTripId = document.getElementById('tripSelect').value;
+
+            saveActivityToTrip(selectedTripId, activity.id)
+                .then(() => {
+                    $('#tripModal').modal('hide'); // Close the modal after saving the activity
+                })
+                .catch(error => {
+                    console.error('Error saving activity to trip:', error);
+                });
+        });
+
         const closeModalButton = document.querySelector('.modal .close');
         closeModalButton.addEventListener('click', () => {
             $('#tripModal').modal('hide'); // Use Bootstrap modal function to hide the modal
