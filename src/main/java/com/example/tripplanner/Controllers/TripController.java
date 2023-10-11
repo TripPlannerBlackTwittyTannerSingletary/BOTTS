@@ -36,14 +36,12 @@ public class TripController {
         }
     }
 
-    @DeleteMapping("/deleteTrip")
-    public ResponseEntity<String> deleteTrip(@CurrentSecurityContext(expression = "authentication?.name") String username , @RequestBody Trip trip) {
+    @DeleteMapping("/deleteTrip{tripId}")
+    public ResponseEntity<String> deleteTrip(@CurrentSecurityContext(expression = "authentication?.name") String username , @PathVariable String tripId) {
         User user = userRepository.findByUsername(username);
         try {
-            // Perform data validation and save the trip to the database
-            trip.setUser(user);
             System.out.println(user);
-            tripRepository.delete(trip);
+            tripRepository.deleteById(Long.valueOf(tripId));
             return ResponseEntity.ok("Trip deleted successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting the trip");
