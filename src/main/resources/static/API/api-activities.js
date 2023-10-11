@@ -80,10 +80,20 @@
         cardBodyLinks.className = 'card-body';
 
 // Create card links
-        const cardLink1 = document.createElement('a');
-        cardLink1.href = activity.price.amount; // Set link URL dynamically
-        cardLink1.className = 'card-link';
-        cardLink1.innerHTML = 'Add to trip'; // Set link text dynamically
+        const addToTripButton = document.createElement('button');
+        addToTripButton.type = 'button';
+        addToTripButton.className = 'btn btn-primary';
+        addToTripButton.innerText = 'Add to Trip';
+
+// Add a click event listener to trigger the modal when the button is clicked
+        addToTripButton.addEventListener('click', () => {
+            $('#tripModal').modal('show'); // Use Bootstrap modal function to show the modal
+        });
+
+        const closeModalButton = document.querySelector('.modal .close');
+        closeModalButton.addEventListener('click', () => {
+            $('#tripModal').modal('hide'); // Use Bootstrap modal function to hide the modal
+        });
 
         const cardLink2 = document.createElement('a');
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
@@ -105,7 +115,7 @@
         // Add the button to the card body
         cardBody.appendChild(modalButton);
 
-        cardBodyLinks.appendChild(cardLink1);
+        cardBodyLinks.appendChild(addToTripButton);
         cardBodyLinks.appendChild(cardLink2);
 
         cardDiv.appendChild(cardBodyLinks);
@@ -302,6 +312,20 @@
         showItems(currentPage);
         setupPagination();
     }
+
+    async function populateTripDropdown() {
+        const response = await fetch('/api/trips'); // Replace this URL with the actual endpoint to fetch user's trips
+        const trips = await response.json();
+        const tripSelect = document.getElementById('tripSelect');
+
+        trips.forEach(trip => {
+            const option = document.createElement('option');
+            option.value = trip.id;
+            option.text = trip.name;
+            tripSelect.appendChild(option);
+        });
+    }
+
 
 
 
