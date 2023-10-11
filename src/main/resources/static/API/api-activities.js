@@ -192,6 +192,7 @@
     let itemsPerPage = 25;
     let paginationContainer = document.getElementById('card-container');
 
+    const loader = document.getElementById('animation');
 
     async function goToInput() {
         let searchedCity = citySearch.value;
@@ -245,6 +246,7 @@
     }
 
     document.querySelector('#search-city').addEventListener('click', async () => {
+        loader.style.display = 'block';
         try {
             const activityData = await goToInput();
             console.log('paginate() call')
@@ -254,6 +256,7 @@
 // renderCards(activityData.data);
             paginate(activityData.data, itemsPerPage, paginationContainer);
             console.log('paginate() call')
+            loader.style.display = 'none';
         } catch (error) {
             console.error('Error rendering cards:', error);
         }
