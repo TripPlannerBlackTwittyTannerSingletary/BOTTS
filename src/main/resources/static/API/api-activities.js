@@ -82,8 +82,24 @@
 // Create card links
         const addToTripButton = document.createElement('button');
         addToTripButton.type = 'button';
-        addToTripButton.className = 'btn btn-primary';
-        addToTripButton.innerText = 'Add to Trip';
+        addToTripButton.className = 'btn-53 py-2 container-fluid';
+        addToTripButton.innerHTML = `
+                         <div class="original">Add to Trip</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>A</span>
+                        <span>D</span>
+                        <span>D</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>o</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>p</span>
+                    </div>
+        `;
 
 // Add a click event listener to trigger the modal when the button is clicked
         addToTripButton.addEventListener('click', () => {
