@@ -84,6 +84,4 @@ editForm.addEventListener('submit', (event) => {
     location.reload()
 });
 
-// editForm.addEventListener('submit', (event) => {
-//     location.reload();
-// });
+

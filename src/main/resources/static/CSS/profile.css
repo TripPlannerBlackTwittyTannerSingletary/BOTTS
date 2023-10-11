@@ -13,7 +13,6 @@
 .createButton {
     width: 100%;
     color: #088395;
-
 }
 
 #myModal {
@@ -59,7 +58,7 @@ footer {
 
 .the-card {
     width: 50rem;
-    height: 50rem;
+    height: auto;
     background: rgb(236, 236, 236);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     padding-left: 3rem;
@@ -70,9 +69,12 @@ footer {
     flex-wrap: wrap;
 }
 .card{
-    max-width: 15rem;
-    max-height: 15rem;
+    display: flex;
+    width: auto;
+    height: auto;
     margin: 4px;
+    overflow: hidden;
+    padding: 2px;
 }
 
 .activity-button{
@@ -85,6 +87,10 @@ h1 {
     letter-spacing: -3px;
     text-transform: uppercase;
     font-weight: 100;
+    padding: 6px;
+}
+h2 {
+    padding: 6px;
 }
 /*UI Button*/
 .btn-53,
