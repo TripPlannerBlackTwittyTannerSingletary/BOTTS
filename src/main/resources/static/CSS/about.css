@@ -12,11 +12,6 @@ body {
     justify-content: space-around;
 }
 
-/*.card-holder {*/
-/*    overflow: auto;*/
-/*    flex: 0 0 auto;*/
-/*}*/
-
 svg{
     width: 19px;
     height: 19px;
