@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Keys {
+
     @Value("${api.key.one}")
     private String API_KEY_ONE;
+
 
 
     public String getAPI_KEY_ONE() {
