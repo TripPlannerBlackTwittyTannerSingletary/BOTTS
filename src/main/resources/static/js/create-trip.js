@@ -30,8 +30,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
-
-async function submitForm() {
+function submitForm() {
     const name = document.getElementById('name').value;
     const location = document.getElementById('location').value;
     const userid = document.getElementById('user').value;
@@ -42,29 +41,31 @@ async function submitForm() {
         // Add any additional form fields here
     };
 
-    try {
-        const response = await fetch('/api/trips/createTrip', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            },
-            body: JSON.stringify(tripData),
-        });
-
-        if (response.status == 200) {
-            const responseData = await response.text();
+    fetch('/api/trips/createTrip', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify(tripData),
+    })
+        .then(response => {
+            if (response.status == 200) {
+                return response.text();
+            } else {
+                throw new Error('Error: ' + response.status);
+            }
+        })
+        .then(responseData => {
             console.log(responseData); // Display success message
             location.reload();
             closeModal(); // Close the modal after successful submission
-            location.reload();
-        } else {
-            console.error('Error:', response.status);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
+
 function closeModal() {
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
@@ -80,9 +81,7 @@ tripForm.addEventListener('submit', (event) => {
     location.reload();
 });
 
-tripForm.addEventListener('submit', () => {
-    location.reload();
-})
+
 
 
 ////// Delete the trip //////
@@ -94,24 +93,19 @@ deleteTripButtons.forEach(deleteTripButton => {
         e.preventDefault();
         const tripId = e.target.getAttribute('data-trip-id');
 
-        // Ensure you have the URL of your backend API
         const apiUrl = '/api/trips/deleteTrip' + tripId; // Replace with your actual API URL
 
-        // Send a DELETE request to the backend API
         fetch(apiUrl, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': csrfToken
-                // You may need to include authorization headers here if required
             }
         })
             .then(response => {
                 if (response.status === 200) {
-                    // Trip successfully deleted
                     console.log(`Trip with ID ${tripId} has been deleted.`);
                     location.reload();
-                    // You can perform further actions if needed.
                 } else {
                     console.error(`Failed to delete trip with ID ${tripId}.`);
                 }
