@@ -7,6 +7,7 @@ import com.example.tripplanner.Repositories.ActivityRepository;
 import com.example.tripplanner.Repositories.SearchRepository;
 import com.example.tripplanner.Repositories.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,48 +18,51 @@ import java.util.List;
 @Controller
 public class ApiTestController {
 
-	UserRepository userDao;
-	ActivityRepository activityDao;
+    UserRepository userDao;
+    ActivityRepository activityDao;
 
-	SearchRepository searchDao;
+    SearchRepository searchDao;
 
-	public ApiTestController(UserRepository userDao, ActivityRepository activityDao, SearchRepository searchDao) {
-		this.userDao = userDao;
-		this.activityDao = activityDao;
-		this.searchDao = searchDao;
-	}
+    public ApiTestController(UserRepository userDao, ActivityRepository activityDao, SearchRepository searchDao) {
+        this.userDao = userDao;
+        this.activityDao = activityDao;
+        this.searchDao = searchDao;
+    }
+//    @Value("${api_key_one}")
+//    private String mapboxToken;
+    @GetMapping("/api-test")
+    public String showApiTest(Model model) {
+        User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("user", loggedInUser);
+//        model.addAttribute("mapboxToken", mapboxToken);
+        return "users/activities";
+    }
 
-	@GetMapping("/api-test")
-	public String showApiTest(Model model) {
-		User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		model.addAttribute("user", loggedInUser);
-		return "users/activities";
-	}
+    @GetMapping("/api/users")
+    @ResponseBody
+    public List<User> getAllUsers() {
+        return userDao.findAll();
+    }
 
-	@GetMapping("/api/users")
-	@ResponseBody
-	public List<User> getAllUsers() {
-		return userDao.findAll();
-	}
+    @GetMapping("/api/activities")
+    @ResponseBody
+    public List<Activity> getAllActivities() {
+        return activityDao.findAll();
+    }
 
-	@GetMapping("/api/activities")
-	@ResponseBody
-	public List<Activity> getAllActivities() {
-		return activityDao.findAll();
-	}
+    @GetMapping("/api/search")
+    @ResponseBody
+    public List<Search> getAllSearches() {
+        return searchDao.findAll();
+    }
 
-	@GetMapping("/api/search")
-	@ResponseBody
-	public List<Search> getAllSearches() {
-		return searchDao.findAll();
-	}
-	@PostMapping("/api/test")
-	@ResponseBody
-	public Search saveSearch(@RequestBody Search searchObject) throws JsonProcessingException {
+    @PostMapping("/api/test")
+    @ResponseBody
+    public Search saveSearch(@RequestBody Search searchObject) throws JsonProcessingException {
 //		System.out.println("Inside saveSearch");
 //		ObjectMapper mapper = new ObjectMapper();
 //		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchObject));
-		searchDao.save(searchObject);
-		return searchObject;
-	}
+        searchDao.save(searchObject);
+        return searchObject;
+    }
 }
