@@ -198,7 +198,7 @@
         let searchedCity = citySearch.value;
 
         try {
-            const data = await geocode(searchedCity, MAPBOX_TOKEN);
+            const data = await geocode(searchedCity, API_KEY_ONE);
             let lat = data[1];
             let long = data[0];
 
@@ -266,7 +266,7 @@
     async function packageSearchObject(activities, search) {
         let activityList = [];
         for(const activity of activities) {
-            let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+            let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
 // console.log(address);
             let newActivity = {
                 name: activity.name,
@@ -281,7 +281,7 @@
             activityList.push(newActivity)
         }
 // activities.forEach(async (activity) => {
-//     let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+//     let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
 //     console.log(address);
 //     let newActivity = {
 //         name: activity.name,
