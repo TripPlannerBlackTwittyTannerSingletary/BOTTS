@@ -19,7 +19,6 @@ public class ApiTestController {
 
 	UserRepository userDao;
 	ActivityRepository activityDao;
-
 	SearchRepository searchDao;
 
 	public ApiTestController(UserRepository userDao, ActivityRepository activityDao, SearchRepository searchDao) {
