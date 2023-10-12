@@ -250,6 +250,9 @@ h1 {
     color: #1f6b7b;
     margin: 60px;
     display: none;
+    position: relative;
+    top: -159px;
+    left: 20px;
 }
 
 .animation{
@@ -319,4 +322,11 @@ h1 {
         opacity: 0;
         top: 6.94em
     }
+}
+
+
+/*Footer */
+
+footer {
+    margin-top: auto;
 }
