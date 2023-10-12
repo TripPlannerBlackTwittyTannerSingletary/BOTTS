@@ -208,8 +208,8 @@
             let long = data[0];
 
             const apiUrlToken = "https://test.api.amadeus.com/v1/security/oauth2/token";
-            const clientId = "J1sv7nr6Am8RtlvTIL0vAHKPNXxnuXrK";
-            const clientSecret = "7N7VgqM7AFQnG00V";
+            const clientId = "bf8eAtJgHUGxJqsnrDN7nqp7zygPMQKf";
+            const clientSecret = "QhzbGdy5eQ66Y0CE";
 
             const formData = new URLSearchParams();
             formData.append("grant_type", "client_credentials");
