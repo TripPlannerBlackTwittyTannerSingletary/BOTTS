@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -52,8 +53,16 @@ public class ApiTestController {
 
     @GetMapping("/api/search")
     @ResponseBody
-    public List<Search> getAllSearches() {
-        return searchDao.findAll();
+    public List<Activity> getAllSearches(@RequestBody Search searchObject) {
+        System.out.println("inside getAllSearches");
+        if(searchDao.existsBySearch(searchObject.getSearch())) {
+            Search serverResult =searchDao.findBySearch(searchObject.getSearch());
+            return serverResult.getActivities();
+
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
     @PostMapping("/api/test")

@@ -249,17 +249,37 @@
     }
 
     document.querySelector('#search-city').addEventListener('click', async () => {
+        console.log("inside search city event listener");
         loader.style.display = 'block';
+        console.log(citySearch.value)
         try {
-            const activityData = await goToInput();
-            console.log('paginate() call')
-            console.log(activityData)
+            // fetch to '/api/search'
+            let baseUrl = '/api/search';
+// let endPoint = '/geocoding/v5/mapbox.places/';
+            let results = await fetch(baseUrl, {
 
-            packageSearchObject(activityData.data, citySearch.value)
-// renderCards(activityData.data);
-            paginate(activityData.data, itemsPerPage, paginationContainer);
-            console.log('paginate() call')
-            loader.style.display = 'none';
+// Adding method type
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify({search: citySearch.value})
+            });
+            console.log(results);
+            let activityData = await results.json();
+            console.log(activityData.length);
+            if(activityData.length === 0) {
+                // let activityData = <our_api_call>
+                // if activityData is null, run this code
+                activityData = await goToInput();
+                console.log(activityData);
+                console.log('paginate() call')
+                console.log(activityData)
+                activityData = await packageSearchObject(activityData, citySearch.value)
+            }
+            renderCards(activityData);
+            paginate(activityData, itemsPerPage, paginationContainer);
         } catch (error) {
             console.error('Error rendering cards:', error);
         }
