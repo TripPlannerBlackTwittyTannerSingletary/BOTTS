@@ -2,6 +2,7 @@
 <html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.w3.org/1999/XSL/Transform">
 <head>
+    <th:block th:insert="~{partials/header :: head}"></th:block>
     <meta charset="UTF-8">
     <title>GoTravel</title>
 
@@ -73,12 +74,19 @@
                 </button>
             </a>
         </div>
+
         <!--UI Button End-->
     </div>
+
 </div>
 
 <!--Activities List Section-->
 <section class="py-6 bg-gray-100">
+    <svg class="arrows">
+        <path class="a1" d="M0 0 L30 32 L60 0"></path>
+        <path class="a2" d="M0 20 L30 52 L60 20"></path>
+        <path class="a3" d="M0 40 L30 72 L60 40"></path>
+    </svg>
     <div class="container">
         <div class="container pb-2 pt-5 d-flex justify-content-center">
             <!--        <div class="row mb-5">-->

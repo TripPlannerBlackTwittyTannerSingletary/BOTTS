@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Activities</title>
-    <script th:src="@{/js/keys.js}"></script>
+    <script th:src="@{/keys.js}"></script>
     <meta name="_csrf" data-th-content="${_csrf.token}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,62 +21,62 @@
 
 <div class="px-5 mt-3">
     <div class="d-flex align-items-center p-4 p-md-5 mb-4 rounded text-body-emphasis mt-2 px-5"
-         style="height: 500px">
+         style="height: 400px">
         <div class="col-lg-6 px-0" style="z-index: 5">
             <h1 class="display-4 fst-italic">Activities at Your Fingertips</h1>
             <p class="lead my-3">Search for the fun activities that you love.</p>
         </div>
     </div>
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-body-secondary">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                        additional content.</p>
-                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                        Continue reading
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <image th:src="@{/IMG/download.jpeg}" width="200px" height="220px"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-body-secondary">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                        additional content.</p>
-                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                        Continue reading
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <image th:src="@{/IMG/download (1).jpeg}" width="200px" height="220px"/>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="row mb-2">-->
+<!--        <div class="col-md-6">-->
+<!--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+<!--                <div class="col p-4 d-flex flex-column position-static">-->
+<!--                    <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>-->
+<!--                    <h3 class="mb-0">Post title</h3>-->
+<!--                    <div class="mb-1 text-body-secondary">Nov 11</div>-->
+<!--                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to-->
+<!--                        additional content.</p>-->
+<!--                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">-->
+<!--                        Continue reading-->
+<!--                        <svg class="bi">-->
+<!--                            <use xlink:href="#chevron-right"></use>-->
+<!--                        </svg>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col-auto d-none d-lg-block">-->
+<!--                    <image th:src="@{/IMG/download.jpeg}" width="200px" height="220px"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+<!--                <div class="col p-4 d-flex flex-column position-static">-->
+<!--                    <strong class="d-inline-block mb-2 text-success-emphasis">Explore</strong>-->
+<!--                    <h3 class="mb-0">Post title</h3>-->
+<!--                    <div class="mb-1 text-body-secondary">Nov 11</div>-->
+<!--                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to-->
+<!--                        additional content.</p>-->
+<!--                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">-->
+<!--                        Continue reading-->
+<!--                        <svg class="bi">-->
+<!--                            <use xlink:href="#chevron-right"></use>-->
+<!--                        </svg>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col-auto d-none d-lg-block">-->
+<!--                    <image th:src="@{/IMG/download (1).jpeg}" width="200px" height="220px"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
   <div id="api-data">
     <input type="text" id="searchBox" placeholder="Enter a city">
     <!--UI Button for search start-->
-    <button id="search-city" class="btn-53 py-2" type="submit">
+
+      <button id="search-city" class="btn-53 py-2" type="submit">
       <div class="original">Search</div>
       <div class="letters d-flex justify-content-center">
-
         <span>S</span>
         <span>e</span>
         <span>a</span>
@@ -85,6 +85,18 @@
         <span>h</span>
       </div>
     </button>
+      <div>
+          <h1 id="animation">
+              <span class="animation let1">l</span>
+              <span class="animation let2">o</span>
+              <span class="animation let3">a</span>
+              <span class="animation let4">d</span>
+              <span class="animation let5">i</span>
+              <span class="animation let6">n</span>
+              <span class="animation let7">g</span>
+          </h1>
+      </div>
+      <br>
     <!--UI Button for search end-->
     <div id="card-container" class="container-hero d-flex flex-wrap justify-content-between">
     </div>
@@ -157,13 +169,75 @@
                     </th:if>
                     <th:if sec:authorize="!isAuthenticated()">
                         <h2>Login or register to start planning!</h2>
-                        <a href="/login" class="btn btn-primary">Login</a>
-                        <a href="/register" class="btn btn-success">Register</a>
+                        <div class="d-flex gap-2">
+                            <a href="/login" style="flex: 1 0 0;">
+
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Login</div>
+                                <div class="letters d-flex justify-content-center">
+
+                                    <span>L</span>
+                                    <span>o</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>n</span>
+                                </div>
+                            </button>
+                            </a>
+                            <a href="/register" style="flex: 1 0 0;">
+
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Register</div>
+                                <div class="letters d-flex justify-content-center">
+
+                                    <span>R</span>
+                                    <span>e</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>s</span>
+                                    <span>t</span>
+                                    <span>e</span>
+                                    <span>r</span>
+                                </div>
+                            </button>
+                            </a>
+                        </div>
                     </th:if>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="save-activity">Save changes</button>
+                <div class="modal-footer d-flex justify-content-center gap-2" id="save-activity">
+                    <!--UI Button for register start-->
+                    <button class="btn-53 container-fluid py-2" type="button">
+                        <div class="original">Save changes</div>
+                        <div class="letters d-flex justify-content-center">
+
+                            <span>S</span>
+                            <span>a</span>
+                            <span>v</span>
+                            <span>e</span>
+                            <span>&nbsp;</span>
+                            <span>C</span>
+                            <span>h</span>
+                            <span>a</span>
+                            <span>n</span>
+                            <span>g</span>
+                            <span>e</span>
+                            <span>s</span>
+                        </div>
+                    </button>
+                    <!--UI Button for register end-->
+                    <!--UI Button for close start-->
+                    <button class="btn-53 container-fluid py-2" type="button" data-dismiss="modal">
+                        <div class="original">Close</div>
+                        <div class="letters d-flex justify-content-center">
+
+                            <span>C</span>
+                            <span>l</span>
+                            <span>o</span>
+                            <span>s</span>
+                            <span>e</span>
+                        </div>
+                    </button>
+                    <!--UI Button for close end-->
                 </div>
             </div>
         </div>

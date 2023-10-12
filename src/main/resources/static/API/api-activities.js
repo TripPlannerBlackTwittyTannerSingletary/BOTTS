@@ -78,12 +78,13 @@
 
 // Create additional card body for links
         const cardBodyLinks = document.createElement('div');
-        cardBodyLinks.className = 'card-body d-flex justify-content-center';
+        cardBodyLinks.className = 'card-body d-flex gap-3';
 
 // Create card links
         const addToTripButton = document.createElement('button');
         addToTripButton.type = 'button';
-        addToTripButton.className = 'btn-53 py-2 container-fluid';
+        addToTripButton.className = 'btn-53 py-2';
+        addToTripButton.style = 'flex: 1 0 0;'
         addToTripButton.innerHTML = `
                          <div class="original">Add to Trip</div>
                     <div class="letters d-flex justify-content-center">
@@ -118,7 +119,8 @@
 
         const cardLink2 = document.createElement('a');
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
-        cardLink2.className = 'btn-53 py-2 container-fluid card-link';
+        cardLink2.className = 'btn-53 py-2 card-link';
+        cardLink2.style = 'flex: 1 0 0;'
         cardLink2.innerHTML = `
                     <div class="original">Book Now!</div>
                     <div class="letters d-flex justify-content-center">
@@ -138,7 +140,6 @@
         const modalButton = document.createElement('button');
         modalButton.type = 'button';
         modalButton.className = 'btn-53 container-fluid py-2';
-        // modalButton.innerText = 'View Description';
         modalButton.innerHTML = `
                     <div class="original">View Description</div>
                     <div class="letters d-flex justify-content-center">
@@ -196,12 +197,13 @@
     let itemsPerPage = 25;
     let paginationContainer = document.getElementById('card-container');
 
+    const loader = document.getElementById('animation');
 
     async function goToInput() {
         let searchedCity = citySearch.value;
 
         try {
-            const data = await geocode(searchedCity, MAPBOX_TOKEN);
+            const data = await geocode(searchedCity, API_KEY_ONE);
             let lat = data[1];
             let long = data[0];
 
@@ -249,6 +251,7 @@
     }
 
     document.querySelector('#search-city').addEventListener('click', async () => {
+        loader.style.display = 'block';
         try {
             const activityData = await goToInput();
             console.log('paginate() call')
@@ -258,6 +261,7 @@
 // renderCards(activityData.data);
             paginate(activityData.data, itemsPerPage, paginationContainer);
             console.log('paginate() call')
+            loader.style.display = 'none';
         } catch (error) {
             console.error('Error rendering cards:', error);
         }
@@ -267,7 +271,7 @@
     async function packageSearchObject(activities, search) {
         let activityList = [];
         for(const activity of activities) {
-            let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+            let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
 // console.log(address);
             let newActivity = {
                 name: activity.name,
@@ -282,7 +286,7 @@
             activityList.push(newActivity)
         }
 // activities.forEach(async (activity) => {
-//     let address = await reverseGeocode2(activity.geoCode, MAPBOX_TOKEN);
+//     let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
 //     console.log(address);
 //     let newActivity = {
 //         name: activity.name,
