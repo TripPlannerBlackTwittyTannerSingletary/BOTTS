@@ -232,15 +232,43 @@
 }
 
 .hero-banner {
+    margin-top: 66px;
     position: absolute;
     width: 100%;
     opacity: 55%;
+}
+.hero-banner img{
+    z-index: 5;
+}
+#heroText{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
 
+nav.navbar {
+    z-index: 99;
+}
+
+.hero-img {
+    max-height: 395px;
 }
 
 body {
     font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
+footer {
+    margin-top: auto;
+}
+
+h3 {
+    color: #1f6b7b;
 }
 
 
