@@ -2,6 +2,7 @@
 <html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.w3.org/1999/XSL/Transform">
 <head>
+    <th:block th:insert="~{partials/header :: head}"></th:block>
     <meta charset="UTF-8">
     <title>GoTravel</title>
 
@@ -22,11 +23,12 @@
         <nav>
             <img th:src="@{/IMG/GoTravelWhite.png}">
             <ul>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/profile">My Profile</a></li>
                 <li><a th:href="@{/logout}">Logout</a></li>
             </ul>
         </nav>
     </th:if>
+
 
     <th:if sec:authorize="!isAuthenticated()">
         <nav>
