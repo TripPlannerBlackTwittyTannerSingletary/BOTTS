@@ -93,6 +93,10 @@
 /*}*/
 
 /*UI Button*/
+.btn-53 * {
+    pointer-events: none;
+}
+
 .btn-53,
 .btn-53 *,
 .btn-53 :after,

@@ -92,7 +92,40 @@ h1 {
 h2 {
     padding: 6px;
 }
+
+/*modal edit profile*/
+#editForm {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+
+
 /*UI Button*/
+.btn-53 * {
+    pointer-events: none;
+}
+
 .btn-53,
 .btn-53 *,
 .btn-53 :after,
@@ -229,4 +262,12 @@ h2 {
 
 .deleteTrip div, .deleteTrip span {
     pointer-events: none;
+}
+
+#editProfileBtn {
+    width: 10rem;
+}
+
+#openModalBtn {
+    width: 405px;
 }
