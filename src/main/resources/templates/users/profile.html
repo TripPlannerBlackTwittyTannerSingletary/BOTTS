@@ -190,21 +190,23 @@
                     <div class="buttons d-flex gap-2">
                         <!--                <button class="btn btn-sm activity-button">See more!</button>-->
                         <!--UI Button for create trip start-->
-                        <button class="btn-53 py-2 mb-3" style="flex: 1 0 0;">
-                            <div class="original">See more!</div>
-                            <div class="letters d-flex justify-content-center">
+                        <a th:href="@{|/trips/${trip.id}|}">
+                            <button class="btn-53 py-2 mb-3" style="flex: 1 0 0;">
+                                <div class="original">See more!</div>
+                                <div class="letters d-flex justify-content-center">
 
-                                <span>S</span>
-                                <span>e</span>
-                                <span>e</span>
-                                <span>&nbsp;</span>
-                                <span>M</span>
-                                <span>o</span>
-                                <span>r</span>
-                                <span>e</span>
-                                <span>!</span>
-                            </div>
-                        </button>
+                                    <span>S</span>
+                                    <span>e</span>
+                                    <span>e</span>
+                                    <span>&nbsp;</span>
+                                    <span>M</span>
+                                    <span>o</span>
+                                    <span>r</span>
+                                    <span>e</span>
+                                    <span>!</span>
+                                </div>
+                            </button>
+                        </a>
                         <!--UI Button for create trip info end-->
                         <!--UI Button for delete trip start-->
                         <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}" style="flex: 1 0 0;">
