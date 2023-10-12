@@ -4,6 +4,7 @@ package com.example.tripplanner.Models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Trip {
             joinColumns={@JoinColumn(name="trip_id")},
             inverseJoinColumns={@JoinColumn(name="activity_id")}
     )
-    private List<Activity> activities;
+    private List<Activity> activities = new ArrayList<>();
     // Constructors
 
 
@@ -149,5 +150,9 @@ public class Trip {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    public void addActivity(Activity activity) {
+        this.activities.add(activity);
     }
 }
