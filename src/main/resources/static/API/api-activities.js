@@ -49,6 +49,7 @@
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
         cardDiv.style.width = '18rem';
+        cardDiv.setAttribute("data-activity-id", activity.id)
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
@@ -103,9 +104,13 @@
         `;
 
 // Add a click event listener to trigger the modal when the button is clicked
-        addToTripButton.addEventListener('click', () => {
+        addToTripButton.addEventListener('click', e => {
             $('#tripModal').modal('show'); // Use Bootstrap modal function to show the modal
+            console.log(e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
+            $('#tripModal').attr('data-activity-id', e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
         });
+
+
 
         const closeModalButton = document.querySelector('.modal .close');
         closeModalButton.addEventListener('click', () => {
@@ -375,6 +380,7 @@
         console.log(response)
         const trips = await response.json();
         const tripSelect = document.getElementById('tripSelect');
+        tripSelect.innerHTML = '';
 
         trips.forEach(trip => {
             const option = document.createElement('option');
@@ -393,22 +399,34 @@
         const parsedActivityId = parseInt(activityId);
         console.log(typeof parsedActivityId)
         console.log(typeof parsedTripId)
-        const url = `/api/activities/addactivity?tripId=${parsedTripId}&activityId=${parsedActivityId}`;
-        // const data = {
-        //     tripId: parsedTripId,
-        //     activityId: parsedActivityId
-        // };
-
+        const url = '/api/activities/addActivity/'+activityId;
+        const data = {
+            id: parsedTripId
+        };
+        console.log(csrfToken);
         await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': csrfToken
             },
-            // body: JSON.stringify(data)
+            body: JSON.stringify(data)
         });
     }
 
+
+    const saveActivityButton = document.getElementById('save-activity');
+    saveActivityButton.addEventListener('click', () => {
+        const selectedTripId = document.getElementById('tripSelect').value;
+
+        saveActivityToTrip(selectedTripId, $('#tripModal').attr('data-activity-id'))
+            .then(() => {
+                $('#tripModal').modal('hide'); // Close the modal after saving the activity
+            })
+            .catch(error => {
+                console.error('Error saving activity to trip:', error);
+            });
+    });
 
 
 
