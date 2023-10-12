@@ -73,10 +73,16 @@
                     <!--                <span class="closeEdit" id="closeModalEdit">&times;</span>-->
                     <h2>Edit Your Profile</h2>
                     <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
-                        <label for="newEmail">New Email:</label>
-                        <input type="email" id="newEmail" name="newEmail" th:field="*{email}"><br><br>
-                        <label for="newLocation">New Location:</label>
-                        <input type="text" id="newLocation" name="newLocation" th:field="*{location}"><br><br>
+                        <div class="form-group">
+                            <label for="newEmail"></label>
+                            <input type="email" id="newEmail" name="newEmail" th:field="*{email}"
+                                   placeholder="Enter your new email">
+                        </div>
+                        <div class="form-group">
+                            <label for="newLocation"></label>
+                            <input type="text" id="newLocation" name="newLocation" th:field="*{location}"
+                                   placeholder="Enter your new location">
+                        </div>
                         <!--                    <input type="submit" value="Save">-->
                         <!--UI Button for Save profile info start-->
                         <div class="d-flex gap-2">
