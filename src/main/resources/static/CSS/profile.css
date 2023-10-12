@@ -92,7 +92,12 @@ h1 {
 h2 {
     padding: 6px;
 }
+
 /*UI Button*/
+.btn-53 * {
+    pointer-events: none;
+}
+
 .btn-53,
 .btn-53 *,
 .btn-53 :after,
@@ -230,9 +235,11 @@ h2 {
 .deleteTrip div, .deleteTrip span {
     pointer-events: none;
 }
+
 #editProfileBtn {
     width: 10rem;
 }
+
 #openModalBtn {
     width: 405px;
 }
