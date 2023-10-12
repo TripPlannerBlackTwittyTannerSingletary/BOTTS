@@ -1,7 +1,8 @@
-(async () => {
+(() => {
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 
     function geocode(search, token) {
+        console.log(token);
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
         let startTime = new Date().getTime();
@@ -11,6 +12,7 @@
                 return res.json();
 // to get all the data from the request, comment out the following three lines...
             }).then(function (data) {
+                console.log(data);
                 return data.features[0].center;
             });
     }
@@ -29,6 +31,7 @@
     }
 
     function reverseGeocode2(coordinates, token) {
+        console.log(coordinates);
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl + endPoint + coordinates.longitude + "," + coordinates.latitude + '.json' + "?" + 'access_token=' + token)
@@ -53,7 +56,7 @@
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
-        img.src = activity.pictures[0]; // Set the image URL dynamically
+        img.src = activity.imageUrl; // Set the image URL dynamically
         img.className = 'card-img-top';
         img.alt = 'Card Image';
         cardDiv.appendChild(img);
@@ -183,6 +186,7 @@
     };
 
     const renderCards = (activityData) => {
+        console.log(activityData);
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerHTML = '';
 
@@ -193,7 +197,7 @@
     }
 
 
-    let items = goToInput();
+    // let items = goToInput();
     let itemsPerPage = 25;
     let paginationContainer = document.getElementById('card-container');
 
@@ -203,6 +207,7 @@
         let searchedCity = citySearch.value;
 
         try {
+
             const data = await geocode(searchedCity, API_KEY_ONE);
             let lat = data[1];
             let long = data[0];
@@ -249,18 +254,40 @@
             throw error;
         }
     }
-
-    document.querySelector('#search-city').addEventListener('click', async () => {
+    const searchCityButton = document.querySelector('#search-city');
+    console.log(searchCityButton);
+    searchCityButton.addEventListener('click', async () => {
+        console.log("inside search city event listener");
         loader.style.display = 'block';
+        console.log(citySearch.value)
         try {
-            const activityData = await goToInput();
-            console.log('paginate() call')
-            console.log(activityData)
+            // fetch to '/api/search'
+            let baseUrl = '/api/search';
+// let endPoint = '/geocoding/v5/mapbox.places/';
+            let results = await fetch(baseUrl, {
 
-            packageSearchObject(activityData.data, citySearch.value)
-// renderCards(activityData.data);
-            paginate(activityData.data, itemsPerPage, paginationContainer);
-            console.log('paginate() call')
+// Adding method type
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify({search: citySearch.value})
+            });
+            console.log(results);
+            let activityData = await results.json();
+            console.log(activityData.length);
+            if(activityData.length === 0) {
+                // let activityData = <our_api_call>
+                // if activityData is null, run this code
+                activityData = await goToInput();
+                console.log(activityData);
+                console.log('paginate() call')
+                activityData = await packageSearchObject(activityData.data, citySearch.value)
+                console.log(activityData)
+            }
+            await renderCards(activityData);
+            await paginate(activityData, itemsPerPage, paginationContainer);
             loader.style.display = 'none';
         } catch (error) {
             console.error('Error rendering cards:', error);
@@ -270,7 +297,9 @@
 
     async function packageSearchObject(activities, search) {
         let activityList = [];
+        // console.log(activities);
         for(const activity of activities) {
+            // console.log(activity);
             let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
 // console.log(address);
             let newActivity = {
@@ -281,6 +310,7 @@
                 address: address,
                 latitude: activity.geoCode.latitude,
                 longitude: activity.geoCode.longitude,
+                imageUrl: activity.pictures[0],
                 amadeusApiId: activity.id
             }
             activityList.push(newActivity)
@@ -308,7 +338,7 @@
         }
         let baseUrl = '/api/test';
 // let endPoint = '/geocoding/v5/mapbox.places/';
-        return fetch(baseUrl, {
+        let results = await fetch(baseUrl, {
 
 // Adding method type
             method: "POST",
@@ -321,9 +351,10 @@
             body: JSON.stringify(searchObject)
 
         });
+        let data = await results.json();
+        return data.activities;
 
     }
-
 
 
     function paginate(items, itemsPerPage, paginationContainer) {
