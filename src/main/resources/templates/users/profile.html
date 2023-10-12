@@ -26,207 +26,224 @@
 <!--End My Profile Page Title-->
 
 <!--User Information Section-->
-<div class="row mx-auto pb-5 gap-3">
-    <!--Left Side-->
-    <div class="col-md-6 the-card pt-3" sec:authorize="isAuthenticated()">
-        <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
-        <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
+<!--<div class="row mx-auto pb-5 gap-3">-->
+<!--Left Side-->
 
-        <p>
-            Username: <span th:text="${user.username}"></span><br>
-            Email: <span th:text="${user.email}"></span><br>
-            Location: <span th:text="${user.location}"></span><br>
-        </p>
+<!--    class="col-md-6 the-card pt-3"-->
+<div class="container d-flex" sec:authorize="isAuthenticated()">
+    <div class="row" style="flex: 1 0 0;">
+        <div class="col">
+            <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
+            <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
+
+            <p>
+                Username: <span th:text="${user.username}"></span><br>
+                Email: <span th:text="${user.email}"></span><br>
+                Location: <span th:text="${user.location}"></span><br>
+            </p>
 
 
-        <!--User Edit profile modal start-->
-        <!--UI Button Start for edit profile-->
-        <button id="editProfileBtn" type="button" class="btn-53 py-2">
-            <div class="original">Edit profile</div>
-            <div class="letters">
+            <!--User Edit profile modal start-->
+            <!--UI Button Start for edit profile-->
+            <button id="editProfileBtn" type="button" class="btn-53 py-2">
+                <div class="original">Edit profile</div>
+                <div class="letters">
 
-                <span>E</span>
-                <span>D</span>
-                <span>I</span>
-                <span>T</span>
-                <span>&nbsp;</span>
-                <span>P</span>
-                <span>R</span>
-                <span>O</span>
-                <span>F</span>
-                <span>I</span>
-                <span>L</span>
-                <span>E</span>
+                    <span>E</span>
+                    <span>D</span>
+                    <span>I</span>
+                    <span>T</span>
+                    <span>&nbsp;</span>
+                    <span>P</span>
+                    <span>R</span>
+                    <span>O</span>
+                    <span>F</span>
+                    <span>I</span>
+                    <span>L</span>
+                    <span>E</span>
+                </div>
+            </button>
+            <!--UI Button Ends for edit profile-->
+            <div id="editOverlay" class="editOverlay"></div>
+
+            <div class="editModal" id="editModal">
+                <div class="modal-content-edit">
+                    <!--                <span class="closeEdit" id="closeModalEdit">&times;</span>-->
+                    <h2>Edit Your Profile</h2>
+                    <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
+                        <label for="newEmail">New Email:</label>
+                        <input type="email" id="newEmail" name="newEmail" th:field="*{email}"><br><br>
+                        <label for="newLocation">New Location:</label>
+                        <input type="text" id="newLocation" name="newLocation" th:field="*{location}"><br><br>
+                        <!--                    <input type="submit" value="Save">-->
+                        <!--UI Button for Save profile info start-->
+                        <div class="d-flex gap-2">
+                            <button id="editSubmit" type="submit" class="btn-53 py-2 d-flex justify-content-center"
+                                    style="flex: 1 0 0;">
+                                <div class="original">Save</div>
+                                <div class="letters">
+
+                                    <span>S</span>
+                                    <span>A</span>
+                                    <span>V</span>
+                                    <span>E</span>
+                                </div>
+                            </button>
+
+                            <button id="closeModalEdit" type="button"
+                                    class="btn-53 py-2 d-flex justify-content-center" style="flex: 1 0 0;">
+                                <div class="original">Close</div>
+                                <div class="letters">
+
+                                    <span>C</span>
+                                    <span>l</span>
+                                    <span>o</span>
+                                    <span>s</span>
+                                    <span>E</span>
+                                </div>
+                            </button>
+                        </div>
+                        <!--UI Button for Save profile info end-->
+                    </form>
+                </div>
             </div>
-        </button>
-        <!--UI Button Ends for edit profile-->
-        <div id="editOverlay" class="editOverlay"></div>
 
-        <div class="editModal" id="editModal">
-            <div class="modal-content-edit">
-<!--                <span class="closeEdit" id="closeModalEdit">&times;</span>-->
-                <h2>Edit Your Profile</h2>
-                <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
-                    <label for="newEmail">New Email:</label>
-                    <input type="email" id="newEmail" name="newEmail" th:field="*{email}"><br><br>
-                    <label for="newLocation">New Location:</label>
-                    <input type="text" id="newLocation" name="newLocation" th:field="*{location}"><br><br>
-                    <!--                    <input type="submit" value="Save">-->
-                    <!--UI Button for Save profile info start-->
-                    <div class="d-flex gap-2">
-                        <button id="editSubmit" type="submit" class="btn-53 py-2 d-flex justify-content-center" style="flex: 1 0 0;">
-                            <div class="original">Save</div>
+            <!--User Edit profile modal end-->
+
+
+            <div id="overlay"></div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <!--            <span class="close" id="closeModalBtn">&times;</span>-->
+                    <h2>Create a Trip</h2>
+                    <form id="tripForm" method="post" action="/createTrip">
+                        <p>Name your trip!</p>
+                        <input class="nameModal" type="text" id="name" name="name" required>
+                        <p>Where would you like to go?</p>
+                        <input class="nameModal" type="text" id="location" name="location" required>
+                        <br>
+                        <input class="visually-hidden" th:value="${user.getId()}" id="user">
+
+                        <!--UI Button for create trip start-->
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn-53 py-2 d-flex justify-content-center"
+                                    style="flex: 1 0 0;">
+                                <div class="original">Create Trip</div>
+                                <div class="letters ">
+
+                                    <span>C</span>
+                                    <span>r</span>
+                                    <span>e</span>
+                                    <span>a</span>
+                                    <span>t</span>
+                                    <span>e</span>
+                                    <span>&nbsp;</span>
+                                    <span>T</span>
+                                    <span>r</span>
+                                    <span>i</span>
+                                    <span>p</span>
+                                </div>
+                            </button>
+                            <!--UI Button for create trip info end-->
+                            <button type="button" class="btn-53 py-2 d-flex justify-content-center"
+                                    style="flex: 1 0 0;"
+                                    id="closeModalBtn">
+                                <div class="original">Close</div>
+                                <div class="letters">
+
+                                    <span>C</span>
+                                    <span>l</span>
+                                    <span>o</span>
+                                    <span>s</span>
+                                    <span>e</span>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--Right Side-->
+            <!--    class="col-md-6 the-card pt-3"-->
+        </div>
+    </div>
+
+
+
+    <div class="row" style="flex: 1 0 0;">
+        <div class="col">
+            <h3>My Trips</h3>
+            <div class="trip" th:if="${#lists.size(user.getTrips()) == 0}">
+                <p>You currently have no trips! :( <br>
+                    Click the button below to add a trip!</p>
+            </div>
+            <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
+                <div class="card" th:each="trip: ${user.getTrips()}">
+                    <h1 th:text="${trip.getName()}"></h1>
+                    <h2 th:text="${trip.getLocation()}"></h2>
+                    <div class="buttons">
+                        <!--                <button class="btn btn-sm activity-button">See more!</button>-->
+                        <!--UI Button for create trip start-->
+                        <button class="btn-53 py-2 mb-3">
+                            <div class="original">See more!</div>
                             <div class="letters">
 
                                 <span>S</span>
-                                <span>A</span>
-                                <span>V</span>
-                                <span>E</span>
-                            </div>
-                        </button>
-
-                        <button id="closeModalEdit" type="button" class="btn-53 py-2 d-flex justify-content-center" style="flex: 1 0 0;">
-                            <div class="original">Close</div>
-                            <div class="letters">
-
-                                <span>C</span>
-                                <span>l</span>
+                                <span>e</span>
+                                <span>e</span>
+                                <span>&nbsp;</span>
+                                <span>M</span>
                                 <span>o</span>
-                                <span>s</span>
-                                <span>E</span>
+                                <span>r</span>
+                                <span>e</span>
+                                <span>!</span>
                             </div>
                         </button>
+                        <!--UI Button for create trip info end-->
+                        <!--UI Button for delete trip start-->
+                        <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}">
+                            <div class="original">Delete Trip</div>
+                            <div class="letters">
+                                <span>D</span>
+                                <span>e</span>
+                                <span>l</span>
+                                <span>e</span>
+                                <span>t</span>
+                                <span>e</span>
+                                <span>&nbsp;</span>
+                                <span>T</span>
+                                <span>r</span>
+                                <span>i</span>
+                                <span>p</span>
+                            </div>
+                        </button>
+                        <!--UI Button for delete trip info end-->
                     </div>
-                    <!--UI Button for Save profile info end-->
-                </form>
-            </div>
-        </div>
-
-        <!--User Edit profile modal end-->
-    </div>
-
-    <div id="overlay"></div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <!--            <span class="close" id="closeModalBtn">&times;</span>-->
-            <h2>Create a Trip</h2>
-            <form id="tripForm" method="post" action="/createTrip">
-                <p>Name your trip!</p>
-                <input class="nameModal" type="text" id="name" name="name" required>
-                <p>Where would you like to go?</p>
-                <input class="nameModal" type="text" id="location" name="location" required>
-                <br>
-                <input class="visually-hidden" th:value="${user.getId()}" id="user">
-
-                <!--UI Button for create trip start-->
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn-53 py-2 d-flex justify-content-center" style="flex: 1 0 0;">
-                        <div class="original">Create Trip</div>
-                        <div class="letters ">
-
-                            <span>C</span>
-                            <span>r</span>
-                            <span>e</span>
-                            <span>a</span>
-                            <span>t</span>
-                            <span>e</span>
-                            <span>&nbsp;</span>
-                            <span>T</span>
-                            <span>r</span>
-                            <span>i</span>
-                            <span>p</span>
-                        </div>
-                    </button>
-                    <!--UI Button for create trip info end-->
-                    <button type="button" class="btn-53 py-2 d-flex justify-content-center" style="flex: 1 0 0;"
-                            id="closeModalBtn">
-                        <div class="original">Close</div>
-                        <div class="letters">
-
-                            <span>C</span>
-                            <span>l</span>
-                            <span>o</span>
-                            <span>s</span>
-                            <span>e</span>
-                        </div>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--Right Side-->
-    <div class="col-md-6 the-card pt-3">
-        <h3>My Trips</h3>
-        <div class="trip" th:if="${#lists.size(user.getTrips()) == 0}">
-            <p>You currently have no trips! :( <br>
-                Click the button below to add a trip!</p>
-        </div>
-        <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
-            <div class="card" th:each="trip: ${user.getTrips()}">
-                <h1 th:text="${trip.getName()}"></h1>
-                <h2 th:text="${trip.getLocation()}"></h2>
-                <div class="buttons">
-                    <!--                <button class="btn btn-sm activity-button">See more!</button>-->
-                    <!--UI Button for create trip start-->
-                    <button class="btn-53 py-2 mb-3">
-                        <div class="original">See more!</div>
-                        <div class="letters">
-
-                            <span>S</span>
-                            <span>e</span>
-                            <span>e</span>
-                            <span>&nbsp;</span>
-                            <span>M</span>
-                            <span>o</span>
-                            <span>r</span>
-                            <span>e</span>
-                            <span>!</span>
-                        </div>
-                    </button>
-                    <!--UI Button for create trip info end-->
-                    <!--UI Button for delete trip start-->
-                    <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}">
-                        <div class="original">Delete Trip</div>
-                        <div class="letters">
-                            <span>D</span>
-                            <span>e</span>
-                            <span>l</span>
-                            <span>e</span>
-                            <span>t</span>
-                            <span>e</span>
-                            <span>&nbsp;</span>
-                            <span>T</span>
-                            <span>r</span>
-                            <span>i</span>
-                            <span>p</span>
-                        </div>
-                    </button>
-                    <!--UI Button for delete trip info end-->
                 </div>
             </div>
+            <!--        <button class="btn btn-secondary btn-md" >Add A Trip</button>-->
+
+            <!--UI Button for Add a trip start-->
+            <button id="openModalBtn" class="btn-53 py-2 mt-5">
+                <div class="original">Add A Trip</div>
+                <div class="letters">
+
+                    <span>A</span>
+                    <span>d</span>
+                    <span>d</span>
+                    <span>&nbsp;</span>
+                    <span>A</span>
+                    <span>&nbsp;</span>
+                    <span>T</span>
+                    <span>r</span>
+                    <span>i</span>
+                    <span>p</span>
+                </div>
+            </button>
+            <!--UI Button for add a trip info end-->
         </div>
-        <!--        <button class="btn btn-secondary btn-md" >Add A Trip</button>-->
-
-        <!--UI Button for Add a trip start-->
-        <button id="openModalBtn" class="btn-53 py-2 mt-5">
-            <div class="original">Add A Trip</div>
-            <div class="letters">
-
-                <span>A</span>
-                <span>d</span>
-                <span>d</span>
-                <span>&nbsp;</span>
-                <span>A</span>
-                <span>&nbsp;</span>
-                <span>T</span>
-                <span>r</span>
-                <span>i</span>
-                <span>p</span>
-            </div>
-        </button>
-        <!--UI Button for add a trip info end-->
     </div>
 
+</div>
 </div>
 </div>
 <!--End User Information Section-->
