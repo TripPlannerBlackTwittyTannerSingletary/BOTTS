@@ -230,3 +230,9 @@ h2 {
 .deleteTrip div, .deleteTrip span {
     pointer-events: none;
 }
+#editProfileBtn {
+    width: 10rem;
+}
+#openModalBtn {
+    width: 405px;
+}

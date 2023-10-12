@@ -45,24 +45,26 @@
 
             <!--User Edit profile modal start-->
             <!--UI Button Start for edit profile-->
-            <button id="editProfileBtn" type="button" class="btn-53 py-2">
-                <div class="original">Edit profile</div>
-                <div class="letters">
+            <div>
+                <button id="editProfileBtn" type="button" class="btn-53 py-2">
+                    <div class="original">Edit profile</div>
+                    <div class="letters d-flex justify-content-center">
 
-                    <span>E</span>
-                    <span>D</span>
-                    <span>I</span>
-                    <span>T</span>
-                    <span>&nbsp;</span>
-                    <span>P</span>
-                    <span>R</span>
-                    <span>O</span>
-                    <span>F</span>
-                    <span>I</span>
-                    <span>L</span>
-                    <span>E</span>
-                </div>
-            </button>
+                        <span>E</span>
+                        <span>D</span>
+                        <span>I</span>
+                        <span>T</span>
+                        <span>&nbsp;</span>
+                        <span>P</span>
+                        <span>R</span>
+                        <span>O</span>
+                        <span>F</span>
+                        <span>I</span>
+                        <span>L</span>
+                        <span>E</span>
+                    </div>
+                </button>
+            </div>
             <!--UI Button Ends for edit profile-->
             <div id="editOverlay" class="editOverlay"></div>
 
@@ -168,7 +170,6 @@
     </div>
 
 
-
     <div class="row" style="flex: 1 0 0;">
         <div class="col">
             <h3>My Trips</h3>
@@ -180,12 +181,12 @@
                 <div class="card" th:each="trip: ${user.getTrips()}">
                     <h1 th:text="${trip.getName()}"></h1>
                     <h2 th:text="${trip.getLocation()}"></h2>
-                    <div class="buttons">
+                    <div class="buttons d-flex gap-2">
                         <!--                <button class="btn btn-sm activity-button">See more!</button>-->
                         <!--UI Button for create trip start-->
-                        <button class="btn-53 py-2 mb-3">
+                        <button class="btn-53 py-2 mb-3" style="flex: 1 0 0;">
                             <div class="original">See more!</div>
-                            <div class="letters">
+                            <div class="letters d-flex justify-content-center">
 
                                 <span>S</span>
                                 <span>e</span>
@@ -200,9 +201,9 @@
                         </button>
                         <!--UI Button for create trip info end-->
                         <!--UI Button for delete trip start-->
-                        <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}">
+                        <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}" style="flex: 1 0 0;">
                             <div class="original">Delete Trip</div>
-                            <div class="letters">
+                            <div class="letters d-flex justify-content-center">
                                 <span>D</span>
                                 <span>e</span>
                                 <span>l</span>
@@ -223,9 +224,9 @@
             <!--        <button class="btn btn-secondary btn-md" >Add A Trip</button>-->
 
             <!--UI Button for Add a trip start-->
-            <button id="openModalBtn" class="btn-53 py-2 mt-5">
+            <button id="openModalBtn" class="btn-53 py-2 mt-5 mb-5">
                 <div class="original">Add A Trip</div>
-                <div class="letters">
+                <div class="letters d-flex justify-content-center">
 
                     <span>A</span>
                     <span>d</span>
