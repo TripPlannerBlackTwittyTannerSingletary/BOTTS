@@ -5,6 +5,10 @@ body {
     min-height: 100vh;
 }
 
+footer {
+    margin-top: auto;
+}
+
 .card{
     width: 20rem;
     margin: 6px;
@@ -36,10 +40,6 @@ header {
     color: #1f6b7b;
     letter-spacing: -3px;
     text-transform: uppercase;
-}
-
-footer {
-    margin-top: auto;
 }
 
 /*UI Button*/
