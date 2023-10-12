@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trip Details</title>
+</head>
+<body>
+<h1>Trip Details</h1>
+
+<!--or is it ${user.getTrips()}-->
+<h2>Trip Name: <span th:text="${trip.getName()}"></span></h2>
+<h2>Trip Location: <span th:text="${trip.getLocation()}"></span></h2>
+
+<h2>Activities:</h2>
+<ul>
+    <li th:each="activity : ${trip.getActivities()}">
+        <span th:text="${trip.name}"></span>
+    </li>
+</ul>
+</body>
+</html>
