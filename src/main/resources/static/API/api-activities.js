@@ -52,7 +52,7 @@
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
         cardDiv.style.width = '18rem';
-        cardDiv.setAttribute("data-activity-id", activity.id)
+        cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
