@@ -52,11 +52,12 @@
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
         cardDiv.style.width = '18rem';
-        cardDiv.setAttribute("data-activity-id", activity.id)
+        cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
         img.src = activity.imageUrl; // Set the image URL dynamically
+        img.style = 'max-height:300px';
         img.className = 'card-img-top';
         img.alt = 'Card Image';
         cardDiv.appendChild(img);
@@ -82,6 +83,7 @@
 // Create additional card body for links
         const cardBodyLinks = document.createElement('div');
         cardBodyLinks.className = 'card-body d-flex gap-3';
+
 
 // Create card links
         const addToTripButton = document.createElement('button');
@@ -122,6 +124,7 @@
 
         const cardLink2 = document.createElement('a');
         cardLink2.href = activity.bookingLink; // Set link URL dynamically
+        cardLink2.target = '_blank'
         cardLink2.className = 'btn-53 py-2 card-link';
         cardLink2.style = 'flex: 1 0 0;'
         cardLink2.innerHTML = `
@@ -406,6 +409,8 @@
         setupPagination();
     }
 
+
+
     async function populateTripDropdown() {
         const response = await fetch('/api/trips/trips'); // Replace this URL with the actual endpoint to fetch user's trips
         console.log(response)
@@ -449,12 +454,15 @@
     const saveActivityButton = document.getElementById('save-activity');
     saveActivityButton.addEventListener('click', () => {
         const selectedTripId = document.getElementById('tripSelect').value;
+        // const selectedTrip = document.getElementById('tripSelect').name
 
         saveActivityToTrip(selectedTripId, $('#tripModal').attr('data-activity-id'))
             .then(() => {
                 $('#tripModal').modal('hide'); // Close the modal after saving the activity
+                alert('Activity succesfully added to your trip!')
             })
             .catch(error => {
+                alert('There was a problem adding the activity to your trip.')
                 console.error('Error saving activity to trip:', error);
             });
     });
