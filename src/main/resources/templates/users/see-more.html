@@ -9,17 +9,23 @@
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
 <h1>Trip Details</h1>
+<br>
 
 <!--or is it ${user.getTrips()}-->
 <h2>Trip Name: <span th:text="${trip.getName()}"></span></h2>
 <h2>Trip Location: <span th:text="${trip.getLocation()}"></span></h2>
 
 <h2>Activities:</h2>
-<ul>
-    <li th:each="activity : ${trip.getActivities()}">
-        <span th:text="${trip.name}"></span>
-    </li>
-</ul>
+<div class="container">
+    <ul class="card" th:each="activity : ${trip.getActivities()}">
+        <h2><li th:text="${activity.getName()}"></li></h2>
+        <img class="actimg" th:src="${activity.getImageUrl()}">
+        <li th:utext="${activity.getDescription()}"></li>
+       <li><button><a th:href="${activity.getBookingLink()}" target="_blank">Book Now!</a></button></li>
+    </ul>
+
+<br>
+</div>
 
 
 <footer th:include="partials/footer :: footer"></footer>
