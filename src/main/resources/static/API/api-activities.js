@@ -286,7 +286,7 @@
                 activityData = await packageSearchObject(activityData.data, citySearch.value)
                 console.log(activityData)
             }
-            await renderCards(activityData);
+            // await renderCards(activityData);
             await paginate(activityData, itemsPerPage, paginationContainer);
             loader.style.display = 'none';
         } catch (error) {
