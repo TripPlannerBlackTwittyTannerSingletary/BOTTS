@@ -113,10 +113,6 @@
                                 <div class="card" th:each="trip: ${user.getTrips()}">
                                     <h1 th:text="${trip.getName()}"></h1>
                                     <h2 th:text="${trip.getLocation()}"></h2>
-                                    <div class="buttons">
-                                        <!--                    <button class="btn btn-sm activity-button">See more!</button>-->
-                                        <button class="btn btn-secondary btn-sm" id="addActivity">Add Activity</button>
-                                    </div>
                                 </div>
                             </div>
                             <!--              <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>-->
@@ -124,7 +120,6 @@
                         <select id="tripSelect" class="form-select mb-3">
                             <!-- Populate options dynamically using JavaScript -->
                         </select>
-                        <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>
                     </th:if>
                     <th:if sec:authorize="!isAuthenticated()">
                         <h2>Login or register to start planning!</h2>
