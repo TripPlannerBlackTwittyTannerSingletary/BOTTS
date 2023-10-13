@@ -294,8 +294,8 @@ input[type="email"]:focus {
 
 .trip-card {
     /*display: flex;*/
-    height: 280px;
-    width: 200px;
+    height: auto;
+    width: auto;
     background-color: #1f6b7b;
     border-radius: 10px;
     box-shadow: -1rem 0 3rem #000;
