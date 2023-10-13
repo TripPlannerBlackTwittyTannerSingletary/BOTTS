@@ -57,6 +57,7 @@
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
         img.src = activity.imageUrl; // Set the image URL dynamically
+        img.style = 'max-height:300px';
         img.className = 'card-img-top';
         img.alt = 'Card Image';
         cardDiv.appendChild(img);
