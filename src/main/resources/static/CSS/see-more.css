@@ -16,6 +16,7 @@ h1 {
     text-transform: uppercase;
     font-weight: 100;
     padding: 6px;
+    align-self: center;
 }
 
 li{
@@ -32,6 +33,32 @@ li{
 }
 
 .card{
-    width: 40rem;
+    width: 50%;
+    height: auto;
     margin: 2px;
 }
+.container{
+    padding: 5px;
+}
+
+.anchor {
+    align-self: center;
+}
+
+.header {
+    align-self: center;
+    display: flex;
+}
+h4{
+    align-self: center;
+}
+button {
+    background-color:#1f6b7b;
+    color: whitesmoke;
+    text-decoration-color: white;
+    margin: 2px;
+}
+a{
+    color: white;
+}
+

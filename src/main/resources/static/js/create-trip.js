@@ -95,6 +95,10 @@ deleteTripButtons.forEach(deleteTripButton => {
 
         const apiUrl = '/api/trips/deleteTrip' + tripId; // Replace with your actual API URL
 
+        const shouldDelete = window.confirm('Are you sure you want to delete this trip?');
+        if (shouldDelete) {
+
+
         fetch(apiUrl, {
             method: 'DELETE',
             headers: {
@@ -113,8 +117,10 @@ deleteTripButtons.forEach(deleteTripButton => {
             .catch(error => {
                 console.error('Error:', error);
             });
-    });
+    }});
 });
+
+
 
 
 
