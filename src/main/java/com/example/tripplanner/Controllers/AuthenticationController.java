@@ -19,8 +19,6 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-//        User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//        model.addAttribute("user", loggedInUser);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication instanceof AnonymousAuthenticationToken)) {
             return "users/login";
