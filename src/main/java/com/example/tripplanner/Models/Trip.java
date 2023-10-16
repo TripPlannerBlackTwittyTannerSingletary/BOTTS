@@ -86,9 +86,6 @@ public class Trip {
     public Trip(String name, Date returnDate, Date depatureDate, double latitude, double longitude) {
     }
 
-
-
-
     // Getters and Setters
 
     public long getId() {
