@@ -111,13 +111,22 @@
                             </div>
                             <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
                                 <div class="card" th:each="trip: ${user.getTrips()}">
-                                    <h1 th:text="${trip.getName()}"></h1>
-                                    <h2 th:text="${trip.getLocation()}"></h2>
+<!--                                    <h5 th:text="${trip.getName()}"></h5>-->
+<!--                                    <h6 th:text="${trip.getLocation()}"></h6>-->
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 th:text="${trip.getName()}"></h5>
+                                            <h6 th:text="${trip.getLocation()}"></h6>
+<!--                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                            <a th:href="@{'/trips/' + ${trip.id}}" class="card-link">View Trip Activities</a>
+<!--                                            <a href="#" class="card-link">Another link</a>-->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--              <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>-->
                         </div>
-                        <select id="tripSelect" class="form-select mb-3">
+                        <select id="tripSelect" class="form-select mx-3">
                             <!-- Populate options dynamically using JavaScript -->
                         </select>
                     </th:if>
