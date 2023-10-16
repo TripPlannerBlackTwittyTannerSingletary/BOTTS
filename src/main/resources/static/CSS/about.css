@@ -8,6 +8,9 @@ body {
 footer {
     margin-top: auto;
 }
+header{
+    align-self: center;
+}
 
 .card{
     width: 20rem;
