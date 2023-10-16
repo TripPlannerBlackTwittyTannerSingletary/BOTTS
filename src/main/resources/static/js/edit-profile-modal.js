@@ -20,20 +20,6 @@ window.addEventListener('click', (event) => {
         overlay.style.display = 'none';
     }
 });
-
-// editForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//
-//     const email = document.getElementById("email").value;
-//     const location = document.getElementById("location").value;
-//
-//     document.getElementById("email").textContent = email;
-//     document.getElementById("location").textContent = location;
-//
-//     editModal.style.display = "none";
-//     editOverlay.style.display = "none";
-// });
-
 async function submitEdit() {
     console.log("inside submitEdit");
     const email = document.getElementById('newEmail').value;
