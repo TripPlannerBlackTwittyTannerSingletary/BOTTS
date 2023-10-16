@@ -26,16 +26,6 @@ public class UserController {
 
 
 
-//
-//    @PostMapping("user/{userId}/trips")
-//    public ResponseEntity<User> addTripToUser(@PathVariable Long userId, @RequestBody Trip trip) {
-//        User user = UserService.addTripToUser(userId, trip);
-//        if (user != null) {
-//            return ResponseEntity.ok(user);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
 
     public UserController(UserRepository userDao, UserService userService) {
@@ -46,8 +36,6 @@ public class UserController {
     @PostMapping("/save-profile")
     @ResponseBody
     public String userProfile (
-//            @RequestParam("newEmail") String email,
-//            @RequestParam("newLocation") String location
             @RequestBody User user
     ) {
         User loggedInUser = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());

@@ -25,16 +25,11 @@ public class ActivityController {
     }
 
     @PostMapping("/addActivity/{activityApiId}")
-//    public ResponseEntity<String> addActivityToTrip(@RequestParam Long tripId, @RequestParam Long activityId) {
     public ResponseEntity<String> addActivityToTrip(@RequestBody Trip inputtedTrip, @PathVariable String activityApiId) {
         Trip trip = tripRepository.findById(inputtedTrip.getId()).get();
         Activity activity = activityRepository.findAllByAmadeusApiId(activityApiId).get(0);
 
         try {
-            // Retrieve the Trip and Activity objects from the database using the IDs
-//            Trip trip = tripRepository.findById(tripId).orElse(null);
-//            Activity activity = activityRepository.findById(String.valueOf(activityId)).orElse(null);
-
             // Check if both Trip and Activity objects exist
             if (trip != null && activity != null) {
                 // Add the activity to the trip and save the updated trip to the database

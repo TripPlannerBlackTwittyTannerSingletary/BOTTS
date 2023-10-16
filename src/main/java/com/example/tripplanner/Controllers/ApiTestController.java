@@ -68,9 +68,6 @@ public class ApiTestController {
 	@PostMapping("/api/test")
 	@ResponseBody
 	public Search saveSearch(@RequestBody Search searchObject) throws JsonProcessingException {
-//		System.out.println("Inside saveSearch");
-//		ObjectMapper mapper = new ObjectMapper();
-//		System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchObject));
 		searchDao.save(searchObject);
 		return searchObject;
 	}
