@@ -149,9 +149,9 @@ input[type="email"]:focus {
 .btn-53 {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
-    background-color: #1f6b7b;
+    background-color: #fff;
     background-image: none;
-    color: #fff;
+    color: #000;
     cursor: pointer;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 100%;
@@ -177,14 +177,14 @@ input[type="email"]:focus {
     border-radius: 999px;
     box-sizing: border-box;
     display: block;
-    font-weight: 500;
+    font-weight: 300;
     overflow: hidden;
     padding: 1.2rem 3rem;
     position: relative;
     text-transform: uppercase;
 }
 .btn-53 .original {
-    background: #fff;
+    background: #1f6b7b;
     color: #000;
     display: grid;
     inset: 0;
