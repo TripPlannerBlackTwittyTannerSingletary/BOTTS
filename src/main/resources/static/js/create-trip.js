@@ -30,47 +30,48 @@ window.addEventListener('click', (event) => {
     }
 });
 
-function submitForm() {
-    const name = document.getElementById('name').value;
-    const location = document.getElementById('location').value;
-    const userid = document.getElementById('user').value;
-    const tripData = {
-        name: name,
-        location: location,
-        User: userid
-        // Add any additional form fields here
-    };
 
-    fetch('/api/trips/createTrip', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken
-        },
-        body: JSON.stringify(tripData),
-    })
-        .then(response => {
-            if (response.status == 200) {
-                return response.text();
-            } else {
-                throw new Error('Error: ' + response.status);
-            }
-        })
-        .then(responseData => {
+async function submitForm() {
+    try {
+        const name = document.getElementById('name').value;
+        const location = document.getElementById('location').value;
+        const userid = document.getElementById('user').value;
+        const tripData = {
+            name: name,
+            location: location,
+            User: userid
+            // Add any additional form fields here
+        };
+
+        const response = await fetch('/api/trips/createTrip', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(tripData),
+        });
+
+        if (response.status === 200) {
+            const responseData = await response.text();
             console.log(responseData); // Display success message
             location.reload();
             closeModal(); // Close the modal after successful submission
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        } else {
+            throw new Error('Error: ' + response.status);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
+
 
 function closeModal() {
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
     modal.style.display = 'none';
     overlay.style.display = 'none';
+    location.reload();
 }
 
 // Add an event listener to the form submission
