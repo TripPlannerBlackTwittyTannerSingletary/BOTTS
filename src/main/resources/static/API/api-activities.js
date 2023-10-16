@@ -117,7 +117,7 @@
 
 
 
-        const closeModalButton = document.querySelector('.modal .close');
+        const closeModalButton = document.querySelector('#closeModal');
         closeModalButton.addEventListener('click', () => {
             $('#tripModal').modal('hide'); // Use Bootstrap modal function to hide the modal
         });
