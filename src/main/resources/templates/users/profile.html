@@ -20,10 +20,10 @@
 <!--End Navbar-->
 
 <!--start to profile background pic-->
-<div id="profile-hero" class="container">
-    <div class="row">
-        <img id="profile-pic" th:src="@{/IMG/Go-travel-profile-background-page.webp}" alt="profile-pic">
-    </div>
+<div id="profile-hero">
+    <video autoplay loop muted playsinline class="profile-video">
+        <source th:src="@{/IMG/AdobeStock_122436734.mov}" type="video/mp4">
+    </video>
 </div>
 <!--end to profile background pic-->
 <!--My Profile Page Title-->
@@ -41,10 +41,10 @@
 <div class="container d-flex" sec:authorize="isAuthenticated()">
     <div class="row" style="flex: 1 0 0;">
         <div class="col">
-            <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
-            <img src="/IMG/headshot.jpg" height="100px" width="100px"/>
+            <h2 class="mb-3">Welcome, <span th:text="${user.firstName}"></span></h2>
+            <img id="profile-img" src="/IMG/headshot.jpg" height="100px" width="100px"/>
 
-            <p>
+            <p class="mt-3">
                 Username: <span th:text="${user.username}"></span><br>
                 Email: <span th:text="${user.email}"></span><br>
                 Location: <span th:text="${user.location}"></span><br>
@@ -199,15 +199,15 @@
                     <!--added new cards-->
                     <!--                <div class="container">-->
                     <div class="trip-card" th:each="trip: ${user.getTrips()}">
-                        <h2 th:text="${trip.getName()}"></h2>
-                        <h3 th:text="${trip.getLocation()}"></h3>
+                        <h2 class="h2-trip" th:text="${trip.getName()}"></h2>
+                        <h3 class="h3-trip" th:text="${trip.getLocation()}"></h3>
                         <div class="bar">
                             <div class="emptybar"></div>
                             <div class="filledbar"></div>
                         </div>
                         <div class="trip-buttons">
                             <a th:href="@{|/trips/${trip.id}|}">
-                                <button id="seeMoreBtn" class="btn-53 py-2 mb-3 container-fluid">
+                                <button id="seeMoreBtn" class="btn-53-trip py-2 mb-3 container-fluid">
                                     <div class="original">See more!</div>
                                     <div class="letters d-flex justify-content-center">
 
@@ -225,7 +225,7 @@
                             </a>
                             <!--UI Button for create trip info end-->
                             <!--UI Button for delete trip start-->
-                            <button id="deleteTripBtn" class="btn-53 py-2 deleteTrip mb-3 container-fluid" th:data-trip-id="${trip.id}">
+                            <button id="deleteTripBtn" class="btn-53-trip py-2 deleteTrip mb-3 container-fluid" th:data-trip-id="${trip.id}">
                                 <div class="original">Delete Trip</div>
                                 <div class="letters d-flex justify-content-center">
                                     <span>D</span>
