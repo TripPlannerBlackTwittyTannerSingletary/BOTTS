@@ -31,9 +31,12 @@ public class RegisterController {
     @PostMapping("/register")
     public String createPost(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
+        User newUser = usersDao.findByUsername(user.getUsername());
+        if(newUser != null){
+            return "redirect:/register?error";
+        }
         user.setPassword(hash);
         usersDao.save(user);
-
         return "redirect:/profile";
     }
 
