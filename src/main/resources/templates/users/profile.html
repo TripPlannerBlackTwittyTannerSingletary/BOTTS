@@ -25,25 +25,14 @@
     </div>
     <img class="hero-img" src="/IMG/Clouds-And-Mountains.jpg" style="width: 100%"/>
 </div>
-<!--start to profile background pic-->
-<!--<div id="profile-hero">-->
-<!--    <video autoplay loop muted playsinline class="profile-video">-->
-<!--        <source th:src="@{/IMG/AdobeStock_122436734.mov}" type="video/mp4">-->
-<!--    </video>-->
-<!--</div>-->
-<!--end to profile background pic-->
-<!--My Profile Page Title-->
 <div class="container pt-5 pb-5">
     <h1>My Profile</h1>
 </div>
 <!--End My Profile Page Title-->
 
-
 <!--User Information Section-->
-<!--<div class="row mx-auto pb-5 gap-3">-->
 <!--Left Side-->
 
-<!--    class="col-md-6 the-card pt-3"-->
 <div class="container d-flex" sec:authorize="isAuthenticated()">
     <div class="row" style="flex: 1 0 0;">
         <div class="col">
@@ -55,7 +44,6 @@
                 Email: <span th:text="${user.email}"></span><br>
                 Location: <span th:text="${user.location}"></span><br>
             </h5>
-
 
             <!--User Edit profile modal start-->
             <!--UI Button Start for edit profile-->
@@ -84,7 +72,6 @@
 
             <div class="editModal" id="editModal">
                 <div class="modal-content-edit">
-                    <!--                <span class="closeEdit" id="closeModalEdit">&times;</span>-->
                     <h2>Edit Your Profile</h2>
                     <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
                         <div class="form-group">
@@ -97,7 +84,6 @@
                             <input type="text" id="newLocation" name="newLocation" th:field="*{location}"
                                    placeholder="Enter your new location">
                         </div>
-                        <!--                    <input type="submit" value="Save">-->
                         <!--UI Button for Save profile info start-->
                         <div class="d-flex gap-2">
                             <button id="editSubmit" type="submit" class="btn-53 py-2 d-flex justify-content-center"
@@ -132,11 +118,9 @@
 
             <!--User Edit profile modal end-->
 
-
             <div id="overlay"></div>
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <!--            <span class="close" id="closeModalBtn">&times;</span>-->
                     <h2>Create a Trip</h2>
                     <form id="tripForm" method="post" action="/createTrip">
                         <p>Name your trip!</p>
@@ -185,13 +169,9 @@
                 </div>
             </div>
             <!--Right Side-->
-            <!--    class="col-md-6 the-card pt-3"-->
         </div>
     </div>
 
-
-    <!--    <div class="row" style="flex: 1 0 0;">-->
-    <!--        <div class="col">-->
     <div class="container-trip">
         <div class="row-trip">
             <div class="col-trip">
@@ -251,104 +231,36 @@
                             </button>
                         </div>
                     </div>
-                    <!--                    <div class="trip-card" th:each="trip: ${user.getTrips()}">-->
-                    <!--                        <h2 class="h2-trip" th:text="${trip.getName()}"></h2>-->
-                    <!--                        <h3 class="h3-trip" th:text="${trip.getLocation()}"></h3>-->
-                    <!--                        <div class="bar">-->
-                    <!--                            <div class="emptybar"></div>-->
-                    <!--                            <div class="filledbar"></div>-->
-                    <!--                        </div>-->
-                    <!--                        <div class="trip-buttons">-->
-                    <!--                            <a th:href="@{|/trips/${trip.id}|}">-->
-                    <!--                                <button id="seeMoreBtn" class="btn-53-trip py-2 mb-3 container-fluid">-->
-                    <!--                                    <div class="original">See more!</div>-->
-                    <!--                                    <div class="letters d-flex justify-content-center">-->
 
-                    <!--                                        <span>S</span>-->
-                    <!--                                        <span>e</span>-->
-                    <!--                                        <span>e</span>-->
-                    <!--                                        <span>&nbsp;</span>-->
-                    <!--                                        <span>M</span>-->
-                    <!--                                        <span>o</span>-->
-                    <!--                                        <span>r</span>-->
-                    <!--                                        <span>e</span>-->
-                    <!--                                        <span>!</span>-->
-                    <!--                                    </div>-->
-                    <!--                                </button>-->
-                    <!--                            </a>-->
-                    <!--                            &lt;!&ndash;UI Button for create trip info end&ndash;&gt;-->
-                    <!--                            &lt;!&ndash;UI Button for delete trip start&ndash;&gt;-->
-                    <!--                            <button id="deleteTripBtn" class="btn-53-trip py-2 deleteTrip mb-3 container-fluid" th:data-trip-id="${trip.id}">-->
-                    <!--                                <div class="original">Delete Trip</div>-->
-                    <!--                                <div class="letters d-flex justify-content-center">-->
-                    <!--                                    <span>D</span>-->
-                    <!--                                    <span>e</span>-->
-                    <!--                                    <span>l</span>-->
-                    <!--                                    <span>e</span>-->
-                    <!--                                    <span>t</span>-->
-                    <!--                                    <span>e</span>-->
-                    <!--                                    <span>&nbsp;</span>-->
-                    <!--                                    <span>T</span>-->
-                    <!--                                    <span>r</span>-->
-                    <!--                                    <span>i</span>-->
-                    <!--                                    <span>p</span>-->
-                    <!--                                </div>-->
-                    <!--                            </button>-->
-                    <!--                        </div>-->
-                    <!--                        &lt;!&ndash;UI Button for delete trip info end&ndash;&gt;-->
-                    <!--                    </div>-->
                 </div>
 
 
                 <!--added new cards end-->
+<!--delete modal-->
+                <div id="deleteModal" class="modal">
+                    <div class="modal-content">
+                        <p>Are you sure you want to delete this trip?</p>
+<!--                        <button id="deleteConfirm">Yes</button>-->
+                        <button id="deleteConfirm" class="btn-53-trip py-2 mb-3 container-fluid">
+                            <div class="original">Yes!</div>
+                            <div class="letters d-flex justify-content-center">
+                                <span>Y</span>
+                                <span>e</span>
+                                <span>s</span>
+                            </div>
+                        </button>
+<!--                        <button id="deleteCancel">No</button>-->
+                        <button id="deleteCancel" class="btn-53-trip py-2 mb-3 container-fluid">
+                            <div class="original">No!</div>
+                            <div class="letters d-flex justify-content-center">
+                                <span>N</span>
+                                <span>O</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
 
 
-                <!--                <div class="card" th:each="trip: ${user.getTrips()}">-->
-                <!--                    <h1 th:text="${trip.getName()}"></h1>-->
-                <!--                    <h2 th:text="${trip.getLocation()}"></h2>-->
-                <!--                    <div class="buttons d-flex gap-2">-->
-                <!--                        &lt;!&ndash;                <button class="btn btn-sm activity-button">See more!</button>&ndash;&gt;-->
-                <!--                        &lt;!&ndash;UI Button for create trip start&ndash;&gt;-->
-                <!--                        <a th:href="@{|/trips/${trip.id}|}">-->
-                <!--                            <button class="btn-53 py-2 mb-3" style="flex: 1 0 0;">-->
-                <!--                                <div class="original">See more!</div>-->
-                <!--                                <div class="letters d-flex justify-content-center">-->
-
-                <!--                                    <span>S</span>-->
-                <!--                                    <span>e</span>-->
-                <!--                                    <span>e</span>-->
-                <!--                                    <span>&nbsp;</span>-->
-                <!--                                    <span>M</span>-->
-                <!--                                    <span>o</span>-->
-                <!--                                    <span>r</span>-->
-                <!--                                    <span>e</span>-->
-                <!--                                    <span>!</span>-->
-                <!--                                </div>-->
-                <!--                            </button>-->
-                <!--                        </a>-->
-                <!--                        &lt;!&ndash;UI Button for create trip info end&ndash;&gt;-->
-                <!--                        &lt;!&ndash;UI Button for delete trip start&ndash;&gt;-->
-                <!--                        <button class="btn-53 py-2 deleteTrip mb-3" th:data-trip-id="${trip.id}" style="flex: 1 0 0;">-->
-                <!--                            <div class="original">Delete Trip</div>-->
-                <!--                            <div class="letters d-flex justify-content-center">-->
-                <!--                                <span>D</span>-->
-                <!--                                <span>e</span>-->
-                <!--                                <span>l</span>-->
-                <!--                                <span>e</span>-->
-                <!--                                <span>t</span>-->
-                <!--                                <span>e</span>-->
-                <!--                                <span>&nbsp;</span>-->
-                <!--                                <span>T</span>-->
-                <!--                                <span>r</span>-->
-                <!--                                <span>i</span>-->
-                <!--                                <span>p</span>-->
-                <!--                            </div>-->
-                <!--                        </button>-->
-                <!--                        &lt;!&ndash;UI Button for delete trip info end&ndash;&gt;-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--        <button class="btn btn-secondary btn-md" >Add A Trip</button>-->
 
                 <!--UI Button for Add a trip start-->
 

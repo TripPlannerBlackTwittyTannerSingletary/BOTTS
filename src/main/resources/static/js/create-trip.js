@@ -71,7 +71,6 @@ function closeModal() {
     const overlay = document.getElementById('overlay');
     modal.style.display = 'none';
     overlay.style.display = 'none';
-    // location.reload();
 }
 
 // Add an event listener to the form submission
@@ -79,7 +78,6 @@ function closeModal() {
 tripForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     await submitForm();
-    // location.reload();
 });
 
 
@@ -89,37 +87,56 @@ tripForm.addEventListener('submit', async (event) => {
 
 const deleteTripButtons = document.querySelectorAll(".deleteTrip");
 
+
+
 deleteTripButtons.forEach(deleteTripButton => {
     deleteTripButton.addEventListener("click", (e) => {
         e.preventDefault();
         const tripId = e.target.getAttribute('data-trip-id');
+        const deleteModal = document.getElementById('deleteModal');
+        const deleteConfirm = document.getElementById('deleteConfirm');
+        const deleteCancel = document.getElementById('deleteCancel');
 
-        const apiUrl = '/api/trips/deleteTrip' + tripId; // Replace with your actual API URL
+        deleteModal.style.display = 'block';
 
-        const shouldDelete = window.confirm('Are you sure you want to delete this trip?');
-        if (shouldDelete) {
-
-
-        fetch(apiUrl, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
+        deleteModal.addEventListener("click", (event) => {
+            if (event.target === deleteModal) {
+                deleteModal.style.display = 'none';
             }
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    console.log(`Trip with ID ${tripId} has been deleted.`);
-                    location.reload();
-                } else {
-                    console.error(`Failed to delete trip with ID ${tripId}.`);
+        });
+
+
+        deleteConfirm.addEventListener("click", () => {
+            const apiUrl = '/api/trips/deleteTrip' + tripId; // Replace with your actual API URL
+
+            fetch(apiUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
                 }
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }});
+                .then(response => {
+                    if (response.status === 200) {
+                        console.log(`Trip with ID ${tripId} has been deleted.`);
+                        location.reload();
+                    } else {
+                        console.error(`Failed to delete trip with ID ${tripId}.`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+            deleteModal.style.display = 'none';
+        });
+
+        deleteCancel.addEventListener("click", () => {
+            deleteModal.style.display = 'none';
+        });
+    });
 });
+
 
 
 
