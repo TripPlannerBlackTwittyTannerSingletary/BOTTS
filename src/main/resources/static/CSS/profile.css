@@ -643,7 +643,7 @@ nav.navbar {
     text-transform: uppercase;
 }
 .btn-53-trip-delete .original {
-    background: darkred;
+    background: #1f6b7b;
     color: #fff;
     display: grid;
     inset: 0;
