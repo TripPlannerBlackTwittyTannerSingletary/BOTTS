@@ -46,7 +46,7 @@ async function submitEdit() {
             const responseData = await response.text();
             console.log(responseData);
             closeModal();
-            location.reload();
+            await location.reload();
         } else {
             console.error('Error:', response.status);
         }
@@ -59,13 +59,13 @@ function closeModal() {
     const overlay = document.getElementById('overlay');
     modal.style.display = 'none';
     overlay.style.display = 'none';
+    location.reload();
 }
 
 
 editForm.addEventListener('submit', (event) => {
-    event.preventDefault()
-    submitEdit()
-    location.reload()
+    event.preventDefault();
+    submitEdit();
 });
 
 
