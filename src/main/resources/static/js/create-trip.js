@@ -34,11 +34,11 @@ window.addEventListener('click', (event) => {
 async function submitForm() {
     try {
         const name = document.getElementById('name').value;
-        const location = document.getElementById('location').value;
+        const locationName = document.getElementById('location').value;
         const userid = document.getElementById('user').value;
         const tripData = {
             name: name,
-            location: location,
+            location: locationName,
             User: userid
             // Add any additional form fields here
         };
@@ -55,8 +55,8 @@ async function submitForm() {
         if (response.status === 200) {
             const responseData = await response.text();
             console.log(responseData); // Display success message
-            location.reload();
             closeModal(); // Close the modal after successful submission
+           location.reload();
         } else {
             throw new Error('Error: ' + response.status);
         }
@@ -71,15 +71,15 @@ function closeModal() {
     const overlay = document.getElementById('overlay');
     modal.style.display = 'none';
     overlay.style.display = 'none';
-    location.reload();
+    // location.reload();
 }
 
 // Add an event listener to the form submission
 
-tripForm.addEventListener('submit', (event) => {
+tripForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    submitForm();
-    location.reload();
+    await submitForm();
+    // location.reload();
 });
 
 
