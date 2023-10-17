@@ -10,28 +10,49 @@
 <nav th:include="partials/navbar :: nav"></nav>
 <h1>Trip Details</h1>
 <div class="header">
-<br>
-<!--or is it ${user.getTrips()}-->
-<h3>Trip Name: <span th:text="${trip.getName()}"></span></h3>
     <br>
-<h3>Trip Location: <span th:text="${trip.getLocation()}"></span></h3>
+    <!--or is it ${user.getTrips()}-->
+    <h3 th:text="${trip.getName()}"> </h3> <br>
+    <br>
+    <h4 th:text="${trip.getLocation()}"> </h4>
 </div>
-<h4>Your Activities:</h4>
+<h4>Your Activities</h4>
 <div class="container">
     <ul class="card" th:each="activity : ${trip.getActivities()}">
-        <h3><li th:text="${activity.getName()}"></li></h3>
+        <h3>
+            <li th:text="${activity.getName()}"></li>
+        </h3>
         <img class="actimg" th:src="${activity.getImageUrl()}">
         <li th:utext="${activity.getDescription()}"></li>
-       <li><button><a th:href="${activity.getBookingLink()}" target="_blank">Book Now!</a></button></li>
+        <li>
+            <a th:href="${activity.getBookingLink()}" target="_blank">
+
+                <button class="btn-53 py-2 mt-2 mb-2">
+                    <div class="original">Book Now!</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>B</span>
+                        <span>o</span>
+                        <span>o</span>
+                        <span>k</span>
+                        <span>&nbsp;</span>
+                        <span>N</span>
+                        <span>o</span>
+                        <span>w</span>
+                        <span>!</span>
+                    </div>
+                </button>
+            </a>
+        </li>
     </ul>
 
-<br>
+    <br>
 
 </div>
 <div class="anchor">
-<a href="/api-test">
-    <small class="text-body-secondary">Want to add another activity? Click here!</small>
-</a>
+    <a href="/api-test">
+        <small class="text-body-secondary">Want to add another activity? Click here!</small>
+    </a>
 </div>
 <footer th:include="partials/footer :: footer"></footer>
 

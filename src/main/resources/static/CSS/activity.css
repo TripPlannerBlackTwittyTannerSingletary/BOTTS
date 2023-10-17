@@ -150,7 +150,7 @@ h3 {
 .btn-53 {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
-    background-color: #1f6b7b;
+    background-color: #4b8895;
     background-image: none;
     color: #fff;
     cursor: pointer;
@@ -192,8 +192,8 @@ h3 {
 }
 
 .btn-53 .original {
-    background: #fff;
-    color: #000;
+    background: #1f6b7b;
+    color: #fff;
     display: grid;
     inset: 0;
     place-content: center;
