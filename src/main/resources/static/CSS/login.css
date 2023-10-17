@@ -17,6 +17,7 @@ input{
 #password{
     background-color: #1f6b7b;
     color: #cccccc;
+    margin: 4px;
 }
 #username{
     background-color: #1f6b7b;
