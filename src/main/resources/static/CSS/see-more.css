@@ -48,8 +48,9 @@ li{
 .header {
     align-self: center;
     display: flex;
+    justify-content: space-around;
 }
-h4{
+h5{
     align-self: center;
 }
 button {
