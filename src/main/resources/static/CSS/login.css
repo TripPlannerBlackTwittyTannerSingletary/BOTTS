@@ -6,7 +6,29 @@ form {
 input{
     margin: 6px;
 }
+.form-label {
+    text-transform: uppercase;
+    align-items: end;
+}
+.form-control {
+    background-color: #1f6b7b;
+    color: #cccccc;
+}
+#password{
+    background-color: #1f6b7b;
+    color: #cccccc;
+}
+#username{
+    background-color: #1f6b7b;
+    color: #cccccc;
+}
+#password::placeholder{
+    color: #cccccc;
+}
 
+#username::placeholder{
+    color: #cccccc;
+}
 body {
     font-family: 'Nunito Sans', sans-serif;
     display: flex;

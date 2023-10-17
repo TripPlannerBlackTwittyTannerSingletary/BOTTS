@@ -409,7 +409,7 @@ nav ul li a {
 }
 
 .arrows path {
-    stroke: #1f6b7b;
+    stroke: #19AAE2;
     fill: transparent;
     stroke-width: 8px;
     animation: arrow 2s infinite;
