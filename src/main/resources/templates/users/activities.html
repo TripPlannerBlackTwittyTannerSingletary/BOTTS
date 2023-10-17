@@ -16,18 +16,17 @@
 <nav th:include="partials/navbar :: nav"></nav>
 
 <div class="hero-banner">
-    <div id="heroText" class="col-lg-6 px-0">
-        <h3 class="display-4 fst-italic">Activities at Your Fingertips</h3>
-        <p class="lead my-3">Start searching for a location to plan your dream trip.</p>
+    <div class="hero-camping">
+        <div id="heroText" class="col-lg-6 px-0">
+            <h3 class="display-4 fst-italic">Activities at Your Fingertips</h3>
+            <p class="lead my-3">Start searching for a location to plan your dream trip.</p>
+        </div>
+        <!--    <img class="hero-img" src="/IMG/Clouds-And-Mountains.jpg" style="width: 100%"/>-->
+        <video autoplay loop muted playsinline class="back-video">
+            <source th:src="@{/IMG/waterfall.mp4}" type="video/mp4">
+        </video>
     </div>
-    <img class="hero-img" src="/IMG/Clouds-And-Mountains.jpg" style="width: 100%"/>
 </div>
-
-<div class="px-5 mt-3">
-    <div class="d-flex align-items-center p-4 p-md-5 mb-4 rounded text-body-emphasis mt-2 px-5"
-         style="height: 400px">
-
-    </div>
 
     <div id="api-data">
         <input type="text" id="searchBox" placeholder="Enter a city">
@@ -111,15 +110,16 @@
                             </div>
                             <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
                                 <div class="card" th:each="trip: ${user.getTrips()}">
-<!--                                    <h5 th:text="${trip.getName()}"></h5>-->
-<!--                                    <h6 th:text="${trip.getLocation()}"></h6>-->
+                                    <!--                                    <h5 th:text="${trip.getName()}"></h5>-->
+                                    <!--                                    <h6 th:text="${trip.getLocation()}"></h6>-->
                                     <div class="card" style="width: 18rem;">
                                         <div class="card-body">
                                             <h5 th:text="${trip.getName()}"></h5>
                                             <h6 th:text="${trip.getLocation()}"></h6>
-<!--                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                                            <a th:href="@{'/trips/' + ${trip.id}}" class="card-link">View Trip Activities</a>
-<!--                                            <a href="#" class="card-link">Another link</a>-->
+                                            <!--                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                            <a th:href="@{'/trips/' + ${trip.id}}" class="card-link">View Trip
+                                                Activities</a>
+                                            <!--                                            <a href="#" class="card-link">Another link</a>-->
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center gap-2">
                     <!--UI Button for register start-->
-                    <button class="btn-53 container-fluid py-2" type="button"  id="save-activity">
+                    <button class="btn-53 container-fluid py-2" type="button" id="save-activity">
                         <div class="original">Save changes</div>
                         <div class="letters d-flex justify-content-center">
 
