@@ -51,13 +51,11 @@
 // Create the card element
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
-        cardDiv.style.width = '18rem';
         cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
 // Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
         const img = document.createElement('img');
         img.src = activity.imageUrl; // Set the image URL dynamically
-        img.style = 'max-height:300px';
         img.className = 'card-img-top';
         img.alt = 'Card Image';
         cardDiv.appendChild(img);
@@ -82,7 +80,7 @@
 
 // Create additional card body for links
         const cardBodyLinks = document.createElement('div');
-        cardBodyLinks.className = 'card-body d-flex gap-3';
+        cardBodyLinks.className = 'card-body-links py-2 d-flex gap-3';
 
 
 // Create card links
