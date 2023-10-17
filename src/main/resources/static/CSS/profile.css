@@ -294,11 +294,11 @@ input[type="email"]:focus {
 
 .trip-card {
     /*display: flex;*/
-    height: auto;
-    width: auto;
-    background-color: #061A40;
+    height: 300px;
+    width: 200px;
+    /*background-color: #061A40;*/
     border-radius: 10px;
-    box-shadow: -1rem 0 3rem #000;
+    box-shadow: 1rem 0 1rem rgba(0, 0, 0, 0.36);
        margin-left: -50px;
     transition: 0.4s ease-out;
     position: relative;
@@ -306,7 +306,7 @@ input[type="email"]:focus {
 }
 
 .h2-trip, .h3-trip {
-    color: #ffffff;
+    color: black;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
@@ -315,16 +315,16 @@ input[type="email"]:focus {
     margin-left: -50px;
 }
 
-.trip-card:hover {
-    transform: translateY(-20px);
-    transition: 0.4s ease-out;
-}
+/*.trip-card:hover {*/
+/*    transform: translateY(-20px);*/
+/*    transition: 0.4s ease-out;*/
+/*}*/
 
-.trip-card:hover ~ .trip-card {
-    position: relative;
-    left: 50px;
-    transition: 0.4s ease-out;
-}
+/*.trip-card:hover ~ .trip-card {*/
+/*    position: relative;*/
+/*    left: 50px;*/
+/*    transition: 0.4s ease-out;*/
+/*}*/
 
 .title {
     color: white;
@@ -343,7 +343,7 @@ input[type="email"]:focus {
 }
 
 .emptybar {
-    background-color: #2e3033;
+    background-color: #1f6b7b;
     width: 100%;
     height: 100%;
 }
@@ -366,10 +366,10 @@ input[type="email"]:focus {
     transition: 0.6s ease-out;
 }
 
-.trip-card:hover .stroke {
-    stroke-dashoffset: 100;
-    transition: 0.6s ease-out;
-}
+/*.trip-card:hover .stroke {*/
+/*    stroke-dashoffset: 100;*/
+/*    transition: 0.6s ease-out;*/
+/*}*/
 
 .container-trip {
     margin-left: 30rem;
@@ -445,9 +445,9 @@ input[type="email"]:focus {
 .btn-53-trip {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
-    background-color: #061A40;
+    background-color: #fff;
     background-image: none;
-    color: #fff;
+    color: #000000;
     cursor: pointer;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 100%;
@@ -480,7 +480,7 @@ input[type="email"]:focus {
     text-transform: uppercase;
 }
 .btn-53-trip .original {
-    background: #061A40;
+    background: #1f6b7b;
     color: #fff;
     display: grid;
     inset: 0;
@@ -566,3 +566,29 @@ input[type="email"]:focus {
 .btn-53-trip:hover span:nth-child(21) {
     transition-delay: 2.0s;
 }
+
+.hero-banner {
+    /*margin-top: 66px;*/
+    position: relative;
+    width: 100%;
+    opacity: 55%;
+}
+.hero-banner img{
+    z-index: 5;
+}
+#heroText{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+nav.navbar {
+    z-index: 99;
+}
+
+.hero-img {
+    max-height: 395px;
+}
+
