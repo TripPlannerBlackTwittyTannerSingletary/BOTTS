@@ -28,7 +28,8 @@
     </div>
 </div>
 
-    <div id="api-data">
+<div id="api-data">
+    <div class="search-box pb-3">
         <input type="text" id="searchBox" placeholder="Enter a city">
         <!--UI Button for search start-->
 
@@ -43,165 +44,170 @@
                 <span>h</span>
             </div>
         </button>
-        <div>
-            <h1 id="animation">
-                <span class="animation let1">l</span>
-                <span class="animation let2">o</span>
-                <span class="animation let3">a</span>
-                <span class="animation let4">d</span>
-                <span class="animation let5">i</span>
-                <span class="animation let6">n</span>
-                <span class="animation let7">g</span>
-            </h1>
-        </div>
-        <br>
-        <!--UI Button for search end-->
-        <div id="card-container" class="container-hero d-flex flex-wrap justify-content-between">
-        </div>
     </div>
-    <div id="pagination" class="pagination-container"></div>
+    <div>
+        <h1 id="animation">
+            <span class="animation let1">l</span>
+            <span class="animation let2">o</span>
+            <span class="animation let3">a</span>
+            <span class="animation let4">d</span>
+            <span class="animation let5">i</span>
+            <span class="animation let6">n</span>
+            <span class="animation let7">g</span>
+        </h1>
+    </div>
+    <br>
+    <!--UI Button for search end-->
+    <div id="card-container" class="container-hero d-flex flex-wrap justify-content-between">
+    </div>
+</div>
+<div id="pagination" class="pagination-container"></div>
 
-    <!-- Modal Structure -->
-    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-4 shadow">
-                <div class="modal-header border-bottom-0">
-                    <h1 class="modal-title fs-5">Activity Description</h1>
-                </div>
-                <div class="modal-body py-0">
-                    <p id="activityDescription"></p>
-                </div>
-                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                    <!--UI Button for register start-->
-                    <button data-bs-dismiss="modal" class="btn-53 py-2 container-fluid" type="button">
-                        <div class="original">Close</div>
-                        <div class="letters d-flex justify-content-center">
+<!-- Modal Structure -->
+<div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fs-5">Activity Description</h1>
+            </div>
+            <div class="modal-body py-0">
+                <p id="activityDescription"></p>
+            </div>
+            <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                <!--UI Button for register start-->
+                <button data-bs-dismiss="modal" class="btn-53 py-2 container-fluid" type="button">
+                    <div class="original">Close</div>
+                    <div class="letters d-flex justify-content-center">
 
-                            <span>C</span>
-                            <span>l</span>
-                            <span>o</span>
-                            <span>s</span>
-                            <span>e</span>
-                        </div>
-                    </button>
-                    <!--UI Button for register end-->
-                </div>
+                        <span>C</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>s</span>
+                        <span>e</span>
+                    </div>
+                </button>
+                <!--UI Button for register end-->
             </div>
         </div>
     </div>
-    <!-- Add this modal HTML somewhere in your HTML file -->
-    <div class="modal fade" id="tripModal" tabindex="-1" role="dialog" aria-labelledby="tripModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tripModalLabel">Add to Trip</h5>
-                </div>
-                <div class="modal-body">
-                    <th:if sec:authorize="isAuthenticated()">
-                        <div class="col-md-6 the-card pt-3">
-                            <h3>My Trips</h3>
-                            <div class="trip" th:if="${#lists.size(user.getTrips()) == 0}">
-                                <p>You currently have no trips! :( <br>
-                                    Click the button below to add a trip!</p>
-                            </div>
-                            <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
-                                <div class="card" th:each="trip: ${user.getTrips()}">
-                                    <!--                                    <h5 th:text="${trip.getName()}"></h5>-->
-                                    <!--                                    <h6 th:text="${trip.getLocation()}"></h6>-->
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                            <h5 th:text="${trip.getName()}"></h5>
-                                            <h6 th:text="${trip.getLocation()}"></h6>
-                                            <!--                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                                            <a th:href="@{'/trips/' + ${trip.id}}" class="card-link">View Trip
-                                                Activities</a>
-                                            <!--                                            <a href="#" class="card-link">Another link</a>-->
-                                        </div>
+</div>
+<!-- Add this modal HTML somewhere in your HTML file -->
+<div class="modal fade" id="tripModal" tabindex="-1" role="dialog" aria-labelledby="tripModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tripModalLabel">Add to Trip</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <th:if sec:authorize="isAuthenticated()">
+                    <div class="col-md-6 the-card pt-3">
+                        <h3>My Trips</h3>
+                        <div class="trip" th:if="${#lists.size(user.getTrips()) == 0}">
+                            <p>You currently have no trips! :( <br>
+                                Click the button below to add a trip!</p>
+                        </div>
+                        <div class="trip" th:if="${#lists.size(user.getTrips()) > 0}">
+                            <div class="card" th:each="trip: ${user.getTrips()}">
+                                <!--                                    <h5 th:text="${trip.getName()}"></h5>-->
+                                <!--                                    <h6 th:text="${trip.getLocation()}"></h6>-->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 th:text="${trip.getName()}"></h5>
+                                        <h6 th:text="${trip.getLocation()}"></h6>
+                                        <!--                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                                        <a th:href="@{'/trips/' + ${trip.id}}" class="card-link">View Trip
+                                            Activities</a>
+                                        <!--                                            <a href="#" class="card-link">Another link</a>-->
+
                                     </div>
                                 </div>
                             </div>
-                            <!--              <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>-->
                         </div>
-                        <select id="tripSelect" class="form-select mx-3">
-                            <!-- Populate options dynamically using JavaScript -->
-                        </select>
-                    </th:if>
-                    <th:if sec:authorize="!isAuthenticated()">
-                        <h2>Login or register to start planning!</h2>
-                        <div class="d-flex gap-2">
-                            <a href="/login" style="flex: 1 0 0;">
+                        <!--              <button class="btn btn-secondary btn-md" id="openModalBtn">Add A Trip</button>-->
+                    </div>
+                    <select id="tripSelect" class="form-select mx-3">
+                        <!-- Populate options dynamically using JavaScript -->
+                    </select>
+                </th:if>
+                <th:if sec:authorize="!isAuthenticated()">
+                    <h2>Login or register to start planning!</h2>
+                    <div class="d-flex gap-2">
+                        <a href="/login" style="flex: 1 0 0;">
 
-                                <button class="btn-53 container-fluid py-2">
-                                    <div class="original">Login</div>
-                                    <div class="letters d-flex justify-content-center">
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Login</div>
+                                <div class="letters d-flex justify-content-center">
 
-                                        <span>L</span>
-                                        <span>o</span>
-                                        <span>g</span>
-                                        <span>i</span>
-                                        <span>n</span>
-                                    </div>
-                                </button>
-                            </a>
-                            <a href="/register" style="flex: 1 0 0;">
+                                    <span>L</span>
+                                    <span>o</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>n</span>
+                                </div>
+                            </button>
+                        </a>
+                        <a href="/register" style="flex: 1 0 0;">
 
-                                <button class="btn-53 container-fluid py-2">
-                                    <div class="original">Register</div>
-                                    <div class="letters d-flex justify-content-center">
+                            <button class="btn-53 container-fluid py-2">
+                                <div class="original">Register</div>
+                                <div class="letters d-flex justify-content-center">
 
-                                        <span>R</span>
-                                        <span>e</span>
-                                        <span>g</span>
-                                        <span>i</span>
-                                        <span>s</span>
-                                        <span>t</span>
-                                        <span>e</span>
-                                        <span>r</span>
-                                    </div>
-                                </button>
-                            </a>
-                        </div>
-                    </th:if>
-                </div>
-                <div class="modal-footer d-flex justify-content-center gap-2">
-                    <!--UI Button for register start-->
-                    <button class="btn-53 container-fluid py-2" type="button" id="save-activity">
-                        <div class="original">Save changes</div>
-                        <div class="letters d-flex justify-content-center">
+                                    <span>R</span>
+                                    <span>e</span>
+                                    <span>g</span>
+                                    <span>i</span>
+                                    <span>s</span>
+                                    <span>t</span>
+                                    <span>e</span>
+                                    <span>r</span>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </th:if>
+            </div>
+            <div class="modal-footer d-flex justify-content-center gap-2">
+                <!--UI Button for register start-->
+                <button class="btn-53 container-fluid py-2" type="button" id="save-activity">
+                    <div class="original">Save changes</div>
+                    <div class="letters d-flex justify-content-center">
 
-                            <span>S</span>
-                            <span>a</span>
-                            <span>v</span>
-                            <span>e</span>
-                            <span>&nbsp;</span>
-                            <span>C</span>
-                            <span>h</span>
-                            <span>a</span>
-                            <span>n</span>
-                            <span>g</span>
-                            <span>e</span>
-                            <span>s</span>
-                        </div>
-                    </button>
-                    <!--UI Button for register end-->
-                    <!--UI Button for close start-->
-                    <button class="btn-53 container-fluid py-2" type="button" data-dismiss="modal" id="closeModal">
-                        <div class="original">Close</div>
-                        <div class="letters d-flex justify-content-center">
+                        <span>S</span>
+                        <span>a</span>
+                        <span>v</span>
+                        <span>e</span>
+                        <span>&nbsp;</span>
+                        <span>C</span>
+                        <span>h</span>
+                        <span>a</span>
+                        <span>n</span>
+                        <span>g</span>
+                        <span>e</span>
+                        <span>s</span>
+                    </div>
+                </button>
+                <!--UI Button for register end-->
+                <!--UI Button for close start-->
+                <button class="btn-53 container-fluid py-2" type="button" data-dismiss="modal" id="closeModal">
+                    <div class="original">Close</div>
+                    <div class="letters d-flex justify-content-center">
 
-                            <span>C</span>
-                            <span>l</span>
-                            <span>o</span>
-                            <span>s</span>
-                            <span>e</span>
-                        </div>
-                    </button>
-                    <!--UI Button for close end-->
-                </div>
+                        <span>C</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>s</span>
+                        <span>e</span>
+                    </div>
+                </button>
+                <!--UI Button for close end-->
             </div>
         </div>
     </div>
+</div>
 
 
 </div>

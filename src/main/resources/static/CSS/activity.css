@@ -1,11 +1,16 @@
 .card {
-    width: 50%;
-    height: 100%;
+    width: 18rem;
+    height: 394px;
     background-color: #ffffff; /* Set your desired background color */
     border-radius: 10px; /* Optional: Adds rounded corners to the card */
     box-shadow: 10px 4px 8px 10px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease; /* Add a smooth transition effect to the box-shadow property */
     margin: 2px;
+}
+.card img {
+    overflow: hidden;
+    height: 190px;
+    max-height: 300px;
 }
 
 .hero-camping {
@@ -54,6 +59,16 @@ h3 {
 
 .hero-banner img {
     z-index: 5;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchBox {
+    margin-bottom: 10px;
 }
 
 .card:hover {
@@ -145,6 +160,7 @@ h3 {
     margin: 0;
     -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
     padding: 0;
+    height: 40px;
 }
 
 .btn-53:disabled {
@@ -389,6 +405,9 @@ h1 {
     }
 }
 
+#api-data {
+    padding: 20px;
+}
 
 /*Footer */
 
