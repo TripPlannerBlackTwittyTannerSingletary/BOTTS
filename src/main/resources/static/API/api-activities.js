@@ -47,13 +47,10 @@
 
 
     const createCard = async (activity) => {
-// Create the card element
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
         cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
-
         cardDiv.innerHTML = `
-
 <div class="card mb-5 col-4" data-activity-id="${activity.amadeusApiId}">
     <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
     <div class="card-body">
@@ -80,34 +77,6 @@
                 <span>i</span>
                 <span>o</span>
                 <span>n</span>
-
-        <div class="card mb-5 col-4" data-activity-id="${activity.amadeusApiId}">
-            <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
-            <div class="card-body">
-                <h5 class="card-title">${activity.name}</h5>
-                <button type="button" class="btn-53 container-fluid py-2 view-description-button">
-                    <div class="original">View Description</div>
-                    <div class="letters d-flex justify-content-center">
-    
-                        <span>V</span>
-                        <span>I</span>
-                        <span>E</span>
-                        <span>W</span>
-                        <span>&nbsp;</span>
-                        <span>D</span>
-                        <span>e</span>
-                        <span>s</span>
-                        <span>c</span>
-                        <span>r</span>
-                        <span>i</span>
-                        <span>p</span>
-                        <span>t</span>
-                        <span>i</span>
-                        <span>o</span>
-                        <span>n</span>
-                    </div>
-                </button>
-
             </div>
         </button>
         </div>
