@@ -2,7 +2,6 @@
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 
     function geocode(search, token) {
-        console.log(token);
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
         let startTime = new Date().getTime();
@@ -47,107 +46,21 @@
     let citySearch = document.querySelector('#searchBox')
 
 
-    const createCard = (activity) => {
+    const createCard = async (activity) => {
 // Create the card element
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card mb-5 col-4';
         cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
-// Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
-        const img = document.createElement('img');
-        img.src = activity.imageUrl; // Set the image URL dynamically
-        img.className = 'card-img-top';
-        img.alt = 'Card Image';
-        cardDiv.appendChild(img);
-
-// Create the card body
-        const cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
-
-// Create card title
-        const cardTitle = document.createElement('h5');
-        cardTitle.className = 'card-title';
-        cardTitle.innerHTML = activity.name; // Set the card title dynamically
-        cardBody.appendChild(cardTitle);
-
-// Create list group
-        const listGroup = document.createElement('ul');
-        listGroup.className = 'list-group list-group-flush';
-
-
-        cardDiv.appendChild(cardBody);
-        cardDiv.appendChild(listGroup);
-
-// Create additional card body for links
-        const cardBodyLinks = document.createElement('div');
-        cardBodyLinks.className = 'card-body-links py-2 d-flex gap-3';
-
-
-// Create card links
-        const addToTripButton = document.createElement('button');
-        addToTripButton.type = 'button';
-        addToTripButton.className = 'btn-53 py-2';
-        addToTripButton.style = 'flex: 1 0 0;'
-        addToTripButton.innerHTML = `
-                         <div class="original">Add to Trip</div>
-                    <div class="letters d-flex justify-content-center">
-
-                        <span>A</span>
-                        <span>D</span>
-                        <span>D</span>
-                        <span>&nbsp;</span>
-                        <span>T</span>
-                        <span>o</span>
-                        <span>&nbsp;</span>
-                        <span>T</span>
-                        <span>r</span>
-                        <span>i</span>
-                        <span>p</span>
-                    </div>
-        `;
-
-// Add a click event listener to trigger the modal when the button is clicked
-        addToTripButton.addEventListener('click', e => {
-            $('#tripModal').modal('show'); // Use Bootstrap modal function to show the modal
-            console.log(e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
-            $('#tripModal').attr('data-activity-id', e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
-        });
-
-
-
-        const closeModalButton = document.querySelector('#closeModal');
-        closeModalButton.addEventListener('click', () => {
-            $('#tripModal').modal('hide'); // Use Bootstrap modal function to hide the modal
-        });
-
-        const cardLink2 = document.createElement('a');
-        cardLink2.href = activity.bookingLink; // Set link URL dynamically
-        cardLink2.target = '_blank'
-        cardLink2.className = 'btn-53 py-2 card-link';
-        cardLink2.style = 'flex: 1 0 0;'
-        cardLink2.innerHTML = `
-                    <div class="original">Book Now!</div>
-                    <div class="letters d-flex justify-content-center">
-
-                        <span>B</span>
-                        <span>o</span>
-                        <span>o</span>
-                        <span>k</span>
-                        <span>&nbsp;</span>
-                        <span>N</span>
-                        <span>o</span>
-                        <span>w</span>
-                        <span>!</span>
-                    </div>
-        `; // Set link text dynamically
-
-        const modalButton = document.createElement('button');
-        modalButton.type = 'button';
-        modalButton.className = 'btn-53 container-fluid py-2';
-        modalButton.innerHTML = `
+        cardDiv.innerHTML = `
+        <div class="card mb-5 col-4" data-activity-id="3907174">
+            <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
+            <div class="card-body">
+                <h5 class="card-title">${activity.name}</h5>
+                <button type="button" class="btn-53 container-fluid py-2 view-description-button">
                     <div class="original">View Description</div>
                     <div class="letters d-flex justify-content-center">
-
+    
                         <span>V</span>
                         <span>I</span>
                         <span>E</span>
@@ -165,7 +78,161 @@
                         <span>o</span>
                         <span>n</span>
                     </div>
-        `;
+                </button>
+            </div>
+            <ul class="list-group list-group-flush"></ul>
+            <div class="card-body-links py-2 d-flex gap-3">
+                <button type="button" class="btn-53 py-2 add-to-trip-button" style="flex: 1 0 0px;">
+                    <div class="original">Add to Trip</div>
+                    <div class="letters d-flex justify-content-center">
+    
+                        <span>A</span>
+                        <span>D</span>
+                        <span>D</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>o</span>
+                        <span>&nbsp;</span>
+                        <span>T</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>p</span>
+                    </div>
+                </button>
+                <a href="${activity.bookingLink}" target="_blank" class="btn-53 py-2 card-link book-now-link" style="flex: 1 0 0px;">
+                    <div class="original">Book Now!</div>
+                    <div class="letters d-flex justify-content-center">
+
+                        <span>B</span>
+                        <span>o</span>
+                        <span>o</span>
+                        <span>k</span>
+                        <span>&nbsp;</span>
+                        <span>N</span>
+                        <span>o</span>
+                        <span>w</span>
+                        <span>!</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        `
+
+// Create the card image (replace 'activity.imageUrl' with the actual image URL property from your activity object)
+//         const img = document.createElement('img');
+//
+//         img.src = activity.imageUrl;
+//         // img.onerror = "this.onerror=null; this.src='Default.jpg'";
+//         img.className = 'card-img-top';
+//         img.alt = 'Card Image';
+//         cardDiv.appendChild(img);
+
+// Create the card body
+//         const cardBody = document.createElement('div');
+//         cardBody.className = 'card-body';
+
+// Create card title
+//         const cardTitle = document.createElement('h5');
+//         cardTitle.className = 'card-title';
+//         cardTitle.innerHTML = activity.name; // Set the card title dynamically
+//         cardBody.appendChild(cardTitle);
+
+// Create list group
+//         const listGroup = document.createElement('ul');
+//         listGroup.className = 'list-group list-group-flush';
+//
+//
+//         cardDiv.appendChild(cardBody);
+//         cardDiv.appendChild(listGroup);
+
+// Create additional card body for links
+//         const cardBodyLinks = document.createElement('div');
+//         cardBodyLinks.className = 'card-body-links py-2 d-flex gap-3';
+
+
+// Create card links
+        const addToTripButton = cardDiv.querySelector('.add-to-trip-button');
+//         addToTripButton.type = 'button';
+//         addToTripButton.className = 'btn-53 py-2';
+//         addToTripButton.style = 'flex: 1 0 0;'
+//         addToTripButton.innerHTML = `
+//                          <div class="original">Add to Trip</div>
+//                     <div class="letters d-flex justify-content-center">
+//
+//                         <span>A</span>
+//                         <span>D</span>
+//                         <span>D</span>
+//                         <span>&nbsp;</span>
+//                         <span>T</span>
+//                         <span>o</span>
+//                         <span>&nbsp;</span>
+//                         <span>T</span>
+//                         <span>r</span>
+//                         <span>i</span>
+//                         <span>p</span>
+//                     </div>
+//         `;
+
+// Add a click event listener to trigger the modal when the button is clicked
+        addToTripButton.addEventListener('click', e => {
+            $('#tripModal').modal('show'); // Use Bootstrap modal function to show the modal
+            console.log(e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
+            $('#tripModal').attr('data-activity-id', e.currentTarget.parentElement.parentElement.getAttribute('data-activity-id'));
+        });
+
+
+
+        const closeModalButton = document.querySelector('#closeModal');
+        closeModalButton.addEventListener('click', () => {
+            $('#tripModal').modal('hide'); // Use Bootstrap modal function to hide the modal
+        });
+
+        const cardLink2 = cardDiv.querySelector('.book-now-link');
+        // cardLink2.href = activity.bookingLink; // Set link URL dynamically
+        // cardLink2.target = '_blank'
+        // cardLink2.className = 'btn-53 py-2 card-link';
+        // cardLink2.style = 'flex: 1 0 0;'
+        // cardLink2.innerHTML = `
+        //             <div class="original">Book Now!</div>
+        //             <div class="letters d-flex justify-content-center">
+        //
+        //                 <span>B</span>
+        //                 <span>o</span>
+        //                 <span>o</span>
+        //                 <span>k</span>
+        //                 <span>&nbsp;</span>
+        //                 <span>N</span>
+        //                 <span>o</span>
+        //                 <span>w</span>
+        //                 <span>!</span>
+        //             </div>
+        // `; // Set link text dynamically
+
+        const modalButton = cardDiv.querySelector('.view-description-button');
+        // modalButton.type = 'button';
+        // modalButton.className = 'btn-53 container-fluid py-2';
+        // modalButton.innerHTML = `
+        //             <div class="original">View Description</div>
+        //             <div class="letters d-flex justify-content-center">
+        //
+        //                 <span>V</span>
+        //                 <span>I</span>
+        //                 <span>E</span>
+        //                 <span>W</span>
+        //                 <span>&nbsp;</span>
+        //                 <span>D</span>
+        //                 <span>e</span>
+        //                 <span>s</span>
+        //                 <span>c</span>
+        //                 <span>r</span>
+        //                 <span>i</span>
+        //                 <span>p</span>
+        //                 <span>t</span>
+        //                 <span>i</span>
+        //                 <span>o</span>
+        //                 <span>n</span>
+        //             </div>
+        // `;
 
 
         // Add event listener to display activity description in the modal
@@ -176,12 +243,12 @@
         });
 
         // Add the button to the card body
-        cardBody.appendChild(modalButton);
-
-        cardBodyLinks.appendChild(addToTripButton);
-        cardBodyLinks.appendChild(cardLink2);
-
-        cardDiv.appendChild(cardBodyLinks);
+        // cardBody.appendChild(modalButton);
+        //
+        // cardBodyLinks.appendChild(addToTripButton);
+        // cardBodyLinks.appendChild(cardLink2);
+        //
+        // cardDiv.appendChild(cardBodyLinks);
 
         return cardDiv;
     };
@@ -302,6 +369,14 @@
         for(const activity of activities) {
             // console.log(activity);
             let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
+
+            // const validImage = await isValidImage(activity.pictures[0]);
+            // let imageUrl;
+            // if(validImage){
+            //     imageUrl = activity.pictures[0]; // Set the image URL dynamically
+            // } else {
+            //     imageUrl = "../IMG/donald.jpg";
+            // }
 // console.log(address);
             let newActivity = {
                 name: activity.name,
@@ -331,8 +406,6 @@
 //     }
 //     activityList.push(newActivity)
 // })
-        console.log(search)
-        console.log(activityList)
         let searchObject = {
             search: search,
             activities: activityList
@@ -369,8 +442,8 @@
             const cardContainer = document.getElementById('card-container');
             cardContainer.innerHTML = '';
 
-            pageItems.forEach(activity => {
-                const card = createCard(activity);
+            pageItems.forEach(async activity => {
+                const card = await createCard(activity);
                 cardContainer.appendChild(card);
             });
         }
@@ -465,7 +538,20 @@
             });
     });
 
-
+    async function isValidImage(url){
+        // let request = new XMLHttpRequest();
+        // console.log(request);
+        // await request.open("GET", url, true);
+        // await request.send();
+        // request.onload = function (){
+        //     console.log(request);
+        //     console.log(request.status);
+        //     return request.status == 200;
+        // }
+        let response = await fetch(url);
+        console.log(response.status);
+        return response.status == 200;
+    }
 
 
 })();
