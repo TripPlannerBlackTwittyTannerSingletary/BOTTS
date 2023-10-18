@@ -30,6 +30,7 @@ li{
 }
 .container{
     display: flex;
+    justify-content: center;
 }
 
 .card{
@@ -39,6 +40,8 @@ li{
 }
 .container{
     padding: 5px;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 
 .anchor {
