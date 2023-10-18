@@ -14,11 +14,10 @@
 <div class="header">
     <br>
     <!--or is it ${user.getTrips()}-->
-    <h3 th:text="${trip.getName()}"> </h3> <br>
-    <br>
-    <h4 th:text="${trip.getLocation()}"> </h4>
+    <h3><span th:text="${trip.getName()}"></span></h3>
+    <h4> <span th:text="${trip.getLocation()}"></span> </h4>
+    <h4>Your Activities</h4>
 </div>
-<h4>Your Activities</h4>
 <div class="container">
     <ul class="card" th:each="activity : ${trip.getActivities()}">
         <h3>

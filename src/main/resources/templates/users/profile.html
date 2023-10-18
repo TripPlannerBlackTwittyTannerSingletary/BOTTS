@@ -77,12 +77,12 @@
                     <h2>Edit Your Profile</h2>
                     <form id="editForm" th:action="@{/saveProfile}" method="post" th:object="${user}">
                         <div class="form-group">
-                            <label for="newEmail"></label>
+                            <label for="newEmail">Enter your new email!</label>
                             <input type="email" id="newEmail" name="newEmail" th:field="*{email}"
                                    placeholder="Enter your new email">
                         </div>
                         <div class="form-group">
-                            <label for="newLocation"></label>
+                            <label for="newLocation">Enter your new city location!</label>
                             <input type="text" id="newLocation" name="newLocation" th:field="*{location}"
                                    placeholder="Enter your new location">
                         </div>
@@ -183,17 +183,11 @@
                         Click the button below to add a trip!</p>
                 </div>
                 <div class="trip-hero d-flex" th:if="${#lists.size(user.getTrips()) > 0}">
-
                     <!--added new cards-->
-                    <!--                <div class="container">-->
                     <div class="trip-card card text-center mb-3" th:each="trip: ${user.getTrips()}">
-                        <!--                    <div class="card text-center mb-3" style="width: 18rem;">-->
                         <div class="card-body">
                             <h2 class="h2-trip" th:text="${trip.getName()}"></h2>
-                            <div class="bar">
-                                <div class="emptybar"></div>
-                                <div class="filledbar"></div>
-                            </div>
+                            <hr>
                             <h3 class="h3-trip" th:text="${trip.getLocation()}"></h3>
                         </div>
                         <div>

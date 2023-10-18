@@ -48,17 +48,13 @@ li{
 .header {
     align-self: center;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
 }
 h5{
     align-self: center;
 }
-/*button {*/
-/*    background-color:#1f6b7b;*/
-/*    color: whitesmoke;*/
-/*    text-decoration-color: white;*/
-/*    margin: 2px;*/
-/*}*/
+
 a{
     color: white;
 }
