@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <th:block th:insert="~{partials/header :: head}"></th:block>
     <title>Activities</title>
     <script th:src="@{/keys.js}"></script>
     <meta name="_csrf" data-th-content="${_csrf.token}"/>
