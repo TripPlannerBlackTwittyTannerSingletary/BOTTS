@@ -26,6 +26,7 @@ public class ActivityController {
 
     @PostMapping("/addActivity/{activityApiId}")
     public ResponseEntity<String> addActivityToTrip(@RequestBody Trip inputtedTrip, @PathVariable String activityApiId) {
+        System.out.println("inside controller");
         Trip trip = tripRepository.findById(inputtedTrip.getId()).get();
         Activity activity = activityRepository.findAllByAmadeusApiId(activityApiId).get(0);
 
