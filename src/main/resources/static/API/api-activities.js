@@ -53,6 +53,34 @@
         cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
         cardDiv.innerHTML = `
+
+<div class="card mb-5 col-4" data-activity-id="${activity.amadeusApiId}">
+    <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
+    <div class="card-body">
+    <div>
+        <h5 class="card-title row align-items-end">${activity.name}</h5>
+    </div>
+        <div class="mt-5">
+        <button type="button" class="btn-53 container-fluid py-2 view-description-button">
+            <div class="original">View Description</div>
+            <div class="letters d-flex justify-content-center">
+                <span>V</span>
+                <span>I</span>
+                <span>E</span>
+                <span>W</span>
+                <span>&nbsp;</span>
+                <span>D</span>
+                <span>e</span>
+                <span>s</span>
+                <span>c</span>
+                <span>r</span>
+                <span>i</span>
+                <span>p</span>
+                <span>t</span>
+                <span>i</span>
+                <span>o</span>
+                <span>n</span>
+
         <div class="card mb-5 col-4" data-activity-id="${activity.amadeusApiId}">
             <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
             <div class="card-body">
@@ -79,7 +107,11 @@
                         <span>n</span>
                     </div>
                 </button>
+
             </div>
+        </button>
+        </div>
+    </div>
             <ul class="list-group list-group-flush"></ul>
             <div class="card-body-links py-2 d-flex gap-3">
                 <button type="button" class="btn-53 py-2 add-to-trip-button" style="flex: 1 0 0px;">
