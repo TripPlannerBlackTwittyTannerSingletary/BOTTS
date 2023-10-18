@@ -53,7 +53,7 @@
         cardDiv.setAttribute("data-activity-id", activity.amadeusApiId)
 
         cardDiv.innerHTML = `
-        <div class="card mb-5 col-4" data-activity-id="3907174">
+        <div class="card mb-5 col-4" data-activity-id="${activity.amadeusApiId}">
             <img src="${activity.imageUrl}" class="card-img-top" alt="Card Image" onerror="this.onerror=null; this.src='../IMG/placeholder.jpg'">
             <div class="card-body">
                 <h5 class="card-title">${activity.name}</h5>
