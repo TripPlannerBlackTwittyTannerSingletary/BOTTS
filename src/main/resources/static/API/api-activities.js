@@ -390,22 +390,8 @@
                 amadeusApiId: activity.id
             }
             activityList.push(newActivity)
-        }
-// activities.forEach(async (activity) => {
-//     let address = await reverseGeocode2(activity.geoCode, API_KEY_ONE);
-//     console.log(address);
-//     let newActivity = {
-//         name: activity.name,
-//         description: activity.description,
-//         rating: 1.00,
-//         bookingLink: activity.bookingLink,
-//         address: address,
-//         latitude: activity.geoCode.latitude,
-//         longitude: activity.geoCode.longitude,
-//         amadeusApiId: activity.id
-//     }
-//     activityList.push(newActivity)
-// })
+        };
+
         let searchObject = {
             search: search,
             activities: activityList

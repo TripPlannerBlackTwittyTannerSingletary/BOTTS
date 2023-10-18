@@ -1,5 +1,5 @@
 .card {
-    width: 18rem;
+    width: 19rem;
     height: 394px;
     background-color: #ffffff; /* Set your desired background color */
     border-radius: 10px; /* Optional: Adds rounded corners to the card */
@@ -11,6 +11,7 @@
     overflow: hidden;
     height: 190px;
     max-height: 300px;
+    /*width: 18rem;*/
 }
 
 .hero-camping {
@@ -413,4 +414,12 @@ h1 {
 
 footer {
     margin-top: auto;
+}
+
+#tripModal{
+    width: 100%;
+}
+
+#tripSelect {
+    width: auto;
 }
