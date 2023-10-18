@@ -54,14 +54,13 @@ public class ApiTripController {
     public ResponseEntity<List<Trip>> getUserTrips(@CurrentSecurityContext(expression = "authentication?.name") String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // User not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-
         List<Trip> userTrips = tripRepository.findByUser(user);
         if (userTrips.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(userTrips); // No trips found for the user
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(userTrips);
         } else {
-            return ResponseEntity.ok(userTrips); // Return user's trips
+            return ResponseEntity.ok(userTrips);
         }
     }
 

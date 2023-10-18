@@ -24,10 +24,6 @@ public class UserController {
         return new BCryptPasswordEncoder();
     };
 
-
-
-
-
     public UserController(UserRepository userDao, UserService userService) {
         this.userDao = userDao;
         this.userService = userService;

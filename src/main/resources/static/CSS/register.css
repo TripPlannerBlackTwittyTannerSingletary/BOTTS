@@ -150,6 +150,7 @@ footer {
 .btn-53 [hidden] {
     display: none;
 }
+
 .btn-53 {
     border-radius: 999px;
     box-sizing: border-box;
@@ -160,6 +161,7 @@ footer {
     position: relative;
     text-transform: uppercase;
 }
+
 .btn-53 .original {
     background: #1f6b7b;
     color: #ffffff;
