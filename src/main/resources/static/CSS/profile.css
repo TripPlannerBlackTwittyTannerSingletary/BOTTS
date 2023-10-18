@@ -76,6 +76,7 @@ footer {
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
 .trip{
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +124,6 @@ input[type="email"]:focus {
     border-color: #007BFF;
     outline: none;
 }
-
 
 /*UI Button*/
 .btn-53 * {
@@ -286,13 +286,11 @@ input[type="email"]:focus {
 }
 
 .trip-card {
-    /*display: flex;*/
     height: auto;
     width: 200px;
-    /*background-color: #061A40;*/
     border-radius: 10px;
     box-shadow: 1rem 0 1rem rgba(0, 0, 0, 0.36);
-       margin-left: -50px;
+    margin-left: -50px;
     transition: 0.4s ease-out;
     position: relative;
     margin-bottom: 20px;
@@ -307,17 +305,6 @@ input[type="email"]:focus {
 .trip-card:not(:first-child) {
     margin-left: -50px;
 }
-
-/*.trip-card:hover {*/
-/*    transform: translateY(-20px);*/
-/*    transition: 0.4s ease-out;*/
-/*}*/
-
-/*.trip-card:hover ~ .trip-card {*/
-/*    position: relative;*/
-/*    left: 50px;*/
-/*    transition: 0.4s ease-out;*/
-/*}*/
 
 .title {
     color: white;
@@ -373,16 +360,7 @@ input[type="email"]:focus {
     margin-top: 5rem;
 }
 
-#deleteTripBtn {
-
-}
-
-#seeMoreBtn {
-
-}
-
 #profile-img {
-    /*background: url("../../assets//profile.jpg") no-repeat center;*/
     background-size: cover;
     box-shadow: inset 0 0 0 9px rgb(255 255 255 / 30%);
     order: 1;
@@ -727,7 +705,6 @@ nav.navbar {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {

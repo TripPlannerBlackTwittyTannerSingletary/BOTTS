@@ -125,15 +125,6 @@ nav ul li a {
     background-color: black; /* Set your desired background color */
     border-radius: 10px; /* Optional: Adds rounded corners to the card */
     box-shadow: 10px 4px 8px 10px rgba(0, 0, 0, 0.2);
-    /*
-        box-shadow properties:
-        - The first value (0px) sets the horizontal offset of the shadow.
-        - The second value (4px) sets the vertical offset of the shadow.
-        - The third value (8px) sets the blur radius.
-        - The fourth value (0px) sets the spread radius.
-        - rgba(0, 0, 0, 0.2) sets the color and opacity of the shadow.
-    */
-
 }
 
 .looking-img {
@@ -398,7 +389,6 @@ nav ul li a {
 }
 
 /*scroll animation */
-
 .arrows {
     width: 30rem;
     height: 72px;

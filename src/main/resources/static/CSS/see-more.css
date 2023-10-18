@@ -54,6 +54,9 @@ li{
     flex-direction: column;
     justify-content: space-around;
 }
+h4{
+    align-self: center;
+}
 h5{
     align-self: center;
 }
