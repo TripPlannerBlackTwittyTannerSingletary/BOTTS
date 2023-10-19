@@ -97,6 +97,12 @@ h1 {
 h2 {
     padding: 6px;
 }
+h5{
+    color: #1f6b7b;
+}
+.user-text{
+    color: black;
+}
 
 /*modal edit profile*/
 #editForm {
@@ -421,7 +427,7 @@ input[type="email"]:focus {
     line-height: 1.5;
     margin: 0;
     -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
-    padding: 0;
+    padding: 2px;
 }
 .btn-53-trip:disabled {
     cursor: default;
