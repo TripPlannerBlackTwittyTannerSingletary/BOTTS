@@ -97,6 +97,12 @@ h1 {
 h2 {
     padding: 6px;
 }
+h5{
+    color: #1f6b7b;
+}
+.user-text{
+    color: black;
+}
 
 /*modal edit profile*/
 #editForm {
