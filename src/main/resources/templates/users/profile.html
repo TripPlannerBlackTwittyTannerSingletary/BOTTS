@@ -184,7 +184,7 @@
                 </div>
                 <div class="trip-hero d-flex" th:if="${#lists.size(user.getTrips()) > 0}">
                     <!--added new cards-->
-                    <div class="trip-card card text-center mb-3" th:each="trip: ${user.getTrips()}">
+                    <div class="trip-card card text-center mb-3 px-3" th:each="trip: ${user.getTrips()}">
                         <div class="card-body">
                             <h2 class="h2-trip" th:text="${trip.getName()}"></h2>
                             <hr>
@@ -192,7 +192,7 @@
                         </div>
                         <div>
                             <a th:href="@{|/trips/${trip.id}|}" class="py-5">
-                                <button id="seeMoreBtn" class="btn-53-trip py-2 mb-3 container-fluid">
+                                <button id="seeMoreBtn" class="btn-53-trip py-2 px-2 mb-3 container-fluid">
                                     <div class="original">See more!</div>
                                     <div class="letters d-flex justify-content-center">
 
@@ -208,7 +208,7 @@
                                     </div>
                                 </button>
                             </a>
-                            <button id="deleteTripBtn" class="btn-53-trip-delete py-2 deleteTrip mb-3 container-fluid"
+                            <button id="deleteTripBtn" class="btn-53-trip-delete py-2 deleteTrip mb-3 px-2 container-fluid"
                                     th:data-trip-id="${trip.id}">
                                 <div class="original">Delete Trip</div>
                                 <div class="letters d-flex justify-content-center">
