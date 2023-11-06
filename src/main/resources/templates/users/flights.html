@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{partials/header :: head}"></th:block>
+    <title>Activities</title>
+    <script th:src="@{/keys.js}"></script>
+    <meta name="_csrf" data-th-content="${_csrf.token}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;1,6..12,200;1,6..12,300&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!--    <link rel="stylesheet" th:href="@{/CSS/activity.css}">-->
+    <link rel="stylesheet" th:href="@{/CSS/navbar.css}">
+</head>
+<body>
+<nav th:include="partials/navbar :: nav"></nav>
+
+<form id="bookingForm" action="submit_booking.php" method="post">
+
+
+    <div class="container-sm">
+        <div class="my-2 card">
+            <div class="card-body">
+                <h5 class="card-title">Locations</h5>
+                <div class="row mb-5">
+                    <div class="col-sm">
+                        <label for="departureAirport">Departure Airport:</label>
+                        <select id="departureAirport" class="form-select" name="departureAirport">
+                            <option value="ATL">Hartsfield-Jackson Atlanta International Airport (ATL)</option>
+                            <option value="LAX">Los Angeles International Airport (LAX)</option>
+                            <option value="ORD">Chicago O'Hare International Airport (ORD)</option>
+                            <option value="DFW">Dallas/Fort Worth International Airport (DFW)</option>
+                            <option value="DEN">Denver International Airport (DEN)</option>
+                            <option value="JFK">John F. Kennedy International Airport (JFK)</option>
+                            <option value="SFO">San Francisco International Airport (SFO)</option>
+                            <option value="SEA">Seattle-Tacoma International Airport (SEA)</option>
+                            <option value="LAS">McCarran International Airport (LAS)</option>
+                            <option value="MCO">Orlando International Airport (MCO)</option>
+                            <option value="MIA">Miami International Airport (MIA)</option>
+                            <option value="PHX">Phoenix Sky Harbor International Airport (PHX)</option>
+                            <option value="BOS">Logan International Airport (BOS)</option>
+                            <option value="IAH">George Bush Intercontinental Airport (IAH)</option>
+                            <option value="CLT">Charlotte Douglas International Airport (CLT)</option>
+                            <option value="DTW">Detroit Metropolitan Wayne County Airport (DTW)</option>
+                            <option value="MSP">Minneapolis-Saint Paul International Airport (MSP)</option>
+                            <option value="FLL">Fort Lauderdale-Hollywood International Airport (FLL)</option>
+                            <option value="PHL">Philadelphia International Airport (PHL)</option>
+                            <option value="DCA">Ronald Reagan Washington National Airport (DCA)</option>
+                            <option value="SAT">San Antonio International Airport (SAT)</option>
+                            <option value="AUS">Austin-Bergstrom International Airport (AUS)</option>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <label for="arrivalAirport">Arrival Airport:</label>
+                        <select id="arrivalAirport" class="form-select" name="arrivalAirport">
+                            <option value="ATL">Hartsfield-Jackson Atlanta International Airport (ATL)</option>
+                            <option value="LAX">Los Angeles International Airport (LAX)</option>
+                            <option value="ORD">Chicago O'Hare International Airport (ORD)</option>
+                            <option value="DFW">Dallas/Fort Worth International Airport (DFW)</option>
+                            <option value="DEN">Denver International Airport (DEN)</option>
+                            <option value="JFK">John F. Kennedy International Airport (JFK)</option>
+                            <option value="SFO">San Francisco International Airport (SFO)</option>
+                            <option value="SEA">Seattle-Tacoma International Airport (SEA)</option>
+                            <option value="LAS">McCarran International Airport (LAS)</option>
+                            <option value="MCO">Orlando International Airport (MCO)</option>
+                            <option value="MIA">Miami International Airport (MIA)</option>
+                            <option value="PHX">Phoenix Sky Harbor International Airport (PHX)</option>
+                            <option value="BOS">Logan International Airport (BOS)</option>
+                            <option value="IAH">George Bush Intercontinental Airport (IAH)</option>
+                            <option value="CLT">Charlotte Douglas International Airport (CLT)</option>
+                            <option value="DTW">Detroit Metropolitan Wayne County Airport (DTW)</option>
+                            <option value="MSP">Minneapolis-Saint Paul International Airport (MSP)</option>
+                            <option value="FLL">Fort Lauderdale-Hollywood International Airport (FLL)</option>
+                            <option value="PHL">Philadelphia International Airport (PHL)</option>
+                            <option value="DCA">Ronald Reagan Washington National Airport (DCA)</option>
+                            <option value="SAT">San Antonio International Airport (SAT)</option>
+                            <option value="AUS">Austin-Bergstrom International Airport (AUS)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-2 col">
+                        <div class="h-100 card">
+                            <div class="card-body">
+                                <h5 class="card-title">Dates</h5>
+                                <div class="mb-2">
+                                    <label id="flight-type-label" for="flight-type-select" class="form-label">Flight</label>
+                                    <select id="flight-type-select" class="form-select"
+                                            aria-describedby="flight-type-label">
+                                        <option value="one-way">One-way</option>
+                                        <option value="round-trip">Round-trip</option>
+                                    </select>
+                                </div>
+                                <div id="departureDate" class="mb-2">
+                                    <label for="departure-date">Departure Date:</label>
+                                    <input type="date"  id="departure-date" name="departureDate">
+                                </div>
+                                <div id="returnDate" class="mb-2">
+                                    <label for="return-date">Return Date:</label>
+                                    <input type="date" id="return-date" name="returnDate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2 col">
+                        <div class="h-100 card">
+                            <div class="card-body">
+                                <h5 class="card-title">Details</h5>
+                                <div class="mb-2">
+                                    <label id="travel-class-label" for="travel-class-select" class="form-label">Travel
+                                        class</label>
+                                    <select class="form-select" id="travel-class-select"
+                                            aria-describedby="travel-class-label">
+                                        <option value="ECONOMY">Economy</option>
+                                        <option value="PREMIUM_ECONOMY">Premium Economy</option>
+                                        <option value="BUSINESS">Business</option>
+                                        <option value="FIRST">First</option>
+                                    </select>
+                                </div>
+                                <label class="form-label">Passengers</label>
+                                <div class="mb-2">
+                                    <div class="input-group">
+                                        <label for="adults-input" class="input-group-text">Adults</label>
+                                        <input type="number" min="0" class="form-control" id="adults-input"
+                                               aria-describedby="adults-label"/>
+                                    </div>
+                                    <span id="adults-label" class="form-text">12 years old and older</span>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-group">
+                                        <label for="children-input" class="input-group-text">Children</label>
+                                        <input type="number" min="0" class="form-control" id="children-input"
+                                               aria-describedby="children-label"/>
+                                    </div>
+                                    <span id="children-label" class="form-text">2 to 12 years old</span>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-group">
+                                        <label for="infants-input" class="input-group-text">Infants</label>
+                                        <input type="number" min="0" class="form-control" id="infants-input"
+                                               aria-describedby="infants-label"/>
+                                    </div>
+                                    <span id="infants-label" class="form-text">Up to 2 years old</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Book Flight">
+                <div class="border-bottom mb-4 pt-4" id="search-results-separator"></div>
+
+                <ul class="list-group mb-4" id="search-results"></ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</form>
+
+<div id="flightCardsContainer"></div>
+
+
+<!--Footer-->
+<footer th:include="partials/footer :: footer"></footer>
+<!--End Footer-->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/API/api-activities.js}"></script>
+<script th:src="@{/js/data.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
